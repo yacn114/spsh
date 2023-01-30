@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Product(models.Model):
-    def pathimage(self, slug):
-        return "/images/products/" + slug
+    # def pathimage(self, slug):
+    #     return "/images/products/" + slug
 
     title = models.CharField(max_length=100, verbose_name="عنوان")
     slug = models.SlugField(max_length=100, verbose_name="سلاگ")
