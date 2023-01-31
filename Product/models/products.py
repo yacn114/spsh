@@ -19,6 +19,8 @@ class Product(models.Model):
     view = models.IntegerField()
     # hashtag = models.ForeignKey()
     # file = models.FileField()
+    # count_lesson = models.IntegerField()
+    # tpye_lang = models.CharField() persian or english
     student_count = models.IntegerField()
 
     def __str__(self):
