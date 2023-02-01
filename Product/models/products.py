@@ -1,13 +1,14 @@
 from django.db import models
 
+def upload_path(instance):
+    return f"/images/products/{instance.slug}"
 
 class Product(models.Model):
-    # def pathimage(self, slug):
-    #     return "/images/products/" + slug
+
 
     title = models.CharField(max_length=100, verbose_name="عنوان")
     slug = models.SlugField(max_length=100, verbose_name="سلاگ")
-    image_preview = models.ImageField(upload_to=pathimage(slug), verbose_name="تصویر پیشنمایش")
+    image_preview = models.ImageField(upload_to=upload_path, verbose_name="تصویر پیشنمایش")
     tutorial = models.CharField(max_length=100, verbose_name="نوع دوره")
     small_description = models.TextField(verbose_name="توضیح کوتاه")
     long_description = models.TextField(verbose_name="توضیح مفصل")
