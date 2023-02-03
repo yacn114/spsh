@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: 'Roboto';
     src: url('../fonts/Roboto-Bold-webfont.woff');
     font-weight: 700;
@@ -16,5 +16,11 @@
     font-family: 'Roboto';
     src: url('../fonts/Roboto-Light-webfont.woff');
     font-weight: 300;
+    font-style: normal;
+}
+*/
+@font-face {
+    font-family: 'Tanha';
+    src: url('../fonts/Tanha.woff');
     font-style: normal;
 }
