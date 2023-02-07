@@ -5,6 +5,7 @@ class Video(models.Model):
     name = models.CharField(max_length=100)
     file = models.FileField(upload_to=f"videos/{name}/")
 
+
     class Meta:
         verbose_name = "ویدو"
         verbose_name_plural = "ویدو ها"
