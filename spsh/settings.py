@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'Product.apps.ProductConfig',
     'category.apps.CategoryConfig',
+    'home.apps.HomeConfig',
 ]
 
 MIDDLEWARE = [
@@ -123,9 +124,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 # STATIC_ROOT = 'assets'
-# STATICFILES_DIRS = [
-#     BASE_DIR / "static",
-# ]
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
