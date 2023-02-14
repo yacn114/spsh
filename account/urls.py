@@ -31,6 +31,3 @@ urlpatterns = [
     # ),
 ]
 
-urlpatterns += [
-    path('',home,name="home")
-]

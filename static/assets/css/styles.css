@@ -1486,7 +1486,8 @@ nav a {
     height: 48px;
     margin: 11px auto;
     padding: 0 15px;
-    float: left
+    float: left;
+    
 }
 
 .nav-logo:focus>img {
@@ -8010,7 +8011,7 @@ footer.skin-dark-footer ul.footer-bottom-social li a:hover, footer.skin-dark-foo
 	}
 	.single_instructor_caption {
 		padding: 0;
-	}
+	}nav-b
 	.list-single-main-item {
 		padding: 25px 15px;
 	}
@@ -8104,6 +8105,7 @@ footer.skin-dark-footer ul.footer-bottom-social li a:hover, footer.skin-dark-foo
 		max-width: 95px;
 		position: relative;
 		top: 2px;
+        
 	}
 	.navigation-portrait .nav-brand {
 		margin-left: 20px;
