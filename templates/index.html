@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'assets/css/styles.css' %}" rel="stylesheet">
-    <title>home</title>
+    <title>{{siteData.nameF}} | {{siteData.nameE}}</title>
 </head>
     <body dir="rtl">
 
@@ -37,7 +37,7 @@
 							<div class="mobile_nav">
 								<ul>
 									<li>
-										<a href="javascript:void(0);" data-toggle="modal" data-target="#login" class="crs_yuo12 w-auto text-white theme-bg">
+										<a href="{% url 'account:login' %}">
 											<span class="embos_45"><i class="fas fa-sign-in-alt ml-1 rotate-img"></i>ورود</span>
 										</a>
 									</li>
@@ -51,76 +51,54 @@
 								
 								<li><a href="#">دوره های آموزشی<span class="submenu-indicator"></span></a>
 									<ul class="nav-dropdown nav-submenu">
-										<li><a href="#">backend<span class="submenu-indicator"></span></a>
+										{% for categ in category %}
+										<li><a href="#">{{categ.name}}<span class="submenu-indicator"></span></a>
 											<ul class="nav-dropdown nav-submenu">
-												{% for backend in product %}
-												{% for a in backend.category.all %}
-												{% if a == "backend" %}
-												<li><a href="{{backend.slug}}">{{backend.title}}</a></li>
+												{% for lan in lang %}
+												{% for cat in lan.category.all %}
+												{% if cat.name == categ.name %}
+												<li><a href="/#{{lan.hashtag}}/">{{lan.nameE}}</a></li>
+												{% endif %}
+												{% endfor %}
+												{% endfor %}
+
+											</ul>
+										</li>
+										{% endfor %}
+										{% comment %} <li><a href="#">frontend<span class="submenu-indicator"></span></a>
+											<ul class="nav-dropdown nav-submenu">
+												{% for lan in lang %}
+												{% for cat in lan.category.all %}
+												{% if cat.name == "frontend" %}
+												<li><a href="/#{{lan.hashtag}}/">{{lan.nameE}}</a></li>
 												{% endif %}
 												{% endfor %}
 												{% endfor %}
 											</ul>
 										</li>
-										<li><a href="#">نمای لیستی<span class="submenu-indicator"></span></a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="list-layout-with-sidebar.html">با سایدبار</a></li>
-												<li><a href="list-layout-with-full.html">تمام صفحه</a></li>
-											</ul>
-										</li>
-										<li><a href="#">جزئیات دوره<span class="submenu-indicator"></span></a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="course-detail.html">نسخه 1</a></li>
-												<li><a href="course-detail-2.html">نسخه 2</a></li>
-												<li><a href="course-detail-3.html">نسخه 3</a></li>
-												<li><a href="course-detail-4.html">نسخه 4</a></li>
-											</ul>
-										</li>
-										
-										<li><a href="explore-category.html">انتخاب دسته بندی</a></li>
-										<li><a href="find-instructor.html">لیست مدرسین</a></li>
-										<li><a href="instructor-detail.html">جزئیات مدرس</a></li>
+				 {% endcomment %}
 									</ul>
 								</li>
+								<li><a href="#">راهنمایی برای انتخاب دوره</a></li>
 								
-								<li><a href="#">صفحات<span class="submenu-indicator"></span></a>
-									<ul class="nav-dropdown nav-submenu">
-										<li><a href="#">فروشگاه<span class="submenu-indicator"></span></a>
-											<ul class="nav-dropdown nav-submenu">
-												<li><a href="shop-with-sidebar.html">سایدبار راست</a></li>
-												<li><a href="shop-with-left-sidebar.html">سایدبار چپ</a></li>
-												<li><a href="list-shop-with-sidebar.html">نمای لیستی با سایدبار</a></li>
-												<li><a href="wishlist.html">موردعلاقه ها</a></li>
-												<li><a href="checkout.html">تسویه حساب</a></li>
-												<li><a href="product-detail.html">جزئیات محصول</a></li>
-											</ul>
-										</li>
-										<li><a href="about.html">درباره ما</a></li>
-										<li><a href="contact.html">تماس با ما</a></li>
-										<li><a href="blogs.html">لیست وبلاگ</a></li>
-										<li><a href="pricing.html">قیمت گذاری</a></li>
-										<li><a href="404.html">صفحه 404</a></li>
-										<li><a href="component.html">المان ها</a></li>
-										<li><a href="faq.html">سوالات متداول</a></li>
-										<li><a href="login.html">ورود</a></li>
-										<li><a href="signup.html">ثبت نام</a></li>
-										<li><a href="forgot.html">فراوشی رمز عبور</a></li>
-									</ul>
-								</li>
+										<li><a href="/favarite/">موردعلاقه ها</a></li>
+										<li><a href="/about/">درباره ما</a></li>
+										<li><a href="/contact/">تماس با ما</a></li>
+									
 								
-								<li><a href="dashboard.html">حساب کاربری</a></li>
+								<li><a href="{% url 'home:dashboard' %}">حساب کاربری</a></li>
 								
 							</ul>
 							
 							<ul class="nav-menu nav-menu-social align-to-left">
 								
 								<li>
-									<a href="#" data-toggle="modal" data-target="#login">
+									<a href="{% url 'account:login' %}">
 										<i class="fas fa-sign-in-alt ml-1 rotate-img"></i><span class="dn-lg">ورود</span>
 									</a>
 								</li>
 								<li class="add-listing bg-white">
-									<a href="signup.html" class="text-white">ثبت نام</a>
+									<a href="{% url 'account:signup' %}" class="text-white">ثبت نام</a>
 								</li>
 							</ul>
 						</div>
@@ -151,16 +129,13 @@
 										</div>
 									</div>
 									<div class="crs_trio_info">
-										<div class="crs_trio">
-											<h4 class="ctr"><span class="rt_count">72</span> کاربر</h4>
-											<span class="pol_title">موفق و راضی</span>
+										{% comment %} <div class="crs_trio">
+											<h4 class="ctr"><span class="rt_count">{{userc}}</span> کاربر</h4>
+											<span class="pol_title">فعال در سایت</span>
 										</div>
-										<div class="crs_trio">
-											<h4 class="ctr"><span class="rt_count">100</span> مدرس</h4>
-											<span class="pol_title">باتجربه و عالی</span>
-										</div>
-										<div class="crs_trio">
-											<h4 class="ctr"><span class="rt_count">5.2</span> دوره</h4>
+				 {% endcomment %}
+										<div class="crs_trio" style="margin: auto;">
+											<h4 class="ctr"><span class="rt_count">{{prodc}}</span> دوره</h4>
 											<span class="pol_title">آموزش آنلاین</span>
 										</div>
 									</div>

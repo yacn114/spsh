@@ -1,5 +1,5 @@
 from django.db import models
-from category.models import Category
+from category.models import Languages
 
 class Product(models.Model):
     title = models.CharField(max_length=100, verbose_name="عنوان")
@@ -11,12 +11,9 @@ class Product(models.Model):
     price = models.IntegerField(verbose_name="قیمت")
     price_percent = models.IntegerField(verbose_name="درصد تخفیف", default=0)
     hot_price = models.IntegerField(verbose_name="قیمت بگایی تخفیف", default=None, blank=True, null=True)
-    buyers_count = models.IntegerField("تعداد خریدار")
-    category = models.ManyToManyField(Category,verbose_name="دسته بندی ها")
+    language = models.ManyToManyField(Languages,verbose_name="زبان برنامه نویسی")
     view = models.IntegerField("تعداد بازدید")
-    published = models.BooleanField(default=False,verbose_name="تاریخ انتشار")
-    # file = models.FileField()
-    count_lesson = models.IntegerField(default=0,verbose_name="تعداد دروس")
+    published = models.BooleanField(default=False,verbose_name="وضعیت")
     tpye_lang = models.CharField(max_length=50,default="Fa",verbose_name="زبان محصول") # persian or english
     student_count = models.IntegerField(default=1,verbose_name="تعداد دانشجو")
 
@@ -27,7 +24,4 @@ class Product(models.Model):
         verbose_name = "محصول"
         verbose_name_plural = "محصولات"
 
-    def cat(self):
-        return "، ".join([category.name for category in self.category.all()])
-    cat.short_description = "دسته‌بندی"
 
