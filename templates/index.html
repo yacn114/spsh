@@ -65,18 +65,7 @@
 											</ul>
 										</li>
 										{% endfor %}
-										{% comment %} <li><a href="#">frontend<span class="submenu-indicator"></span></a>
-											<ul class="nav-dropdown nav-submenu">
-												{% for lan in lang %}
-												{% for cat in lan.category.all %}
-												{% if cat.name == "frontend" %}
-												<li><a href="/#{{lan.hashtag}}/">{{lan.nameE}}</a></li>
-												{% endif %}
-												{% endfor %}
-												{% endfor %}
-											</ul>
-										</li>
-				 {% endcomment %}
+					
 									</ul>
 								</li>
 								<li><a href="#">راهنمایی برای انتخاب دوره</a></li>
@@ -119,8 +108,8 @@
 						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="simple-search-wrap text-right">
 								<div class="hero_search-2">
-									<h1 class="banner_title mb-4 font-2">در مسیر پیشرفت، در کنار شما هستیم...</h1>
-									<p class="font-lg mb-4">مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.
+									<h1 class="banner_title mb-4 font-2">این پروژه به شدت در دست توسعه میباشد ...</h1>
+									<p class="font-lg mb-4">تمام ویدیو ها و دوره های تاپ دوبله شده همراه  داکیومنت اصلی ترجمه شده
 									<div class="input-group simple_search">
 										<i class="fa fa-search ico"></i>
 										<input type="text" class="form-control" placeholder="جستجو دوره آموزش...">
@@ -129,11 +118,11 @@
 										</div>
 									</div>
 									<div class="crs_trio_info">
-										{% comment %} <div class="crs_trio">
+{% comment %} <div class="crs_trio">
 											<h4 class="ctr"><span class="rt_count">{{userc}}</span> کاربر</h4>
 											<span class="pol_title">فعال در سایت</span>
-										</div>
-				 {% endcomment %}
+										</div> {% endcomment %}
+
 										<div class="crs_trio" style="margin: auto;">
 											<h4 class="ctr"><span class="rt_count">{{prodc}}</span> دوره</h4>
 											<span class="pol_title">آموزش آنلاین</span>
@@ -167,8 +156,8 @@
 					<div class="row justify-content-center">
 						<div class="col-lg-7 col-md-8">
 							<div class="sec-heading center">
-								<h3 class="font-2">محورهای آموزشی <span class="theme-cl">منتخب</span></h3>
-								<p>با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
+								<h3 class="font-2">دسته بندی های آموزشی <span class="theme-cl">منتخب</span></h3>
+								{% comment %} <p>با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p> {% endcomment %}
 							</div>
 						</div>
 					</div>
