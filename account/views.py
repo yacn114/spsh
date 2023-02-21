@@ -13,3 +13,5 @@ def login(request):
     siteinformation = informationSite.objects.first()
 
     return render(request,'registration/index.html',{"siteData":siteinformation})
+def Forget(request):
+    return None
