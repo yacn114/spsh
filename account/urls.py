@@ -1,12 +1,12 @@
 from django.contrib.auth import views
 from django.urls import path
-from account.views import home,signup,login,Forget
+from account.views import signup,login,Forget,dashboard
 app_name = "account"
 urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),
     path("signup/",signup,name="signup"),
     path('forget/',Forget,name='forget'),
-
+    path('dashboard/',dashboard,name='home')
     # path("logout/", views.LogoutView.as_view(), name="logout"),
     # path(
     #     "password_change/", views.PasswordChangeView.as_view(), name="password_change"

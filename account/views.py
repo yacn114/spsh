@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from home.models import informationSite
-@login_required
-def home(request):
-    return render(request,"account/home.html")
 
 def signup(request):
     pass
+
+@login_required
 def dashboard(request):
-    pass
+    return render(request,"account/home.html")
+    
 def login(request):
     siteinformation = informationSite.objects.first()
 

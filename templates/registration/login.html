@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -35,7 +36,15 @@
 		<div class="container-login100" style="background-color: #03b97c ;">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
 				<form method='post' class="login100-form validate-form flex-sb flex-w">
-					<span class="login100-form-title p-b-53 myfont">
+					{% if form.non_field_errors %}
+	
+						{% for errors in form.non_field_errors %}
+					<div class="alert alert-warning" role="alert">
+							{{errors}}
+					</div>
+						{% endfor %}
+					{% endif %}
+					<span class="login100-form-title myfont">
 						ورود به سایت 
 					</span>
 
@@ -49,7 +58,7 @@
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Username is required">
 						{% comment %} <input class="input100 myfont" type="text" name="username" required> {% endcomment %}
-						{{form.username}}
+						{{form.username|add_class:"input100"}}
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -64,7 +73,7 @@
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						{% comment %} <input class="input100 myfont" type="password" name="pass" required> {% endcomment %}
-						{{form.password}}
+						{{form.password|add_class:"input100"}}
 						<span class="focus-input100"></span>
 					</div>
 
