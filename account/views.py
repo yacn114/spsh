@@ -7,7 +7,8 @@ def signup(request):
 
 @login_required
 def dashboard(request):
-    return render(request,"account/home.html")
+    data = informationSite.objects.first()
+    return render(request,"account/home.html",{"siteData":data})
     
 def login(request):
     siteinformation = informationSite.objects.first()

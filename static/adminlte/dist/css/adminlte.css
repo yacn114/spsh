@@ -57,6 +57,8 @@ html {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
+@import url('https://v1.fontapi.ir/css/Sahel');
+
 
 body {
   margin: 0;

@@ -1,6 +1,14 @@
 *{
     direction: rtl !important;
 }
+@import url('https://v1.fontapi.ir/css/Sahel');
+body{
+    font-family: Sahel !important;
+}
+.myfont{
+    font-family: Sahel !important;
+  
+  }
 .layout-fixed .main-sidebar {
     right: 0;
 }
