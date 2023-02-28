@@ -50,7 +50,7 @@
 							
 								<li class="active"><a href="{% url 'home:home' %}">خانه<span class="submenu-indicator"></span></a></li>
 								
-								<li><a href="#">دوره های آموزشی<span class="submenu-indicator"></span></a>
+								<li><a href="{% url 'category:category' %}">دسته بندی های آموزشی<span class="submenu-indicator"></span></a>
 									<ul class="nav-dropdown nav-submenu">
 										{% for categ in category %}
 										<li><a href="#">{{categ.name}}<span class="submenu-indicator"></span></a>
@@ -71,11 +71,13 @@
 								</li>
 								<li><a href="#">راهنمایی برای انتخاب دوره</a></li>
 								
-										<li><a href="/favarite/">موردعلاقه ها</a></li>
-										<li><a href="/contact/">تماس با ما</a></li>
+										
+										
 									
+								{% if request.user.is_authenticated %}
 								
 								<li><a href="{% url 'home:dashboard' %}">حساب کاربری</a></li>
+								{% endif %}
 								
 							</ul>
 							
