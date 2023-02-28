@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from account.models import User
 from django.shortcuts import render
 from home.models import informationSite
 from Product.models import Product

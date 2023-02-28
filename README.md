@@ -4,6 +4,5 @@
 my todo
 <ul>
     <li>signin with google</li>
-    <li>special level names</li>
-    <li>more custom user</li>
+    <li>more custom user(phone,)</li>
 </ul>
