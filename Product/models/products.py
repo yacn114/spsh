@@ -1,21 +1,38 @@
 from django.db import models
 from category.models import Languages
 
+class teachers(models.Model):
+    name = models.CharField("اسم مدرس کلیپ",max_length=200)
+    
+    def __str__(self):
+        return self.name
+
 class Product(models.Model):
+    LANG= [
+        ("Fa","فارسی"),
+        ("En","انگلیسی")
+    ]
+    TYPE_TUTORIAL = [
+        ('documnet','documnet'),
+        ('video','video'),
+        ('short video','short video'),
+        ('package','package'),
+    ]
     title = models.CharField(max_length=100, verbose_name="عنوان")
     slug = models.SlugField(max_length=100, verbose_name="سلاگ")
+    teacher_name = models.ForeignKey(teachers,on_delete=models.SET_NULL,blank=True,null=True)
     image_preview = models.ImageField(upload_to="images/products", verbose_name="تصویر پیشنمایش")
-    tutorial = models.CharField(max_length=100, verbose_name="نوع دوره")
+    tutorial = models.CharField(max_length=100, verbose_name="نوع دوره",choices=TYPE_TUTORIAL,default="video")
     small_description = models.TextField(verbose_name="توضیح کوتاه")
     long_description = models.TextField(verbose_name="توضیح مفصل")
-    price = models.IntegerField(verbose_name="قیمت")
+    price = models.IntegerField(verbose_name="قیمت",default=0)
     price_percent = models.IntegerField(verbose_name="درصد تخفیف", default=0)
-    hot_price = models.IntegerField(verbose_name="قیمت بگایی تخفیف", default=None, blank=True, null=True)
+    hot_price = models.IntegerField(verbose_name="قیمت بگایی تخفیف", default=0)
     language = models.ManyToManyField(Languages,verbose_name="زبان برنامه نویسی")
-    view = models.IntegerField("تعداد بازدید")
-    published = models.BooleanField(default=False,verbose_name="وضعیت")
-    tpye_lang = models.CharField(max_length=50,default="Fa",verbose_name="زبان محصول") # persian or english
-    student_count = models.IntegerField(default=1,verbose_name="تعداد دانشجو")
+    view = models.IntegerField("تعداد بازدید",default=0)
+    tpye_lang = models.CharField(max_length=2,choices=LANG ,default="Fa",verbose_name="زبان محصول") # persian or english
+    student_count = models.IntegerField(default=0,verbose_name="تعداد دانشجو")
+    published = models.BooleanField(default=True,verbose_name="وضعیت")
 
     def __str__(self):
         return self.title

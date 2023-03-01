@@ -11,7 +11,7 @@ def home(request):
     language = Languages.objects.filter(status=True)
     category = Category.objects.filter(status=True)
     userCount = User.objects.count()
-    return render(request,"index.html",{
+    return render(request,"main/index.html",{
         "siteData":siteinformation,
         "product":product,
         "lang":language,

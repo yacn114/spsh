@@ -1,1 +1,1 @@
-from .products import Product
+from .products import Product, teachers
