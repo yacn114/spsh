@@ -18,11 +18,17 @@ class Product(models.Model):
         ('short video','short video'),
         ('package','package'),
     ]
+    LEVEL_TUTORIAL = [
+    ('junior','مبتدی'),
+    ('mid-level','متوسط'),
+    ('sinior','حرفه ای'),
+    ]
     title = models.CharField(max_length=100, verbose_name="عنوان")
     slug = models.SlugField(max_length=100, verbose_name="سلاگ")
     teacher_name = models.ForeignKey(teachers,on_delete=models.SET_NULL,blank=True,null=True)
     image_preview = models.ImageField(upload_to="images/products", verbose_name="تصویر پیشنمایش")
     tutorial = models.CharField(max_length=100, verbose_name="نوع دوره",choices=TYPE_TUTORIAL,default="video")
+    tutorial_level = models.CharField(max_length=100, verbose_name="سطح دوره",choices=LEVEL_TUTORIAL,default="junior")
     small_description = models.TextField(verbose_name="توضیح کوتاه")
     long_description = models.TextField(verbose_name="توضیح مفصل")
     price = models.IntegerField(verbose_name="قیمت",default=0)

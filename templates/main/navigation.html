@@ -45,15 +45,14 @@
                             
                             
                         
+                </ul>
+                <ul class="nav-menu nav-menu-social align-to-left">
                     {% if request.user.is_authenticated %}
                     
-                    <li><a href="{% url 'home:dashboard' %}">حساب کاربری</a></li>
-                    {% endif %}
-                    
-                </ul>
-                
-                <ul class="nav-menu nav-menu-social align-to-left">
-                    
+                    <li class="add-listing bg-white">
+                        <a href="{% url 'home:dashboard' %}">حساب کاربری</a></li>
+                    {% else %}
+
                     <li>
                         <a href="{% url 'account:login' %}">
                             <i class="fas fa-sign-in-alt ml-1 rotate-img"></i><span class="dn-lg">ورود</span>
@@ -62,6 +61,10 @@
                     <li class="add-listing bg-white">
                         <a href="{% url 'account:signup' %}" class="text-white">ثبت نام</a>
                     </li>
+                    {% endif %}
+                    
+                
+                    
                 </ul>
             </div>
         </nav>
