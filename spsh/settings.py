@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'Product.apps.ProductConfig',
     'category.apps.CategoryConfig',
+    'buy.apps.BuyConfig',
     'home.apps.HomeConfig',
     'widget_tweaks',
 ]

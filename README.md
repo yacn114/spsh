@@ -3,6 +3,7 @@
 <hr>
 my todo
 <ul>
+    <li>home select menu</li>
     <li>category page</li>
     <li>pagination category</li>
     <li>help cources</li>

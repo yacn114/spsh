@@ -33,11 +33,20 @@
 							<div class="nav-toggle"></div>
 							<div class="mobile_nav">
 								<ul>
+									{% if request.user.is_authenticated %}
+									<li>
+										<a href="{% url 'account:home' %}">
+											<span class="embos_45"><i class="fas fa-sign-in-alt ml-1 rotate-img"></i>حساب</span>
+										</a>
+									</li>									
+									{% else %}
 									<li>
 										<a href="{% url 'account:login' %}">
 											<span class="embos_45"><i class="fas fa-sign-in-alt ml-1 rotate-img"></i>ورود</span>
 										</a>
 									</li>
+									{% endif %}
+									
 								</ul>
 							</div>
 						</div>
@@ -169,12 +178,13 @@
 					</div>
 					
 					<div class="row justify-content-center">
+						{% for pro in product %}
 						
 						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
 							<div class="crs_grid_list">
 								
 								<div class="crs_grid_list_thumb">
-									<a href="course-detail.html"><img src="assets/img/cr-3.jpg" class="img-fluid rounded" alt=""></a>
+									<a href="course-detail.html"><img src="/{{pro.image_preview}}" class="img-fluid rounded" alt=""></a>
 								</div>
 								
 								<div class="crs_grid_list_caption">
@@ -183,61 +193,24 @@
 										<span class="est st_2">گرافیک</span>
 									</div>
 									<div class="crs_lt_102">
-										<h4 class="crs_tit">آموزش تدوین و میکس ویدئو با Premier</h4>
-										<span class="crs_auth"><i>مدرس</i> مژگان حسینی</span>
+										<h4 class="crs_tit">{{pro.title}}</h4>
+										<span class="crs_auth"><i>مدرس</i> {{pro.teacher_name}}</span>
 									</div>
 									<div class="crs_lt_103">
 										<div class="crs_info_detail">
 											<ul>
-												<li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-												<li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-												<li><i class="fa fa-eye"></i><span>92 بازدید</span></li>
+												<li><i class="fa fa-video"></i><span>{{pro.tutorial_count}} ویدئو</span></li>
+												<li><i class="fa fa-user"></i><span>{{pro.student_count}} دانشجو</span></li>
+												<li><i class="fa fa-eye"></i><span>{{pro.view}} بازدید</span></li>
 											</ul>
 										</div>
 									</div>
 									<div class="crs_flex">
 										<div class="crs_fl_first">
-											<div class="crs_price"><h2><span class="theme-cl">49</span><span class="currency">تومان</span></h2></div>
+											<div class="crs_price"><h2><span class="theme-cl">{{pro.price}}</span><span class="currency">هزار تومان</span></h2></div>
 										</div>
 										<div class="crs_fl_last">
-											<div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-							<div class="crs_grid_list">
-								
-								<div class="crs_grid_list_thumb">
-									<a href="course-detail.html"><img src="assets/img/cr-4.jpg" class="img-fluid rounded" alt=""></a>
-								</div>
-								
-								<div class="crs_grid_list_caption">
-									<div class="crs_lt_101">
-										<span class="est st_1">آموزش</span>
-										<span class="est st_2">طراحی اپلیکیشن</span>
-									</div>
-									<div class="crs_lt_102">
-										<h4 class="crs_tit">آموزش برنامه نویسی پایتون Python</h4>
-										<span class="crs_auth"><i>مدرس</i> کیوان محمدی</span>
-									</div>
-									<div class="crs_lt_103">
-										<div class="crs_info_detail">
-											<ul>
-												<li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-												<li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-												<li><i class="fa fa-eye"></i><span>92 بازدید</span></li>
-											</ul>
-										</div>
-									</div>
-									<div class="crs_flex">
-										<div class="crs_fl_first">
-											<div class="crs_price"><h2><span class="theme-cl">129</span><span class="currency">تومان</span></h2></div>
-										</div>
-										<div class="crs_fl_last">
-											<div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
+											<div class="crs_linkview"><a href="{% url 'buy:bought' pro.id %}" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
 										</div>
 									</div>
 								</div>
@@ -245,237 +218,12 @@
 							</div>
 						</div>
 						
-						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-							<div class="crs_grid_list">
-								
-								<div class="crs_grid_list_thumb">
-									<a href="course-detail.html"><img src="assets/img/cr-5.jpg" class="img-fluid rounded" alt=""></a>
-								</div>
-								
-								<div class="crs_grid_list_caption">
-									<div class="crs_lt_101">
-										<span class="est st_1">برنامه نویسی</span>
-										<span class="est st_2">پروژه محور</span>
-									</div>
-									<div class="crs_lt_102">
-										<h4 class="crs_tit">آموزش ASP.Net - ساخت سایت شخصی</h4>
-										<span class="crs_auth"><i>مدرس</i> حسین عظیمی</span>
-									</div>
-									<div class="crs_lt_103">
-										<div class="crs_info_detail">
-											<ul>
-												<li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-												<li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-												<li><i class="fa fa-eye"></i><span>92 بازدید</span></li>
-											</ul>
-										</div>
-									</div>
-									<div class="crs_flex">
-										<div class="crs_fl_first">
-											<div class="crs_price"><h2><span class="theme-cl">99</span><span class="currency">تومان</span></h2></div>
-										</div>
-										<div class="crs_fl_last">
-											<div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
+						{% endfor %}
 						
-						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-							<div class="crs_grid_list">
-								
-								<div class="crs_grid_list_thumb">
-									<a href="course-detail.html"><img src="assets/img/cr-6.jpg" class="img-fluid rounded" alt=""></a>
-								</div>
-								
-								<div class="crs_grid_list_caption">
-									<div class="crs_lt_101">
-										<span class="est st_1">آموزش</span>
-										<span class="est st_2">گرافیک</span>
-									</div>
-									<div class="crs_lt_102">
-										<h4 class="crs_tit">مفاهیم کلی و مقدمه ای بر محیط سه بعدی</h4>
-										<span class="crs_auth"><i>مدرس</i> مصطفی اسلامی</span>
-									</div>
-									<div class="crs_lt_103">
-										<div class="crs_info_detail">
-											<ul>
-												<li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-												<li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-												<li><i class="fa fa-eye"></i><span>92 بازدید</span></li>
-											</ul>
-										</div>
-									</div>
-									<div class="crs_flex">
-										<div class="crs_fl_first">
-											<div class="crs_price"><h2><span class="theme-cl">139</span><span class="currency">تومان</span></h2></div>
-										</div>
-										<div class="crs_fl_last">
-											<div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						
-						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-							<div class="crs_grid_list">
-								
-								<div class="crs_grid_list_thumb">
-									<a href="course-detail.html"><img src="assets/img/cr-7.jpg" class="img-fluid rounded" alt=""></a>
-								</div>
-								
-								<div class="crs_grid_list_caption">
-									<div class="crs_lt_101">
-										<span class="est st_1">آموزش</span>
-										<span class="est st_2">برنامه نویسی</span>
-									</div>
-									<div class="crs_lt_102">
-										<h4 class="crs_tit">آموزش ساخت فروشگاه دیجی استایل با لاراول</h4>
-										<span class="crs_auth"><i>مدرس</i> محمد کریمی</span>
-									</div>
-									<div class="crs_lt_103">
-										<div class="crs_info_detail">
-											<ul>
-												<li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-												<li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-												<li><i class="fa fa-eye"></i><span>92 بازدید</span></li>
-											</ul>
-										</div>
-									</div>
-									<div class="crs_flex">
-										<div class="crs_fl_first">
-											<div class="crs_price"><h2><span class="theme-cl">49</span><span class="currency">تومان</span></h2></div>
-										</div>
-										<div class="crs_fl_last">
-											<div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						
-						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-							<div class="crs_grid_list">
-								
-								<div class="crs_grid_list_thumb">
-									<a href="course-detail.html"><img src="assets/img/cr-8.jpg" class="img-fluid rounded" alt=""></a>
-								</div>
-								
-								<div class="crs_grid_list_caption">
-									<div class="crs_lt_101">
-										<span class="est st_1">آموزش</span>
-										<span class="est st_2">ریاضیات</span>
-									</div>
-									<div class="crs_lt_102">
-										<h4 class="crs_tit">تدریس ریاضی و آمار دهم انسانی</h4>
-										<span class="crs_auth"><i>مدرس</i> فاطمه حسینی</span>
-									</div>
-									<div class="crs_lt_103">
-										<div class="crs_info_detail">
-											<ul>
-												<li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-												<li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-												<li><i class="fa fa-eye"></i><span>92 بازدید</span></li>
-											</ul>
-										</div>
-									</div>
-									<div class="crs_flex">
-										<div class="crs_fl_first">
-											<div class="crs_price"><h2><span class="theme-cl">129</span><span class="currency">تومان</span></h2></div>
-										</div>
-										<div class="crs_fl_last">
-											<div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						
-						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-							<div class="crs_grid_list">
-								
-								<div class="crs_grid_list_thumb">
-									<a href="course-detail.html"><img src="assets/img/cr-1.jpg" class="img-fluid rounded" alt=""></a>
-								</div>
-								
-								<div class="crs_grid_list_caption">
-									<div class="crs_lt_101">
-										<span class="est st_1">آموزش</span>
-										<span class="est st_2">نرم افزار</span>
-									</div>
-									<div class="crs_lt_102">
-										<h4 class="crs_tit">آموزش داشبوردهای مدیریتی اکسل Excel</h4>
-										<span class="crs_auth"><i>مدرس</i> نگین قاسمی نیا</span>
-									</div>
-									<div class="crs_lt_103">
-										<div class="crs_info_detail">
-											<ul>
-												<li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-												<li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-												<li><i class="fa fa-eye"></i><span>92 بازدید</span></li>
-											</ul>
-										</div>
-									</div>
-									<div class="crs_flex">
-										<div class="crs_fl_first">
-											<div class="crs_price"><h2><span class="theme-cl">49</span><span class="currency">تومان</span></h2></div>
-										</div>
-										<div class="crs_fl_last">
-											<div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-							<div class="crs_grid_list">
-								
-								<div class="crs_grid_list_thumb">
-									<a href="course-detail.html"><img src="assets/img/cr-2.jpg" class="img-fluid rounded" alt=""></a>
-								</div>
-								
-								<div class="crs_grid_list_caption">
-									<div class="crs_lt_101">
-										<span class="est st_1">آموزش</span>
-										<span class="est st_2">حسابداری</span>
-									</div>
-									<div class="crs_lt_102">
-										<h4 class="crs_tit">دوره حضوری عالی پرورش مدیر مالی</h4>
-										<span class="crs_auth"><i>مدرس</i> احمد سنایی</span>
-									</div>
-									<div class="crs_lt_103">
-										<div class="crs_info_detail">
-											<ul>
-												<li><i class="fa fa-video"></i><span>24 ویدئو</span></li>
-												<li><i class="fa fa-user"></i><span>10 کاربر</span></li>
-												<li><i class="fa fa-eye"></i><span>92 بازدید</span></li>
-											</ul>
-										</div>
-									</div>
-									<div class="crs_flex">
-										<div class="crs_fl_first">
-											<div class="crs_price"><h2><span class="theme-cl">129</span><span class="currency">تومان</span></h2></div>
-										</div>
-										<div class="crs_fl_last">
-											<div class="crs_linkview"><a href="course-detail.html" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
-										</div>
-									</div>
-								</div>
-								
-							</div>
-						</div>
-					
 					</div>
 			
 								<!-- Pagination -->
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12">
 							<ul class="pagination p-center">
 								<li class="page-item">
@@ -497,8 +245,25 @@
 								</li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 						
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 				</div>
 			</section>
 			<!-- ============================ Course Detail ================================== -->

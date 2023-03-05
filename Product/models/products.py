@@ -29,6 +29,7 @@ class Product(models.Model):
     image_preview = models.ImageField(upload_to="images/products", verbose_name="تصویر پیشنمایش")
     tutorial = models.CharField(max_length=100, verbose_name="نوع دوره",choices=TYPE_TUTORIAL,default="video")
     tutorial_level = models.CharField(max_length=100, verbose_name="سطح دوره",choices=LEVEL_TUTORIAL,default="junior")
+    tutorial_count = models.IntegerField("تعداد ویديو",default=0)
     small_description = models.TextField(verbose_name="توضیح کوتاه")
     long_description = models.TextField(verbose_name="توضیح مفصل")
     price = models.IntegerField(verbose_name="قیمت",default=0)
@@ -39,6 +40,7 @@ class Product(models.Model):
     tpye_lang = models.CharField(max_length=2,choices=LANG ,default="Fa",verbose_name="زبان محصول") # persian or english
     student_count = models.IntegerField(default=0,verbose_name="تعداد دانشجو")
     published = models.BooleanField(default=True,verbose_name="وضعیت")
+
 
     def __str__(self):
         return self.title
