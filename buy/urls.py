@@ -1,8 +1,8 @@
 from django.urls import path
-from buy.views import bought,sabad
+from buy.views import bought,Sabad
 app_name = "buy"
 urlpatterns = [
     path('sabad/<int:id>/',bought, name="bought"),
-    path('sabad',sabad, name="sabad"),
+    path('sabad',Sabad, name="sabad"),
 
 ]

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from home.models import informationSite
 
@@ -14,5 +15,12 @@ def login(request):
     siteinformation = informationSite.objects.first()
 
     return render(request,'registration/index.html',{"siteData":siteinformation})
+
+
+@login_required
 def Forget(request):
     return None
+
+@login_required
+def courses(request):
+    return HttpResponse("ok")
