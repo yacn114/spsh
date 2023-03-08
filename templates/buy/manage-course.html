@@ -245,27 +245,32 @@
 																<th scope="col">#</th>
 																<th scope="col">عنوان</th>
 																<th scope="col">دسته بندی</th>
-																<th scope="col">دوره</th>
-																<th scope="col">شرکت کننده</th>
+																<th scope="col"> تعداد ویدیو </th>
+																<th scope="col">دانشجو</th>
 																<th scope="col">وضعیت</th>
 																<th scope="col">قیمت</th>
-																<th scope="col">عملیات</th>
+																{% comment %} <th scope="col">عملیات</th> {% endcomment %}
 															</tr>
 														</thead>
 														<tbody>
 															{% for sabad in product %}
 															
 															<tr>
-																<th scope="row">1</th>
+																<th scope="row">{{forloop.counter}}</th>
 																<td><h6>{{sabad.product.title}}</h6><p>مدرس:<span>{{sabad.product.teacher_name}}</span></p></td>
-																<td><div class="dhs_tags">مالی</div></td>
-																<td><div class="smalls">{{sabad.product.tutorial_count}} دوره</div></td>
-																<td><span class="smalls">کل: {{sabad.product.student_count}}</span></td>
-																<td><span class="trip theme-cl theme-bg-light">{% if sabad.product.status == True %} غیرفعال{% else %}فعال {% endif %}</span></td>
-																<td><span class="trip theme-cl theme-bg-light">{% if sabad.product.price == 0 %} رایگان{% else %}{{sabad.product.price}} هزارتومن{% endif %}</span></td>
 																<td>
+																	{% for cate in sabad.product.language.all %}
+																	
+																	<div class="dhs_tags">{{cate|join:', '}}</div>
+																	{% endfor %}
+																</td>
+																<td><div class="smalls">{{sabad.product.tutorial_count}} ویدیو</div></td>
+																<td><span class="smalls">کل: {{sabad.product.student_count}}</span></td>
+																<td>{% if sabad.product.status == True %}<span class="trip theme-cl theme-bg-dark"> غیرفعال</span>{% endif %}</td>
+																<td><span class="trip theme-cl theme-bg-light">{% if sabad.product.price == 0 %} رایگان{% else %}{{sabad.product.price}} هزارتومن{% endif %}</span></td>
+																{% comment %} <td>
 																	<div class="dropdown show">
-																		<a class="btn btn-action" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																		<a class="btn btn-action" href="1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 																			<i class="fas fa-ellipsis-h"></i>
 																		</a>
 																		<div class="drp-select dropdown-menu">
@@ -274,7 +279,7 @@
 																			<a class="dropdown-item" href="JavaScript:Void(0);">حذف</a>
 																		</div>
 																	</div>
-																</td>
+																</td> {% endcomment %}
 															</tr>
 															{% endfor %}
 												
