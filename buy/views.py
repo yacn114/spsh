@@ -2,11 +2,13 @@ from django.shortcuts import render,redirect
 from category.models import Category,Languages
 from home.models import informationSite
 from django.contrib.auth.decorators import login_required
-from Product.models import teachers
+from Product.models import teachers,Product
 from account.models import sabad
 # Create your views here.
 @login_required
 def bought(request,id):
+    product = Product.objects.get(id=id)
+    sabad.objects.create(user=request.user,product=product)
     return redirect('/sabad')
 
 @login_required

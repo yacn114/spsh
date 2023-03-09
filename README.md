@@ -3,6 +3,7 @@
 <hr>
 my todo
 <ul>
+    <li>sabad(error status,repeat saves (none show user booked product)) , courses</li>
     <li>home select menu</li>
     <li>تمپلیت تگ محاسبه قیمت </li>
     <li>category page</li>

@@ -179,7 +179,9 @@
 					
 					<div class="row justify-content-center">
 						{% for pro in product %}
-						
+						{% for lang in pro.language.all %}
+						{% for cat in lang.category.all %}
+						{% if cat.name == inp.name %}
 						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
 							<div class="crs_grid_list">
 								
@@ -193,7 +195,7 @@
 										<span class="est st_2">گرافیک</span>
 									</div>
 									<div class="crs_lt_102">
-										<h4 class="crs_tit">{{pro.title}}</h4>
+										<h4 class="crs_tit">{{ pro.title }}</h4>
 										<span class="crs_auth"><i>مدرس</i> {{pro.teacher_name}}</span>
 									</div>
 									<div class="crs_lt_103">
@@ -217,7 +219,9 @@
 								
 							</div>
 						</div>
-						
+						{% endif %}
+						{% endfor %}
+						{% endfor %}
 						{% endfor %}
 						
 					</div>
