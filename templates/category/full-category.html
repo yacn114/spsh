@@ -178,10 +178,7 @@
 					</div>
 					
 					<div class="row justify-content-center">
-						{% for pro in product %}
-						{% for lang in pro.language.all %}
-						{% for cat in lang.category.all %}
-						{% if cat.name == inp.name %}
+						{% for pro in categoryname %}
 						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
 							<div class="crs_grid_list">
 								
@@ -191,8 +188,9 @@
 								
 								<div class="crs_grid_list_caption">
 									<div class="crs_lt_101">
-										<span class="est st_1">آموزش</span>
-										<span class="est st_2">گرافیک</span>
+								{% for ca in categoryname %}
+										<span class="est st_1">{{ca}}</span>
+								{% endfor %}
 									</div>
 									<div class="crs_lt_102">
 										<h4 class="crs_tit">{{ pro.title }}</h4>
@@ -219,9 +217,7 @@
 								
 							</div>
 						</div>
-						{% endif %}
-						{% endfor %}
-						{% endfor %}
+
 						{% endfor %}
 						
 					</div>

@@ -3,12 +3,12 @@
 <hr>
 my todo
 <ul>
-    <li>sabad(error status,repeat saves (none show user booked product)) , courses</li>
-    <li>home select menu</li>
-    <li>تمپلیت تگ محاسبه قیمت </li>
-    <li>category page</li>
-    <li>pagination category</li>
-    <li>help cources</li>
-    <li>signin with google</li>
-    <li>more custom user(phone,)</li>
+    <li>1 pagination category</li>
+    <li>2 تمپلیت تگ محاسبه قیمت </li>
+    <li>3 sabad(error status,) , courses</li>
+    <li>4 home select menu</li>
+    <li>5 category page</li>
+    <li>6 help cources</li>
+    <li>7 signin with google</li>
+    <li>8 more custom user(phone,)</li>
 </ul>

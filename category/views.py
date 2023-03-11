@@ -32,21 +32,23 @@ def catWithFilter(request):
     })
 def categoryList(request,inp):
     
-    language = Languages.objects.all()
+    languagess = Languages.objects.all()
     category = Category.objects.all()
-    cat = get_object_or_404(Category, name=inp)
+    cat = get_object_or_404(Languages, hashtag=inp)
     pr = Product.objects.filter(published=True)
+    categoryname = Product.objects.filter(published=True).filter(language__hashtag=inp)
 
     siteData = informationSite.objects.first()
-    # paginator = Paginator(Product, 1)
-    # page_number = request.GET.get('page')
-    # page_obj = paginator.get_page(page_number)
+    paginator = Paginator(categoryname, 1)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     page_obj = 0
     return render(request,"category/full-category.html",{
     "inp":cat,
     "category":category,
-    "lang":language,
+    "lang":languagess,
     "siteData":siteData,
     "product":pr,
-    "page":page_obj
+    "page":page_obj,
+    "categoryname":categoryname,
     })

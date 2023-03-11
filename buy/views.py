@@ -8,7 +8,7 @@ from account.models import sabad
 @login_required
 def bought(request,id):
     product = Product.objects.get(id=id)
-    sabad.objects.create(user=request.user,product=product)
+    sabad.objects.get_or_create(user=request.user,product=product)
     return redirect('/sabad')
 
 @login_required

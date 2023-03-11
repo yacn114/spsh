@@ -66,14 +66,14 @@
 		
 		<div class="row justify-content-center">
 			<!-- Single Category -->
-			{% for cat in category %}
+			{% for cat in lang %}
 			
 			<div class="col-xl-3 col-lg-4 col-md-4 col-sm-6">
 				<div class="crs_cate_wrap style_2">
 					<a href="{% url 'category:category' cat.hashtag %}" class="crs_cate_box">
 						<div class="crs_cate_icon"><i class="fa fa-code"></i></div>
-						<div class="crs_cate_caption"><span>{{cat.name}}</span></div>
-						<div class="crs_cate_count"><span>22 دوره</span></div>
+						<div class="crs_cate_caption"><span>{{cat}}</span></div>
+						{% comment %} <div class="crs_cate_count"><span>22 دوره</span></div> {% endcomment %}
 					</a>
 				</div>
 			</div>
