@@ -3,8 +3,8 @@
 <hr>
 my todo
 <ul>
-    <li>1 pagination category</li>
     <li>2 تمپلیت تگ محاسبه قیمت </li>
+    <li>footer extends</li>
     <li>3 sabad(error status,) , courses</li>
     <li>4 home select menu</li>
     <li>5 category page</li>
