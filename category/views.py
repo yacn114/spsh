@@ -39,16 +39,17 @@ def categoryList(request,inp):
     categoryname = Product.objects.filter(published=True).filter(language__hashtag=inp)
 
     siteData = informationSite.objects.first()
-    paginator = Paginator(categoryname, 1)
+    paginator = Paginator(categoryname, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    page_obj = 0
+    for paginatorr in paginator:
+        print(paginatorr)
     return render(request,"category/full-category.html",{
     "inp":cat,
     "category":category,
     "lang":languagess,
     "siteData":siteData,
     "product":pr,
-    "page":page_obj,
-    "categoryname":categoryname,
+    "page":paginator,
+    "categoryname":page_obj,
     })

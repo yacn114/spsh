@@ -249,15 +249,18 @@
 																<th scope="col">دانشجو</th>
 																<th scope="col">وضعیت</th>
 																<th scope="col">قیمت</th>
-																{% comment %} <th scope="col">عملیات</th> {% endcomment %}
+																 <th scope="col">حذف</th> 
 															</tr>
 														</thead>
 														<tbody>
 															{% for sabad in product %}
-															
+															{% if user == sabad.user %}
+
 															<tr>
-																<th scope="row">{{forloop.counter}}</th>
-																<td><h6>{{sabad.product.title}}</h6><p>مدرس:<span>{{sabad.product.teacher_name}}</span></p></td>
+
+
+															<th scope="row">{{forloop.counter}}</th>
+															<td><a {% if sabad.product.published %}href="{% url 'product:detail' sabad.product.slug %}"{% endif %}><h6>{{sabad.product.title}}</h6></a><p>مدرس:<span>{{sabad.product.teacher_name}}</span></p></td>
 																<td>
 																	{% for cate in sabad.product.language.all %}
 																	
@@ -266,23 +269,15 @@
 																</td>
 																<td><div class="smalls">{{sabad.product.tutorial_count}} ویدیو</div></td>
 																<td><span class="smalls">کل: {{sabad.product.student_count}}</span></td>
-																<td>{% if sabad.product.status == True %}<span class="trip theme-cl theme-bg-dark"> غیرفعال</span>{% endif %}</td>
+																<td>{% if sabad.product.published %}<span class="trip theme-cl theme-bg-light"> فعال</span></td> {% else %}<span class="trip bg-dark" style="color:lightsteelblue"> غیرفعال</span></td>{% endif %}
+																	
+																	
 																<td><span class="trip theme-cl theme-bg-light">{% if sabad.product.price == 0 %} رایگان{% else %}{{sabad.product.price}} هزارتومن{% endif %}</span></td>
-																{% comment %} <td>
-																	<div class="dropdown show">
-																		<a class="btn btn-action" href="1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																			<i class="fas fa-ellipsis-h"></i>
-																		</a>
-																		<div class="drp-select dropdown-menu">
-																			<a class="dropdown-item" href="JavaScript:Void(0);">مشاهده</a>
-																			<a class="dropdown-item" href="JavaScript:Void(0);">ویرایش</a>
-																			<a class="dropdown-item" href="JavaScript:Void(0);">حذف</a>
-																		</div>
-																	</div>
-																</td> {% endcomment %}
+	
+																<td><a href="{% url 'buy:delete' sabad.product.id %}">delete</a></td>
 															</tr>
+															{% endif %}
 															{% endfor %}
-												
 														</tbody>
 													</table>
 												</div>

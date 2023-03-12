@@ -25,3 +25,7 @@ def Sabad(request):
     "product":pr,
     "teacher":teacher,
     })
+@login_required
+def delete(request,id):
+    sabad.objects.get(product__id=id,user=request.user).delete()
+    return redirect('/sabad')
