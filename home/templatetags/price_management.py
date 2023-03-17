@@ -3,10 +3,12 @@ from django.db.models import ExpressionWrapper,F,DecimalField
 from django import template
 
 from account.models import sabad,jamsabad
+from Product.models import Product
 register = template.Library()
 @register.simple_tag
 def takhfif(price, price_offer, *args, **kwargs):
     resualt = int((price/100)*int(str(price_offer)[0:2])-price)*-1
+    # if Product.objects.get(id=)
     
 
     return f"{resualt:,}"

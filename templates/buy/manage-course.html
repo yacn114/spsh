@@ -1,4 +1,5 @@
 {% load static %}
+{% load price_management %}
 <!DOCTYPE html>
 <html lang="fa">
 	
@@ -272,7 +273,7 @@
 																<td>{% if sabad.product.published %}<span class="trip theme-cl theme-bg-light"> فعال</span></td> {% else %}<span class="trip bg-dark" style="color:lightsteelblue"> غیرفعال</span></td>{% endif %}
 																	
 																	
-																<td><span class="trip theme-cl theme-bg-light">{% if sabad.product.price == 0 %} رایگان{% else %}{{sabad.product.price}} هزارتومن{% endif %}</span></td>
+																<td><span class="trip theme-cl theme-bg-light">{% if sabad.product.price == 0 %} رایگان{% else %}{% takhfif sabad.product.price sabad.product.price_percent  %}  هزارتومن{% endif %}</span></td>
 	
 																<td><a href="{% url 'buy:delete' sabad.product.id %}">delete</a></td>
 															</tr>
