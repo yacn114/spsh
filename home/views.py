@@ -17,5 +17,5 @@ def home(request):
         "lang":language,
         "userc":userCount,
         "prodc":prodc,
-        "category":category
+        "category":category,
         })

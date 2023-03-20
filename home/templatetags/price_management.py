@@ -6,10 +6,13 @@ from account.models import sabad,jamsabad
 from Product.models import Product
 register = template.Library()
 @register.simple_tag
-def takhfif(price, price_offer, *args, **kwargs):
+def takhfif(price, price_offer,id, *args, **kwargs):
     resualt = int((price/100)*int(str(price_offer)[0:2])-price)*-1
-    # if Product.objects.get(id=)
-    
+    product = Product.objects.get(id=id)
+    if product.hot_price > 0:
+        resualt = product.hot_price
+    else:
+        pass
 
     return f"{resualt:,}"
 
