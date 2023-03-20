@@ -1,0 +1,539 @@
+{% load static %}
+{% load price_management %}
+{% load get_item %}
+
+<!DOCTYPE html>
+<html lang="fa">
+	
+<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Themezhub" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>دسته بندی - {{inp}}</title>
+		 
+        <!-- Custom CSS -->
+        <link type="text/css" href="{% static 'assets/css/styles.css' %}" rel="stylesheet">
+		
+    </head>
+	
+    <body dir="rtl">
+
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+		
+            <!-- ============================================================== -->
+            <!-- Top header  -->
+            <!-- ============================================================== -->
+            <!-- Start Navigation -->
+            <div class="header light-menu theme-bg head-shadow">
+				<div class="container">
+					<nav id="navigation" class="navigation navigation-landscape">
+						<div class="nav-header">
+							<a class="nav-brand" href="{% url 'home:home' %}">
+								<img src="/{{siteData.logo}}" id="logo" class="logo" alt="logo" />
+							</a>
+							<div class="nav-toggle"></div>
+							<div class="mobile_nav">
+								<ul>
+									{% if request.user.is_authenticated %}
+									<li>
+										<a href="{% url 'account:home' %}">
+											<span class="embos_45"><i class="fas fa-sign-in-alt ml-1 rotate-img"></i>حساب</span>
+										</a>
+									</li>									
+									{% else %}
+									<li>
+										<a href="{% url 'account:login' %}">
+											<span class="embos_45"><i class="fas fa-sign-in-alt ml-1 rotate-img"></i>ورود</span>
+										</a>
+									</li>
+									{% endif %}
+									
+								</ul>
+							</div>
+						</div>
+						<div class="nav-menus-wrapper">
+							<ul class="nav-menu">
+							
+								<li class="active"><a href="{% url 'home:home' %}">خانه<span class="submenu-indicator"></span></a></li>
+								
+								<li><a href="#category">دسته بندی های آموزشی<span class="submenu-indicator"></span></a>
+									<ul class="nav-dropdown nav-submenu">
+										{% for categ in category %}
+										<li><a href="#">{{categ.name}}<span class="submenu-indicator"></span></a>
+											<ul class="nav-dropdown nav-submenu">
+												{% for lan in lang %}
+												{% for cat in lan.category.all %}
+												{% if cat.name == categ.name %}
+												<li><a href="/category/{{lan.hashtag}}">{{lan.nameE}}</a></li>
+												{% endif %}
+												{% endfor %}
+												{% endfor %}
+			
+											</ul>
+										</li>
+										{% endfor %}
+					
+									</ul>
+								</li>
+								<li><a href="#">راهنمایی برای انتخاب دوره</a></li>
+								
+										
+										
+									
+							</ul>
+							<ul class="nav-menu nav-menu-social align-to-left">
+								{% if request.user.is_authenticated %}
+								
+								<li class="add-listing bg-white">
+									<a href="{% url 'home:dashboard' %}">حساب کاربری</a></li>
+								{% else %}
+			
+								<li>
+									<a href="{% url 'account:login' %}">
+										<i class="fas fa-sign-in-alt ml-1 rotate-img"></i><span class="dn-lg">ورود</span>
+									</a>
+								</li>
+								<li class="add-listing bg-white">
+									<a href="{% url 'account:signup' %}" class="text-white">ثبت نام</a>
+								</li>
+								{% endif %}
+								
+							
+								
+							</ul>
+						</div>
+					</nav>
+				</div>
+			</div>
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			
+			<!-- ============================ Page Title Start================================== -->
+			<section class="page-title">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							
+							<div class="breadcrumbs-wrap">
+								<h1 class="breadcrumb-title font-2">دسته بندی - {{inp}}</h1>
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb p-0 bg-white">
+										<li class="breadcrumb-item"><a href="{% url 'home:home' %}">خانه</a></li>
+										<li class="breadcrumb-item active theme-cl" aria-current="page">{{inp}}</li>
+									</ol>
+								</nav>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ============================ Page Title End ================================== -->
+			
+			<!-- ============================ All Cources ================================== -->
+			<section class="gray">
+				<div class="container">
+					<div class="row">
+					
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+							<div class="page-sidebar p-0">
+								<a class="filter_links" data-toggle="collapse" href="#fltbox" role="button" aria-expanded="false" aria-controls="fltbox">فیلتر پیشرفته<i class="fa fa-sliders-h mr-2"></i></a>							
+								<form action="/" method="post">
+								<div class="collapse" id="fltbox">
+									<!-- Find New Property -->
+									<div class="sidebar-widgets p-4">
+										
+										<div class="form-group">
+											<div class="input-with-icon">
+												<input type="text" name="search" class="form-control" placeholder="نام دوره...">
+												<i class="ti-search"></i>
+											</div>
+										</div>
+										
+
+										
+										<div class="form-group">
+											<h6>مدرسین برتر</h6>
+											<ul class="no-ul-list mb-3">
+												{% for teach in teacher %}
+												
+												<li>
+													<input id="aa-{{teach.id}}" class="checkbox-custom" name="{{teach.id}}" type="checkbox">
+													<label for="aa-{{teach.id}}" class="checkbox-custom-label">{{teach.name}}<i class="count">
+														{% for countt in countte %}
+															{% if teach.name == countt %}
+																{{countte|get_item:countt}}
+															{% endif %}
+														{% endfor %}
+												</i></label>
+												</li>
+												{% endfor %}
+
+											</ul>
+										</div>
+										
+										<div class="form-group">
+											<h6>سطح مهارت</h6>
+											<ul class="no-ul-list mb-3">
+												<li>
+													<input id="l1" class="checkbox-custom" name="l1" type="checkbox">
+													<label for="l1" class="checkbox-custom-label">مبتدی (junior)</label>
+												</li>
+												<li>
+													<input id="l2" class="checkbox-custom" name="l2" type="checkbox">
+													<label for="l2" class="checkbox-custom-label">متوسط (mid-level)</label>
+												</li>
+												<li>
+													<input id="l3" class="checkbox-custom" name="l3" type="checkbox">
+													<label for="l3" class="checkbox-custom-label">پیشرفته (sinior)</label>
+												</li>
+
+											</ul>
+										</div>
+										
+										<div class="form-group">
+											<h6>قیمت</h6>
+											<ul class="no-ul-list mb-3">
+												<li>
+													<input id="p1" class="checkbox-custom" name="p1" type="checkbox">
+													<label for="p1" class="checkbox-custom-label">همه<i class="count">{{ product.count }}</i></label>
+												</li>
+												<li>
+													<input id="p2" class="checkbox-custom" name="p2" type="checkbox">
+													<label for="p2" class="checkbox-custom-label">رایگان<i class="count">{{ pfc.count }}</i></label>
+												</li>
+												<li>
+													<input id="p3" class="checkbox-custom" name="p3" type="checkbox">
+													<label for="p3" class="checkbox-custom-label">پولی<i class="count">{{ pfo.count }}</i></label>
+												</li>
+											</ul>
+										</div>
+										
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 pt-4">
+												<button type="submit" class="btn theme-bg rounded full-width">فیلتر</button>
+											</div>
+										</div>
+										
+									</div>
+									{% csrf_token %}
+								</form>
+								</div>
+							</div>
+                        </div>
+
+						<!-- Content -->
+						<div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									<div class="short_wraping">
+										<div class="row m-0 align-items-center justify-content-between">
+										
+											<div class="col-lg-4 col-md-5 col-sm-12  col-sm-6">
+												<div class="shorting_pagination_laft">
+                                                    <h6 class="m-0"> {{ categoryname }}</h6>
+												</div>
+											</div>
+								
+										</div>
+									</div>
+								</div>
+							</div>
+	
+							<div class="row justify-content-center">
+                                {% for pro in categoryname %}
+								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+									<div class="crs_grid shadow_none brd">
+										<div class="crs_grid_thumb">
+											<a href="{% url 'product:detail' pro.slug %}" class="crs_detail_link">
+												<img src="/{{pro.image_preview}}" class="img-fluid rounded" alt="{{pro.slug}}">
+											</a>
+											<div class="crs_video_ico">
+												<i class="fa fa-play"></i>
+											</div>
+											<div class="crs_locked_ico">
+												<i class="fa fa-lock"></i>
+											</div>
+										</div>
+										<div class="crs_grid_caption">
+											<div class="crs_flex">
+												<div class="crs_fl_first">
+                                                    {% for ca in lang %}
+													<div class="crs_cates cl_8"><span>{{ca}}</span></div>
+                                            {% endfor %}
+												
+												</div>
+												<div class="crs_fl_last">
+													<div class="crs_inrolled"><strong>{{pro.student_count}}</strong>شرکت کننده</div>
+												</div>
+											</div>
+											<div class="crs_title"><h4><a href="{% url 'product:detail' pro.slug %}" class="crs_title_link">{{ pro.title }}</a></h4></div>
+											<div class="crs_info_detail">
+												<ul>
+													<li><i class="fa fa-clock text-danger"></i><span>2ساعت 5دقیقه</span></li>
+													<li><i class="fa fa-video text-success"></i><span>67 دوره</span></li>
+													<li><i class="fa fa-signal text-warning"></i><span>مقدماتی</span></li>
+												</ul>
+											</div>
+										</div>
+										<div class="crs_grid_foot">
+											<div class="crs_flex">
+												<div class="crs_fl_first">
+													<div class="crs_tutor">
+														<div class="crs_tutor_thumb"><a href="{% url 'product:detail' pro.slug %}"><img src="{% static 'assets/img/user-6.jpg' %}" class="img-fluid circle" alt="" /></a></div><div class="crs_tutor_name"><a href="{% url 'product:detail' pro.slug %}">مژگان حسینی</a></div>
+													</div>
+												</div>
+												<div class="crs_fl_last">
+													<div class="crs_price"><h2><span class="theme-cl">149</span><span class="currency">تومان</span></h2></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							    {% endfor %}
+							
+							</div>
+							
+							<!-- Pagination -->
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									<ul class="pagination p-center">
+										<li class="page-item">
+										  <a class="page-link" href="#" aria-label="Previous">
+											<span class="ti-arrow-right"></span>
+											<span class="sr-only">قبل</span>
+										  </a>
+										</li>
+										<li class="page-item"><a class="page-link" href="#">1</a></li>
+										<li class="page-item"><a class="page-link" href="#">2</a></li>
+										<li class="page-item active"><a class="page-link" href="#">3</a></li>
+										<li class="page-item"><a class="page-link" href="#">...</a></li>
+										<li class="page-item"><a class="page-link" href="#">18</a></li>
+										<li class="page-item">
+										  <a class="page-link" href="#" aria-label="Next">
+											<span class="ti-arrow-left"></span>
+											<span class="sr-only">بعد</span>
+										  </a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							
+						</div>
+					
+					</div>
+				</div>
+			</section>
+			<!-- ============================ All Cources ================================== -->
+			
+			<!-- ============================ Call To Action ================================== -->
+			<section class="theme-bg call_action_wrap-wrap">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							
+							<div class="call_action_wrap">
+								<div class="call_action_wrap-head">
+									<h3 class="font-2">آیا سوالی دارید؟</h3>
+									<span>ما به شما کمک خواهیم کرد تا شغل و رشد خود را افزایش دهید.</span>
+								</div>
+								<a href="#" class="btn btn-call_action_wrap">امروز با ما تماس بگیرید</a>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ============================ Call To Action End ================================== -->
+			
+			<!-- ============================ Footer Start ================================== -->
+			<footer class="dark-footer skin-dark-footer style-2">
+				<div class="footer-middle">
+					<div class="container">
+						<div class="row">
+							
+							<div class="col-lg-5 col-md-5">
+								<div class="footer_widget">
+									<img src="assets/img/logo-light.png" class="img-footer small mb-2" alt="" />
+									<h4 class="extream mb-3 font-2">آیا به کمک تیم پشتیبانی<br>نیاز دارید؟</h4>
+									<p>هر ماه با عضویت در خبرنامه ما از به‌روزرسانی‌ها، معاملات جدید، آموزش‌ها و تخفیف‌ها باخبر شوید.</p>
+									<div class="foot-news-last">
+										<div class="input-group">
+										  <input type="text" class="form-control" placeholder="ایمیل">
+											<div class="input-group-append">
+												<button type="button" class="input-group-text theme-bg b-0 text-light">عضویت</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-lg-6 col-md-7 ml-auto">
+								<div class="row">
+								
+									<div class="col-lg-4 col-md-4">
+										<div class="footer_widget">
+											<h4 class="widget_title">صفحات</h4>
+											<ul class="footer-menu">
+												<li><a href="#">صفحه اصلی</a></li>
+												<li><a href="#">درباره ما</a></li>
+												<li><a href="#">خدمات</a></li>
+												<li><a href="#">دوره های آموزشی</a></li>
+												<li><a href="#">تماس با ما</a></li>
+												<li><a href="#">لیست وبلاگ</a></li>
+											</ul>
+										</div>
+									</div>
+											
+									<div class="col-lg-4 col-md-4">
+										<div class="footer_widget">
+											<h4 class="widget_title">تمام بخش ها</h4>
+											<ul class="footer-menu">
+												<li><a href="#">منو<span class="new">جدید</span></a></li>
+												<li><a href="#">ویژگی های جذاب</a></li>
+												<li><a href="#">المان ها<span class="new">جدید</span></a></li>
+												<li><a href="#">نظرات کاربران</a></li>
+												<li><a href="#">ویدئو</a></li>
+												<li><a href="#">فوتر</a></li>
+											</ul>
+										</div>
+									</div>
+							
+									<div class="col-lg-4 col-md-4">
+										<div class="footer_widget">
+											<h4 class="widget_title">لینک های مفید</h4>
+											<ul class="footer-menu">
+												<li><a href="#">درباره ما</a></li>
+												<li><a href="#">وبلاگ</a></li>
+												<li><a href="#">قیمت گذاری</a></li>
+												<li><a href="#">ثبت نام</a></li>
+												<li><a href="#">ورود به حساب</a></li>
+												<li><a href="#">پشتیبانی <span class="update">بروزرسانی</span></a></li>
+											</ul>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="footer-bottom">
+					<div class="container">
+						<div class="row align-items-center">
+							<div class="col-lg-12 col-md-12 text-center">
+								<p class="mb-0">© 2022 قالب SkillUp ارائه شده مدرس <a href="https://rtl-theme.com/">راست چین</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+			<!-- ============================ Footer End ================================== -->
+			
+			<!-- Log In Modal -->
+			<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginmodal" aria-hidden="true">
+				<div class="modal-dialog modal-xl login-pop-form" role="document">
+					<div class="modal-content overli" id="loginmodal">
+						<div class="modal-header">
+							<h5 class="modal-title">ورود به حساب کاربری</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							  <span aria-hidden="true"><i class="fas fa-times-circle"></i></span>
+							</button>
+						  </div>
+						<div class="modal-body">
+							<div class="login-form">
+								<form>
+								
+									<div class="form-group">
+										<label>نام کاربری</label>
+										<div class="input-with-icon">
+											<input type="text" class="form-control" placeholder="نام کاربری/ ایمیل">
+											<i class="ti-user"></i>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label>رمز عبور</label>
+										<div class="input-with-icon">
+											<input type="password" class="form-control" placeholder="*******">
+											<i class="ti-unlock"></i>
+										</div>
+									</div>
+									
+									<div class="form-group row">
+										<div class="col-xl-4 col-lg-4 col-4">
+											<input id="admin" class="checkbox-custom" name="admin" type="checkbox">
+											<label for="admin" class="checkbox-custom-label">مدیر</label>
+										</div>
+										<div class="col-xl-4 col-lg-4 col-4">
+											<input id="student" class="checkbox-custom" name="student" type="checkbox" checked>
+											<label for="student" class="checkbox-custom-label">هنرجو</label>
+										</div>
+										<div class="col-xl-4 col-lg-4 col-4">
+											<input id="instructor" class="checkbox-custom" name="instructor" type="checkbox">
+											<label for="instructor" class="checkbox-custom-label">مدرس</label>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<button type="submit" class="btn btn-md full-width theme-bg text-white">ورود به حساب</button>
+									</div>
+									
+									<div class="rcs_log_125 pt-2 pb-3">
+										<span>یا ورود از طریق شبکه های اجتماعی</span>
+									</div>
+									<div class="rcs_log_126 full">
+										<ul class="social_log_45 row">
+											<li class="col-xl-4 col-lg-4 col-md-4 col-4"><a href="javascript:void(0);" class="sl_btn"><i class="ti-facebook text-info"></i>Facebook</a></li>
+											<li class="col-xl-4 col-lg-4 col-md-4 col-4"><a href="javascript:void(0);" class="sl_btn"><i class="ti-google text-danger"></i>Google</a></li>
+											<li class="col-xl-4 col-lg-4 col-md-4 col-4"><a href="javascript:void(0);" class="sl_btn"><i class="ti-twitter theme-cl"></i>Twitter</a></li>
+										</ul>
+									</div>
+								
+								</form>
+							</div>
+						</div>
+						<div class="crs_log__footer d-flex justify-content-between mt-0">
+							<div class="fhg_45"><p class="musrt">حساب کاربری ندارید؟ <a href="signup.html" class="theme-cl">ثبت نام</a></p></div>
+							<div class="fhg_45"><p class="musrt"><a href="forgot.html" class="text-danger">رمز عبور را فراموش کرده اید؟</a></p></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Modal -->
+			
+			<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
+			
+
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+        <script type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/popper.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/select2.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/slick.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/moment.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/daterangepicker.js' %}"></script> 
+		<script type="text/javascript" src="{% static 'assets/js/metisMenu.min.js' %}"></script>	
+		<script type="text/javascript" src="{% static 'assets/js/summernote.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->		
+
+	</body>
+
+</html>

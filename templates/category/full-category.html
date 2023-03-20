@@ -1,4 +1,5 @@
 {% load static %}
+{% load price_management %}
 <!DOCTYPE html>
 <html lang="fa">
 	<meta charset="UTF-8">
@@ -63,7 +64,7 @@
 												{% for lan in lang %}
 												{% for cat in lan.category.all %}
 												{% if cat.name == categ.name %}
-												<li><a href="/#{{lan.hashtag}}/">{{lan.nameE}}</a></li>
+												<li><a href="/category/{{lan.hashtag}}">{{lan.nameE}}</a></li>
 												{% endif %}
 												{% endfor %}
 												{% endfor %}
@@ -149,26 +150,9 @@
 							
 									<div class="col-lg-8 col-md-7 col-sm-12 col-sm-6">
 										<div class="dlks_152">
-											<div class="shorting-right ml-2">
-														<label>مرتب سازی براساس:</label>
-														<div class="dropdown show">
-															<a class="btn btn-filter dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																<span class="selection">امتیاز بالا</span>
-															</a>
-															<div class="drp-select dropdown-menu">
-																<a class="dropdown-item" href="JavaScript:Void(0);">امتیاز بالا</a>
-																<a class="dropdown-item" href="JavaScript:Void(0);">بازدید بالا</a>
-																<a class="dropdown-item" href="JavaScript:Void(0);">دوره جدید</a>
-																<a class="dropdown-item" href="JavaScript:Void(0);">دوره منتخب</a>
-															</div>
-														</div>
-													</div>
-											<div class="lmk_485">
-												<ul class="shorting_grid">
-													<li class="list-inline-item"><a href="grid-layout-with-sidebar.html"><span class="ti-layout-grid2"></span></a></li>
-													<li class="list-inline-item"><a href="list-layout-with-sidebar.html" class="active"><span class="ti-view-list"></span></a></li>
-												</ul>
-											</div>
+											<a href="{% url 'category:filterCategory' inp %}"><button class="btn theme-bg">فیلتر</button></a>
+
+									
 										</div>
 									</div>
 								</div>
@@ -183,7 +167,7 @@
 							<div class="crs_grid_list">
 								
 								<div class="crs_grid_list_thumb">
-									<a href="{% url 'product:detail' pro.slug %}"><img src="/{{pro.image_preview}}" class="img-fluid rounded" alt=""></a>
+									<a href="{% url 'product:detail' pro.slug %}"><img src="/{{pro.image_preview}}" class="img-fluid rounded" alt="{{pro.title}}"></a>
 								</div>
 								
 								<div class="crs_grid_list_caption">
@@ -207,7 +191,7 @@
 									</div>
 									<div class="crs_flex">
 										<div class="crs_fl_first">
-											<div class="crs_price"><h2><span class="theme-cl">{{pro.price}}</span><span class="currency">هزار تومان</span></h2></div>
+											<div class="crs_price"><h2><span class="theme-cl">{% takhfif pro.price pro.price_percent pro.id %}</span><span class="currency">هزار تومان</span></h2></div>
 										</div>
 										<div class="crs_fl_last">
 											<div class="crs_linkview"><a href="{% url 'buy:bought' pro.id %}" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
