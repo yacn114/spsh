@@ -3,12 +3,14 @@
 <hr>
 my todo
 <ul>
-    <li>2 تمپلیت تگ محاسبه قیمت </li>
-    <li>برچسب های دسته بندی رو درست کنم</li>
-    <li>برای یوزر پروفایل ست کنم دیفالت</li>
-    <li>footer extends</li>
+    <li>2 تمپلیت تگ محاسبه قیمت </li> half
+    ----------------------------------------------
+    
+    <li> filter reactjs</li>
     <li>منو پویا</li>
+    <li>filter action</li>
     <li>3 sabad(error status,) , courses</li>
+    <li>PAGES  : about us,hot,detail</li>
     <li>4 home select menu</li>
     <li>5 category page</li>
     <li>6 help cources</li>

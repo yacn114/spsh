@@ -1,11 +1,15 @@
 from django.db import models
-from category.models import Languages
+from category.models import Languages,Category
 
 class teachers(models.Model):
     name = models.CharField("اسم مدرس کلیپ",max_length=200)
     
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name = "مدرس"
+        verbose_name_plural = "مدرس ها"
+
 
 class Product(models.Model):
     LANG= [
@@ -19,9 +23,9 @@ class Product(models.Model):
         ('package','package'),
     ]
     LEVEL_TUTORIAL = [
-    ('junior','مبتدی'),
-    ('mid-level','متوسط'),
-    ('sinior','حرفه ای'),
+    ('مبتدی','مبتدی'),
+    ('متوسط','متوسط'),
+    ('حرفه ای','حرفه ای'),
     ]
     title = models.CharField(max_length=100, verbose_name="عنوان")
     slug = models.SlugField(max_length=100, verbose_name="سلاگ")
@@ -50,3 +54,14 @@ class Product(models.Model):
         verbose_name_plural = "محصولات"
 
 
+class Package(models.Model):
+    name = models.CharField(max_length=200)
+    tutorials = models.ManyToManyField(Product)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "پکیج"
+        verbose_name_plural = "پکیج ها"
+
+    def __str__(self):
+        return self.name

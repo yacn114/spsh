@@ -8,8 +8,8 @@ class sabad(models.Model):
     p = models.IntegerField(default=0)
     p2 = models.IntegerField(default=0)
     class Meta:
-        verbose_name = "sabad"
-        verbose_name_plural = "sabads"
+        verbose_name = "سبد"
+        verbose_name_plural = "سبد ها"
 
     def __str__(self):
         return str(self.user)

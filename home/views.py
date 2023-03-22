@@ -19,3 +19,5 @@ def home(request):
         "prodc":prodc,
         "category":category,
         })
+def about(request):
+    return ""

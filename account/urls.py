@@ -1,12 +1,13 @@
 from django.contrib.auth import views
 from django.urls import path
-from account.views import signup,login,Forget,dashboard,courses
+from account.views import signup,login,Forget,dashboard,courses,contact
 app_name = "account"
 urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),
     path("signup/",signup,name="signup"),
     path('forget/',Forget,name='forget'),
     path('dashboard/',dashboard,name='home'),
+    path('contact/',contact,name='contact'),
     path('courses/',courses,name='courses'),
     # path("logout/", views.LogoutView.as_view(), name="logout"),
     # path(

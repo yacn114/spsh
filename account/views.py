@@ -24,3 +24,5 @@ def Forget(request):
 @login_required
 def courses(request):
     return HttpResponse("ok")
+def contact(request):
+    return HttpResponse('contact')
