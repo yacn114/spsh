@@ -4,32 +4,7 @@ from django.shortcuts import get_object_or_404
 from category.models import Category,Languages
 from home.models import informationSite
 from Product.models import Product,teachers
-def catWithFilter(request):
-    siteData = informationSite.objects.first()
 
-    language = Languages.objects.all()
-    category = Category.objects.all()
-    teach_count = {}
-    pr = Product.objects.filter(published=True)
-    teacher = teachers.objects.all()
-    for te in teacher:
-        co = Product.objects.filter(published=True).filter(teacher_name = te).count()
-        teach_count.update({te.name:co})
-    pfo = Product.objects.filter(published=True).exclude(price = 0)
-    pfc = Product.objects.filter(published=True).filter(price = 0)
-    page_obj = 0
-    return render(request,"category/full-category.html",{
-    
-    "category":category,
-    "lang":language,
-    "siteData":siteData,
-    "product":pr,
-    "teacher":teacher,
-    "countte":teach_count,
-    "pfc":pfc,
-    "pfo":pfo,
-    "page":page_obj
-    })
 def categoryList(request,inp):
     
     languagess = Languages.objects.all()
@@ -59,7 +34,7 @@ def filterCat(request,inp):
     cat = get_object_or_404(Languages, nameE=inp)
     siteData = informationSite.objects.first()
     teach_count = {}
-    categoryname = Product.objects.filter(published=True).filter(language__hashtag=inp)
+    categoryname = Product.objects.filter(published=True).filter(language__nameE=inp)
 
     pr = Product.objects.filter(published=True)
     teacher = teachers.objects.all()
@@ -85,5 +60,4 @@ def filterCat(request,inp):
     "pfo":pfo,
     "page":paginator,
     "categoryname":page_obj,
-
-        })
+})
