@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'buy.apps.BuyConfig',
     'home.apps.HomeConfig',
     'widget_tweaks',
-]
+    'django_filters',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
