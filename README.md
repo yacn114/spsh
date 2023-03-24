@@ -5,7 +5,7 @@
     <li>2 تمپلیت تگ محاسبه قیمت </li> half
     ----------------------------------------------
     
-    <li> filter reactjs</li>
+    <li> django-filter </li>
     <li>منو پویا</li>
     <li>filter action</li>
     <li>3 sabad(error status,) , courses</li>
