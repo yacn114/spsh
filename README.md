@@ -1,7 +1,6 @@
 # spsh
 <h4>This project is under development !</h4>
 <h2>my todo</h2>
-<hr>
 <ul>
     <li>2 تمپلیت تگ محاسبه قیمت </li> half
     ----------------------------------------------
