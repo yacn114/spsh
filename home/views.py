@@ -2,6 +2,7 @@ from account.models import User
 from django.shortcuts import render
 from home.models import informationSite
 from Product.models import Product
+
 from category.models import Languages,Category
 # Create your views here.
 def home(request):
@@ -21,3 +22,7 @@ def home(request):
         })
 def about(request):
     return ""
+def handler404(request, exception, template_name="404.html"):
+    response = render(template_name)
+    response.status_code = 404
+    return response

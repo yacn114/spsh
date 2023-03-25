@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-p3+5jjn^!3(kvpcvo%1hw718a5(td2)68kfuw=_z7m71)z23vk
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'localhost',
+    # 'localhost',
     '127.0.0.1'
 ]
 
@@ -120,7 +120,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "static/",
 ]
 
 # Default primary key field type
