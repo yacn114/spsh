@@ -5,11 +5,9 @@
     <li>2 تمپلیت تگ محاسبه قیمت </li> half
     ----------------------------------------------
     
-    <li> django-filter </li>
-    <li>منو پویا</li>
-    <li>filter action</li>
+    <li>detail</li>
     <li>3 sabad(error status,) , courses</li>
-    <li>PAGES  : about us,hot,detail</li>
+    <li>PAGES  : about us,hot,</li>
     <li>4 home select menu</li>
     <li>5 category page</li>
     <li>6 help cources</li>

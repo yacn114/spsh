@@ -22,7 +22,7 @@ def home(request):
         })
 def about(request):
     return ""
-def handler404(request, exception, template_name="404.html"):
-    response = render(template_name)
-    response.status_code = 404
-    return response
+def error404(request, exception):
+    return render(request,"404.html")
+def error500(request, exception):
+    return render(request,"500.html")

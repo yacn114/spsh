@@ -1,0 +1,233 @@
+{% load static %}
+{% load price_management %}
+<!DOCTYPE html>
+<html lang="fa">
+	
+<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Themezhub" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>opozex - {{string}}</title>
+		 
+        <!-- Custom CSS -->
+        <link href="{% static 'assets/css/styles.css' %}" rel="stylesheet">
+		
+    </head>
+	
+    <body dir="rtl">
+
+        <!-- ============================================================== -->
+        <!-- Main wrapper - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <div id="main-wrapper">
+		
+            <!-- ============================================================== -->
+            <!-- Top header  -->
+            <!-- ============================================================== -->
+            <!-- Start Navigation -->
+		{% include 'main/navigation.html' %}
+			<!-- End Navigation -->
+			<div class="clearfix"></div>
+			<!-- ============================================================== -->
+			<!-- Top header  -->
+			<!-- ============================================================== -->
+			
+			<!-- ============================ Page Title Start================================== -->
+			<section class="page-title gray">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							
+							<div class="breadcrumbs-wrap">
+								<h1 class="breadcrumb-title font-2">{{string}}</h1>
+								<nav class="transparent">
+									<ol class="breadcrumb p-0">
+										<li class="breadcrumb-item"><a href="{% url 'home:home' %}">خانه</a></li>
+										
+									</ol>
+								</nav>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ============================ Page Title End ================================== -->
+			
+			<!-- ============================ Product Detail Start================================== -->
+			<section class="pr_detail">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							
+							<div class="woocommerce single_product quick_view_wrap">
+							
+								<div class="woo-single-images">
+									<div class="feature-style-single">
+										<img src="/{{string.image_preview}}" alt="product-book-06" width="570">
+									</div>
+								</div>
+								
+								<div class="summary entry-summary">
+									<div class="woo_inner">
+										{% comment %} <div class="shop_status sell">جدید</div> {% endcomment %}
+										<h2 class="woo_product_title">
+											<a href="#">{{string.title}}</a>
+										</h2>
+										<ul class="woo_info">
+											<br>
+											<li><strong>دسته بندی:</strong>{{string.languageList}}</li>
+											<br>
+											<br>
+										</ul>
+										<div class="woo_price_rate">
+											<!-- <div class="woo_rating">
+												<i class="fas fa-star filled"></i>
+												<i class="fas fa-star filled"></i>
+												<i class="fas fa-star filled"></i>
+												<i class="fas fa-star filled"></i>
+												<i class="fas fa-star"></i>
+											</div> -->
+											<div class="woo_price_fix">
+												<h3 class="mb-0 theme-cl">{% takhfif string.price string.price_percent string.id %} تومان</h3>
+											</div>
+										</div>
+										<div class="woo_short_desc">
+											<p>{{string.small_description}}.</p>
+										</div>
+									
+										<div class="woo_buttons">
+											<button type="submit" class="btn btn-theme2">افزودن به سبد</button>
+											<a href="javascript:void(0)" class="btn woo_btn_light" data-toggle="tooltip" data-placement="top" title="افزودن به علاقه مندی"><i class="ti-heart"></i></a>
+											<a href="javascript:void(0)" class="btn woo_btn_light" data-toggle="tooltip" data-placement="top" title="مقایسه"><i class="ti-reload"></i></a>
+										</div>
+									</div>
+								</div>
+							
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- ============================ Product Detail End ================================== -->			
+
+			
+			<!-- ============================ Product Description ================================== -->
+			<section class="pt-0">
+				<div class="container">
+					
+					<div class="row">
+						
+						<div class="col-lg-10 col-md-12 col-sm-12">
+							
+							<div class="property_block_wrap_header">
+								<ul class="nav nav-tabs customize-tab tabs_creative" id="myTab" role="tablist">
+								  <li class="nav-item">
+									<a class="nav-link active" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true">توضیحات</a>
+								  </li>
+								  
+								  <li class="nav-item">
+									<a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false">جزئیات محصول</a>
+								  </li>
+								  
+								  <li class="nav-item">
+									<a class="nav-link" id="upgrade-tab" data-toggle="tab" href="#upgrade" role="tab" aria-controls="upgrade" aria-selected="false">دیدگاه</a>
+								  </li>
+								  
+								</ul>
+							</div>
+							
+							<div class="tab-content tabs_content_creative" id="myTabContent">
+								
+								<!-- general Query -->
+								<div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+									<p>چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
+									<p>در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>									
+								</div>
+								
+								<!-- general Query -->
+								<div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+									<div class="table-responsive">
+										<table class="table">
+											<tbody>
+												<tr>
+													<th scope="row">کد کالا</th>
+													<td>#PRT123452</td>
+												</tr>
+												<tr>
+													<th scope="row">وزن</th>
+													<td>125 کیلوگرم</td>
+												</tr>
+												<tr>
+													<th scope="row">شماره سریال</th>
+													<td>SKL125002</td>
+												</tr>
+												<tr>
+													<th scope="row">رنگ</th>
+													<td>مشکی</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>									
+								</div>
+								
+								<!-- general Query -->
+								<div class="tab-pane fade" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
+									
+									<div class="alert alert-success" role="alert">
+										هنوز دیدگاهی برای این محصول ثبت نشده است.
+									</div>
+									
+								</div>
+							
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+			</section>
+			<!-- ============================ Product Description End ================================== -->
+			
+		<!-- ============================ Call To Action ================================== -->
+
+			<!-- ============================ Call To Action End ================================== -->
+			
+			<!-- ============================ Footer Start ================================== -->
+		{% include "main/footer.html" %}
+			<!-- ============================ Footer End ================================== -->
+			
+			<!-- Log In Modal -->
+		
+			<!-- End Modal -->
+			
+			<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
+			
+
+		</div>
+
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+        <script type="text/javascript" src="{% static 'assets/js/jquery.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/popper.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/select2.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/slick.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/moment.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/daterangepicker.js' %}"></script> 
+		<script type="text/javascript" src="{% static 'assets/js/metisMenu.min.js' %}"></script>	
+		<script type="text/javascript" src="{% static 'assets/js/summernote.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->		
+
+	</body>
+
+</html>

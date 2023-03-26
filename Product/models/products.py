@@ -36,19 +36,21 @@ class Product(models.Model):
     tutorial_count = models.IntegerField("تعداد ویديو",default=0)
     small_description = models.TextField(verbose_name="توضیح کوتاه")
     long_description = models.TextField(verbose_name="توضیح مفصل")
-    price = models.IntegerField(verbose_name="قیمت",default=0)
-    price_percent = models.IntegerField(verbose_name="درصد تخفیف", default=0)
-    hot_price = models.IntegerField(verbose_name="قیمت بگایی تخفیف", default=0)
+    price = models.DecimalField(verbose_name="قیمت",default=0,max_digits=10, decimal_places=2)
+    pricepercent = models.DecimalField(verbose_name="درصد تخفیف", default=0,max_digits=10, decimal_places=2)
+    hot_price = models.DecimalField(verbose_name="قیمت بگایی تخفیف", default=0,max_digits=10, decimal_places=2)
     language = models.ManyToManyField(Languages,verbose_name="زبان برنامه نویسی")
     view = models.IntegerField("تعداد بازدید",default=0)
     tpye_lang = models.CharField(max_length=2,choices=LANG ,default="Fa",verbose_name="زبان محصول") # persian or english
     student_count = models.IntegerField(default=0,verbose_name="تعداد دانشجو")
     published = models.BooleanField(default=True,verbose_name="وضعیت")
 
-
+    def price_percent(self):
+        return int(self.pricepercent)
     def __str__(self):
         return self.title
-
+    def languageList(self):
+        return ', '.join([Languages.nameE for Languages in self.language.all()])
     class Meta:
         verbose_name = "محصول"
         verbose_name_plural = "محصولات"

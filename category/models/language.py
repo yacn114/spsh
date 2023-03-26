@@ -8,6 +8,7 @@ class Languages(models.Model):
     category = models.ManyToManyField("category.Category", verbose_name="ذسته بندس ها")
     def __str__(self):
         return self.nameE
+
     class Meta:
         verbose_name = "زبان برنامه نویسی"
         verbose_name_plural = "زبان ها"

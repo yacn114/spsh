@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from category.models import Category,Languages
 from home.models import informationSite
-from Product.models import Product,teachers
+from Product.models import Product
+from category.filters import ProductFilter
 
 def categoryList(request,inp):
     
@@ -33,31 +34,35 @@ def filterCat(request,inp):
     category = Category.objects.all()
     cat = get_object_or_404(Languages, nameE=inp)
     siteData = informationSite.objects.first()
-    teach_count = {}
     categoryname = Product.objects.filter(published=True).filter(language__nameE=inp)
-
     pr = Product.objects.filter(published=True)
-    teacher = teachers.objects.all()
-    for te in teacher:
-        co = Product.objects.filter(published=True).filter(teacher_name = te).count()
-        teach_count.update({te.name:co})
-    pfo = Product.objects.filter(published=True).exclude(price = 0)
-    pfc = Product.objects.filter(published=True).filter(price = 0)
     paginator = Paginator(categoryname, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    if request.POST:
+        categoryname = ProductFilter(request.POST,queryset=Product.objects.all())
+ 
+        return render(request,'category/filter-category.html',{
+            "inp":cat,
+            "category":category,
+            "siteData":siteData,
+            "lang":languagess,
+ 
+  
+            "product":pr,
+            'form':ProductFilter,
+            # "page":paginator,
+            "categoryname":categoryname.qs,
+            })
     return render(request,'category/filter-category.html',{
     "inp":cat,
     "category":category,
     "siteData":siteData,
     "lang":languagess,
-    "category":category,
-    "siteData":siteData,
+
+
     "product":pr,
-    "teacher":teacher,
-    "countte":teach_count,
-    "pfc":pfc,
-    "pfo":pfo,
+    'form':ProductFilter,
     "page":paginator,
     "categoryname":page_obj,
 })

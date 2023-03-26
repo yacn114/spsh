@@ -7,7 +7,7 @@ from Product.models import Product
 register = template.Library()
 @register.simple_tag
 def takhfif(price, price_offer,id, *args, **kwargs):
-    resualt = int((price/100)*int(str(price_offer)[0:2])-price)*-1
+    resualt = int((int(price)/100)*int(str(int(price_offer))[0:2])-int(price))*-1
     product = Product.objects.get(id=id)
     if product.hot_price > 0:
         resualt = product.hot_price

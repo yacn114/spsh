@@ -1,6 +1,8 @@
 {% load static %}
 {% load price_management %}
 {% load get_item %}
+{% load widget_tweaks %}
+
 
 <!DOCTYPE html>
 <html lang="fa">
@@ -64,14 +66,15 @@
                         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
 							<div class="page-sidebar p-0">
 								<a class="filter_links" data-toggle="collapse" href="#fltbox" role="button" aria-expanded="false" aria-controls="fltbox">فیلتر پیشرفته<i class="fa fa-sliders-h mr-2"></i></a>							
-								<form method="post">
+								<form method="post" >
 								<div class="collapse" id="fltbox">
 									<!-- Find New Property -->
 									<div class="sidebar-widgets p-4">
 										
 										<div class="form-group">
 											<div class="input-with-icon">
-												<input type="text" name="search" class="form-control" placeholder="نام دوره...">
+
+												{% render_field form.form.title class="form-control" placeholder="نام دوره" %}
 												<i class="ti-search"></i>
 											</div>
 										</div>
@@ -81,38 +84,15 @@
 										<div class="form-group">
 											<h6>مدرسین برتر</h6>
 											<ul class="no-ul-list mb-3">
-												{% for teach in teacher %}
-												
-												<li>
-													<input id="aa-{{teach.id}}" class="checkbox-custom" name="{{teach.id}}" type="checkbox">
-													<label for="aa-{{teach.id}}" class="checkbox-custom-label">{{teach.name}}<i class="count">
-														{% for countt in countte %}
-															{% if teach.name == countt %}
-																{{countte|get_item:countt}}
-															{% endif %}
-														{% endfor %}
-												</i></label>
-												</li>
-												{% endfor %}
-
+							
+												{{form.form.teacher_name|add_class:"form-control"}}
 											</ul>
 										</div>
 										
 										<div class="form-group">
 											<h6>سطح مهارت</h6>
 											<ul class="no-ul-list mb-3">
-												<li>
-													<input id="l1" class="checkbox-custom" name="l1" type="checkbox">
-													<label for="l1" class="checkbox-custom-label">مبتدی (junior)</label>
-												</li>
-												<li>
-													<input id="l2" class="checkbox-custom" name="l2" type="checkbox">
-													<label for="l2" class="checkbox-custom-label">متوسط (mid-level)</label>
-												</li>
-												<li>
-													<input id="l3" class="checkbox-custom" name="l3" type="checkbox">
-													<label for="l3" class="checkbox-custom-label">پیشرفته (sinior)</label>
-												</li>
+												{{form.form.tutorial_level|add_class:"form-control"}}
 
 											</ul>
 										</div>
@@ -120,18 +100,8 @@
 										<div class="form-group">
 											<h6>قیمت</h6>
 											<ul class="no-ul-list mb-3">
-												<li>
-													<input id="p1" class="checkbox-custom" name="p1" type="checkbox">
-													<label for="p1" class="checkbox-custom-label">همه<i class="count">{{ product.count }}</i></label>
-												</li>
-												<li>
-													<input id="p2" class="checkbox-custom" name="p2" type="checkbox">
-													<label for="p2" class="checkbox-custom-label">رایگان<i class="count">{{ pfc.count }}</i></label>
-												</li>
-												<li>
-													<input id="p3" class="checkbox-custom" name="p3" type="checkbox">
-													<label for="p3" class="checkbox-custom-label">پولی<i class="count">{{ pfo.count }}</i></label>
-												</li>
+												{{form.form.price|add_class:"form-control"}}
+
 											</ul>
 										</div>
 										
@@ -157,7 +127,7 @@
 										
 											<div class="col-lg-4 col-md-5 col-sm-12  col-sm-6">
 												<div class="shorting_pagination_laft">
-                                                    <h6 class="m-0"> {{ categoryname }}</h6>
+                                                    <h6 class="m-0"> {% if request.POST %}{{categoryname.count}}{% else %}{{ categoryname }}{% endif %}</h6>
 												</div>
 											</div>
 								
