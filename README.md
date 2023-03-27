@@ -2,6 +2,7 @@
 <h4>This project is under development !</h4>
 <h2>my todo</h2>
 <ul>
+    <li>add celery and redis to all project 25 min</li>
     <li>detail</li>
     <li>dashboard</li>
     <li>3 sabad(jam , pardakht) , courses</li>
