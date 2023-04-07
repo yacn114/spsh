@@ -1,5 +1,6 @@
 {% load static %}
 {% load price_management %}
+{% load cart_tag %}
 <!DOCTYPE html>
 <html lang="fa">
 	
@@ -164,39 +165,27 @@
 															<tr>
 																<th scope="col">#</th>
 																<th scope="col">عنوان</th>
-																<th scope="col">دسته بندی</th>
-																<th scope="col"> تعداد ویدیو </th>
-																<th scope="col">دانشجو</th>
-																<th scope="col">وضعیت</th>
+
 																<th scope="col">قیمت</th>
 																 <th scope="col">حذف</th> 
 															</tr>
 														</thead>
 														<tbody>
-															{% for sabad in product %}
-															{% if user == sabad.user %}
+															{% for key,value in request.session.cart.items %}
 
 															<tr>
 
 
 															<th scope="row">{{forloop.counter}}</th>
-															<td><a {% if sabad.product.published %}href="{% url 'product:detail' sabad.product.slug %}"{% endif %}><h6>{{sabad.product.title}}</h6></a><p>مدرس:<span>{{sabad.product.teacher_name}}</span></p></td>
-																<td>
-																	{% for cate in sabad.product.language.all %}
-																	
-																	<div class="dhs_tags">{{cate|join:', '}}</div>
-																	{% endfor %}
-																</td>
-																<td><div class="smalls">{{sabad.product.tutorial_count}} ویدیو</div></td>
-																<td><span class="smalls">کل: {{sabad.product.student_count}}</span></td>
-																<td>{% if sabad.product.published %}<span class="trip theme-cl theme-bg-light"> فعال</span></td> {% else %}<span class="trip bg-dark" style="color:lightsteelblue"> غیرفعال</span></td>{% endif %}
+															<td><a href=""><h6>{{value.name}}</h6></a></td>
+																
+																
 																	
 																	
-																<td><span class="trip theme-cl theme-bg-light">{% if sabad.product.price == 0 %} رایگان{% else %}{% takhfif sabad.product.price sabad.product.price_percent sabad.product.id %}  هزارتومن{% endif %}</span></td>
+																<td><span class="trip theme-cl theme-bg-light">{% if sabad.product.price == 0 %} رایگان{% else %}{{value.price| floatformat:0}}  هزارتومن{% endif %}</span></td>
 	
-																<td><a href="{% url 'buy:delete' sabad.product.id %}">delete</a></td>
+																<td><a href="{% url 'sabad:item_decrement' value.product_id %}">delete</a></td>
 															</tr>
-															{% endif %}
 															{% endfor %}
 														</tbody>
 													</table>
@@ -204,7 +193,7 @@
 											</div>
 										</div>
 										<div class="row">
-											<div style="margin: auto;"><h4>قیمت کل  : </h4><span>{% jam2 request.user.id %}</span></div>
+											<div style="margin: auto;"><h4>قیمت کل  : </h4><span>{{cart_total_amount}}</span></div>
 										</div>
 									</div>
 								</div>

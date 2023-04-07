@@ -10,6 +10,7 @@ urlpatterns = [
     path('',include("category.urls")),
     path('',include("buy.urls")),
     path('',include("Product.urls")),
+    path('',include("sabad.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # handler404 = "home.views.error404"

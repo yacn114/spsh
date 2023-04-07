@@ -35,11 +35,13 @@ INSTALLED_APPS = [
     'category.apps.CategoryConfig',
     'buy.apps.BuyConfig',
     'home.apps.HomeConfig',
+    'sabad.apps.SabadConfig',
     'widget_tweaks',
     'django_filters',
+    'cart',
 
 ]
-
+CART_SESSION_ID = 'cart'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

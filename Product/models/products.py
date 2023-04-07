@@ -27,10 +27,10 @@ class Product(models.Model):
     ('متوسط','متوسط'),
     ('حرفه ای','حرفه ای'),
     ]
-    title = models.CharField(max_length=100, verbose_name="عنوان")
+    name = models.CharField(max_length=100, verbose_name="عنوان")
     slug = models.SlugField(max_length=100, verbose_name="سلاگ")
     teacher_name = models.ForeignKey(teachers,on_delete=models.SET_NULL,blank=True,null=True)
-    image_preview = models.ImageField(upload_to="images/products", verbose_name="تصویر پیشنمایش")
+    image = models.ImageField(upload_to="images/products", verbose_name="تصویر پیشنمایش")
     tutorial = models.CharField(max_length=100, verbose_name="نوع دوره",choices=TYPE_TUTORIAL,default="video")
     tutorial_level = models.CharField(max_length=100, verbose_name="سطح دوره",choices=LEVEL_TUTORIAL,default="junior")
     tutorial_count = models.IntegerField("تعداد ویديو",default=0)
@@ -48,7 +48,7 @@ class Product(models.Model):
     def price_percent(self):
         return int(self.pricepercent)
     def __str__(self):
-        return self.title
+        return self.name
     def languageList(self):
         return ', '.join([Languages.nameE for Languages in self.language.all()])
     class Meta:

@@ -89,7 +89,7 @@
 							<div class="crs_grid_list">
 								
 								<div class="crs_grid_list_thumb">
-									<a href="{% url 'product:detail' pro.slug %}"><img src="/{{pro.image_preview}}" class="img-fluid rounded" alt="{{pro.title}}"></a>
+									<a href="{% url 'product:detail' pro.slug %}"><img src="/{{pro.image}}" class="img-fluid rounded" alt="{{pro.name}}"></a>
 								</div>
 								
 								<div class="crs_grid_list_caption">
@@ -99,7 +99,7 @@
 								{% endfor %}
 									</div>
 									<div class="crs_lt_102">
-										<a href="{% url 'product:detail' pro.slug %}"><h4 class="crs_tit">{{ pro.title }}</h4></a>
+										<a href="{% url 'product:detail' pro.slug %}"><h4 class="crs_tit">{{ pro.name }}</h4></a>
 										<span class="crs_auth"><i>مدرس</i> {{pro.teacher_name}}</span>
 									</div>
 									<div class="crs_lt_103">
@@ -116,7 +116,7 @@
 											<div class="crs_price">{% if pro.price_percent > 0 %}<span style="color:red">{{pro.price_percent}}٪  تخفیف</span>{% endif %}<h2><span class="theme-cl">{% takhfif pro.price pro.price_percent pro.id %}</span><span class="currency">هزار تومان</span></h2></div>
 										</div>
 										<div class="crs_fl_last">
-											<div class="crs_linkview"><a href="{% url 'buy:bought' pro.id %}" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
+											<div class="crs_linkview"><a href="{% url 'sabad:cart_add' pro.id %}" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
 										</div>
 									</div>
 								</div>
