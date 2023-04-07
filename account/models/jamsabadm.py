@@ -8,4 +8,4 @@ class jamsabad(models.Model):
         verbose_name = "جمع"
         verbose_name_plural = "جمع سبد ها"
     def __str__(self):
-        return self.user.name
+        return self.user.username

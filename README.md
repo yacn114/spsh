@@ -2,9 +2,11 @@
 <h4>This project is under development !</h4>
 <h2>my todo</h2>
 <ul>
+
+    <li> sabad(jam , pardakht) , courses</li>
+    
     <li>detail(whishlist,)</li>
     <li>dashboard</li>
-    <li>3 sabad(jam , pardakht) , courses</li>
     <li>4 home select menu</li>
     <li>5 category page</li>
     <li>6 help cources</li>

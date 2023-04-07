@@ -58,8 +58,9 @@
                 <ul class="nav-menu nav-menu-social align-to-left">
                     {% if request.user.is_authenticated %}
                     
-                    <li class="add-listing bg-white">
-                        <a href="{% url 'home:dashboard' %}">حساب کاربری</a></li>
+                    <li class="add-listing bg-white"><a href="{% url 'home:dashboard' %}">حساب کاربری</a></li>
+                    <li class="add-listing bg-white"><a href="{% url 'buy:sabad' %}">سبد</a></li>
+
                     {% else %}
 
                     <li>

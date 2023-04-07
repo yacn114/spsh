@@ -1,5 +1,5 @@
 from django.db.models import ExpressionWrapper,F,DecimalField
-
+from account.models import User
 from django import template
 
 from account.models import sabad,jamsabad
@@ -42,18 +42,18 @@ def jam2(id_use, *args, **kwargs):
         if jamsabad.objects.filter(jam=a).exists():
             pass
         else:
-            jamsabad.objects.filter(id_user=id_use).delete()
-            jamsabad.objects.create(jam=a,id_user=id_use)
+            jamsabad.objects.filter(user__id=id_use).delete()
+            jamsabad.objects.create(jam=a,user=User.objects.get(id=id_use))
     return ""
 @register.simple_tag
 def res(id_use, *args, **kwargs):
     if id_use :
-        a = jamsabad.objects.get(id_user=id_use)
+        a = jamsabad.objects.get(user__id=id_use)
         return f"{a.jam:,}"
 @register.simple_tag
 def nerkhasli(id_use, *args, **kwargs):
     if id_use :
-        a = sabad.objects.filter(id_user=id_use)
+        a = sabad.objects.filter(user__id=id_use)
         ab=0
         for mm in a:
             ab += int(mm.p2)
