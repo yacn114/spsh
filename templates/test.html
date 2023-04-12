@@ -1,7 +1,9 @@
 {% load cart_tag %}
 
-Total Length :: {{request.session.cart|length}}
-
+Total Length :: 
+<hr>
+{{request.session.cart}}
+<hr>
 
 {% for key,value in request.session.cart.items %}
 <br>
@@ -9,6 +11,8 @@ Total Length :: {{request.session.cart|length}}
      {{value.price}} <br>
       {{value.quantity}} <br>
        {{value.image}} <br>
-        Total {{ value.price }} <br>
+        Total {{ value.price|multiply }} <br>
 
 {% endfor %}
+<hr>
+{{cart.get_total_price}}

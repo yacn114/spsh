@@ -1,8 +1,4 @@
-from django.db.models import ExpressionWrapper,F,DecimalField
-from account.models import User
 from django import template
-
-from account.models import sabad,jamsabad
 from Product.models import Product
 register = template.Library()
 @register.simple_tag
@@ -13,48 +9,32 @@ def takhfif(price, price_offer,id, *args, **kwargs):
         resualt = product.hot_price
     else:
         pass
-
     return f"{resualt:,}"
+
 
 @register.simple_tag
-def jam(price,price_offer, t,*args, **kwargs):
-    a = ""
-    for i in takhfif(price,price_offer).split(","):
-        a += i
+def total(items,*args, **kwargs):
+    a = 0
     
-    resualt = int(a) * t
-    return f"{resualt:,}"
+
+    for key,value in items:
+        v = int(value['product_id'])
+        oroduct = Product.objects.get(pk=v)
+        a += int((int(value['price'])/100)*int(str(int(oroduct.pricepercent))[0:2])-int(value['price']))*-1
+
+    return f"{a:,}"
+
+
+@register.simple_tag
+def takhfi(price,id,*args, **kwargs):
+    pk = int(id)
+    a = Product.objects.get(pk=pk)
+    res = int((int(price)/100)*int(str(int(a.pricepercent))[0:2])-int(price))*-1
+    return f"{res:,}"
+
+
+
 @register.simple_tag
 def format(resualt,*args, **kwargs):
-    return f"{resualt:,}"
-@register.simple_tag
-def jam2(id_use, *args, **kwargs):
-    discount_price = ExpressionWrapper(
-        F('p'),output_field=DecimalField()
-    )
-    all = sabad.objects.annotate(
-    discount_price=discount_price
-    )
-    a=0
-    for am in all:
-        a += int(am.p)
-    if id_use:
-        if jamsabad.objects.filter(jam=a).exists():
-            pass
-        else:
-            jamsabad.objects.filter(user__id=id_use).delete()
-            jamsabad.objects.create(jam=a,user=User.objects.get(id=id_use))
-    return ""
-@register.simple_tag
-def res(id_use, *args, **kwargs):
-    if id_use :
-        a = jamsabad.objects.get(user__id=id_use)
-        return f"{a.jam:,}"
-@register.simple_tag
-def nerkhasli(id_use, *args, **kwargs):
-    if id_use :
-        a = sabad.objects.filter(user__id=id_use)
-        ab=0
-        for mm in a:
-            ab += int(mm.p2)
-        return f"{ab:,}"
+    res = int(float(resualt))
+    return f"{res:,}"
