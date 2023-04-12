@@ -3,7 +3,7 @@
 <h2>my todo</h2>
 <ul>
 
-    <li> sabad(jam , pardakht) , courses</li>
+    <li> sabad( pardakht) , courses</li>
     
     <li>detail(whishlist,)</li>
     <li>dashboard</li>
