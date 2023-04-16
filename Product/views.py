@@ -13,7 +13,18 @@ def detail(request,string):
         "category":category,
         "siteData":siteData,
         "lang":languagess,
- 
+    }
+    return render(request,"detail/detail.html",context)
+def detail2(request,id):
+    Prod = get_object_or_404(Product,id=id)
+    languagess = Languages.objects.all()
+    category = Category.objects.all()
+    siteData = informationSite.objects.first()
+    context ={
+        "string":Prod,
+        "category":category,
+        "siteData":siteData,
+        "lang":languagess,
     }
     return render(request,"detail/detail.html",context)
 def allhot(request):

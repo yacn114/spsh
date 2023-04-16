@@ -1,5 +1,5 @@
-{% load cart_tag %}
-
+{% load price_management %}
+{% comment %} {% load cart_tag %}
 Total Length :: 
 <hr>
 {{request.session.cart}}
@@ -11,8 +11,11 @@ Total Length ::
      {{value.price}} <br>
       {{value.quantity}} <br>
        {{value.image}} <br>
-        Total {{ value.price|multiply }} <br>
 
 {% endfor %}
 <hr>
-{{cart.get_total_price}}
+{{cart.get_total_price}} {% endcomment %}
+{{string.name}}
+{{string.price}}
+{{string.pricepercent}}
+{% takhfif string.price string.pricepercent string.id %}

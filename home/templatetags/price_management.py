@@ -1,16 +1,22 @@
 from django import template
 from Product.models import Product
 register = template.Library()
+
+
 @register.simple_tag
 def takhfif(price, price_offer,id, *args, **kwargs):
-    resualt = int((int(price)/100)*int(str(int(price_offer))[0:2])-int(price))*-1
+    if price_offer == "0":
+        resualt = int(price)
+    else:
+        resualt = (int(price/100)*int(price_offer)-int(price))*-1
     product = Product.objects.get(id=id)
     if product.hot_price > 0:
         resualt = product.hot_price
     else:
+        # resualt = int(price)
         pass
-    return f"{resualt:,}"
 
+    return f"{resualt:,}"
 
 @register.simple_tag
 def total(items,*args, **kwargs):

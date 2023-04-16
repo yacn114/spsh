@@ -113,7 +113,7 @@
 									</div>
 									<div class="crs_flex">
 										<div class="crs_fl_first">
-											<div class="crs_price">{% if pro.price_percent > 0 %}<span style="color:red">{{pro.price_percent}}٪  تخفیف</span>{% endif %}<h2><span class="theme-cl">{% takhfif pro.price pro.price_percent pro.id %}</span><span class="currency">هزار تومان</span></h2></div>
+											<div class="crs_price">{% if pro.price_percent > 0 %}<span style="color:red">{{pro.price_percent}}٪  تخفیف</span>{% endif %}<h2><span class="theme-cl">{% takhfif pro.price pro.pricepercent pro.id %}</span><span class="currency">هزار تومان</span></h2></div>
 										</div>
 										<div class="crs_fl_last">
 											<div class="crs_linkview"><a href="{% url 'sabad:cart_add' pro.id %}" class="btn btn_view_detail theme-bg text-light">ثبت نام</a></div>
