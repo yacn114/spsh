@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import User
+from hesab.models import User
 from Product.models import Product
 class sabad(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)

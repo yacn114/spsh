@@ -1,6 +1,6 @@
 from django.contrib.auth import views
 from django.urls import path
-from account.views import signup,login,Forget,dashboard,courses,contact
+from hesab.views import signup,login,Forget,dashboard,courses,contact
 app_name = "account"
 urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),

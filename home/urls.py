@@ -1,6 +1,6 @@
 from django.urls import path
 from home import views
-from account.views import dashboard
+from hesab.views import dashboard
 app_name = "home"
 
 urlpatterns = [
