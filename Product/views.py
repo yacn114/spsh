@@ -14,7 +14,7 @@ def detail(request,string):
         "siteData":siteData,
         "lang":languagess,
     }
-    return render(request,"detail/detail.html",context)
+    return render(request,"detail/course-detail.html",context)
 def detail2(request,id):
     Prod = get_object_or_404(Product,id=id)
     languagess = Languages.objects.all()
@@ -26,7 +26,7 @@ def detail2(request,id):
         "siteData":siteData,
         "lang":languagess,
     }
-    return render(request,"detail/detail.html",context)
+    return render(request,"detail/course-detail.html",context)
 def allhot(request):
     return HttpResponse("hot tutorials")
 def packages(request):

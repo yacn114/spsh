@@ -1,5 +1,6 @@
 from django.db import models
 from category.models import Languages,Category
+from hesab.models import User
 
 class teachers(models.Model):
     name = models.CharField("اسم مدرس کلیپ",max_length=200)
@@ -9,8 +10,15 @@ class teachers(models.Model):
     class Meta:
         verbose_name = "مدرس"
         verbose_name_plural = "مدرس ها"
-
-
+class Comment(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    product = models.ForeignKey("Product",  on_delete=models.CASCADE)
+    text = models.TextField()
+    date = models.DateTimeField(auto_now=False, auto_now_add=False)
+    response = models.TextField()
+    def __str__(self):
+        return self.user.username
+    
 class Product(models.Model):
     LANG= [
         ("Fa","فارسی"),
@@ -44,12 +52,12 @@ class Product(models.Model):
     tpye_lang = models.CharField(max_length=2,choices=LANG ,default="Fa",verbose_name="زبان محصول") # persian or english
     student_count = models.IntegerField(default=0,verbose_name="تعداد دانشجو")
     published = models.BooleanField(default=True,verbose_name="وضعیت")
-
+    
+    
 
     def __str__(self):
         return self.name
-    def languageList(self):
-        return ', '.join([Languages.nameE for Languages in self.language.all()])
+
     class Meta:
         verbose_name = "محصول"
         verbose_name_plural = "محصولات"
