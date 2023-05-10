@@ -3,7 +3,7 @@
 <h2>my todo</h2>
 <ul>
 
-    <li>detail(whishlist,)</li>
+    <h3>detail(checked,comment,recommend)</h3>
     <li>dashboard (courses)</li>
     <li> sabad( pardakht...) , </li>
     <li>4 home select menu</li>

@@ -4,7 +4,7 @@ class informationSite(models.Model):
     nameE = models.CharField(max_length=100)
     nameF = models.CharField(max_length=100)
     logo = models.ImageField(upload_to="images/logo/")
-    
+    text = models.TextField()    
 
     class Meta:
         verbose_name = "اطلاعات سایت"

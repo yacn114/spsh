@@ -52,6 +52,7 @@ class Product(models.Model):
     tpye_lang = models.CharField(max_length=2,choices=LANG ,default="Fa",verbose_name="زبان محصول") # persian or english
     student_count = models.IntegerField(default=0,verbose_name="تعداد دانشجو")
     published = models.BooleanField(default=True,verbose_name="وضعیت")
+    resualt = models.TextField("به چه سطحی میرسه بعد دیدن؟",null=True,blank=True)
     
     
 
