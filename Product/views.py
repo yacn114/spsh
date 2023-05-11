@@ -5,6 +5,7 @@ from home.models import informationSite
 from django.http import HttpResponse
 def detail(request,string):
     Prod = get_object_or_404(Product,slug=string)
+    rec = Product.objects.filter(language=Prod.language.first())
     languagess = Languages.objects.all()
     category = Category.objects.all()
     siteData = informationSite.objects.first()
@@ -15,10 +16,13 @@ def detail(request,string):
         "siteData":siteData,
         "lang":languagess,
         "co":comment,
+        "rec":rec,
     }
     return render(request,"detail/course-detail.html",context)
 def detail2(request,id):
     Prod = get_object_or_404(Product,id=id)
+    rec = Product.objects.filter(language=Prod.language.first())
+
     languagess = Languages.objects.all()
     category = Category.objects.all()
     comment = Comment.objects.filter(user=request.user)
@@ -29,6 +33,7 @@ def detail2(request,id):
         "siteData":siteData,
         "lang":languagess,
         "co":comment,
+        "rec":rec,
 
     }
     return render(request,"detail/course-detail.html",context)

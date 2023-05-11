@@ -16,6 +16,8 @@ class Comment(models.Model):
     text = models.TextField()
     date = models.DateTimeField(auto_now=False, auto_now_add=False)
     response = models.TextField()
+    dislike = models.IntegerField()
+    like = models.IntegerField()
     def __str__(self):
         return self.user.username
     

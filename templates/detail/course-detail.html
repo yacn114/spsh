@@ -116,66 +116,28 @@
 											<h3>دیدگاه دانش آموختگان</h3>
 										</div>
 										<div class="reviews-comments-wrap">
+										{% for comment in co %}
 											<!-- reviews-comments-item -->  
 											<div class="reviews-comments-item">
 												<div class="review-comments-avatar">
 													<img src="assets/img/user-1.jpg" class="img-fluid" alt=""> 
 												</div>
 												<div class="reviews-comments-item-text">
-													<h4><a href="#">متین علیزاده</a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl"></i>15 اردیبهشت 1401</span></h4>
 													
-													<div class="listing-rating"><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i></div>
+													
+													<h4><a href="#">{{comment.user.get_full_name}}</a><br><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl"></i>{{comment.date}}</span></h4>
+													<br>
+													<br>
 													<div class="clearfix"></div>
-													<p>" ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. "</p>
+													<p>" {{comment.text}}. "</p>
 													<div class="pull-left reviews-reaction">
-														<a href="#" class="comment-like active"><i class="ti-thumb-up"></i> 12</a>
-														<a href="#" class="comment-dislike active"><i class="ti-thumb-down"></i> 1</a>
-														<a href="#" class="comment-love active"><i class="ti-heart"></i> 07</a>
+														<a href="#" class="comment-like active"><i class="ti-thumb-up"></i> {{comment.like}}</a>
+														<a href="#" class="comment-dislike active"><i class="ti-thumb-down"></i> {{comment.dislike}}</a>
 													</div>
 												</div>
 											</div>
 											<!--reviews-comments-item end-->  
-											
-											<!-- reviews-comments-item -->  
-											<div class="reviews-comments-item">
-												<div class="review-comments-avatar">
-													<img src="assets/img/user-2.jpg" class="img-fluid" alt=""> 
-												</div>
-												<div class="reviews-comments-item-text">
-													<h4><a href="#">مژگان قاسمی نیا</a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl"></i>2 شهریور 1400</span></h4>
-													
-													<div class="listing-rating"><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star"></i></div>
-													<div class="clearfix"></div>
-													<p>" ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. "</p>
-													<div class="pull-left reviews-reaction">
-														<a href="#" class="comment-like active"><i class="ti-thumb-up"></i> 12</a>
-														<a href="#" class="comment-dislike active"><i class="ti-thumb-down"></i> 1</a>
-														<a href="#" class="comment-love active"><i class="ti-heart"></i> 07</a>
-													</div>
-												</div>
-											</div>
-											<!--reviews-comments-item end-->
-											
-											<!-- reviews-comments-item -->  
-											<div class="reviews-comments-item">
-												<div class="review-comments-avatar">
-													<img src="assets/img/user-3.jpg" class="img-fluid" alt=""> 
-												</div>
-												<div class="reviews-comments-item-text">
-													<h4><a href="#">علی حسینی</a><span class="reviews-comments-item-date"><i class="ti-calendar theme-cl"></i>8 اسفند 1399</span></h4>
-													
-													<div class="listing-rating"><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i><i class="fas fa-star active"></i></div>
-													<div class="clearfix"></div>
-													<p>" ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. "</p>
-													<div class="pull-left reviews-reaction">
-														<a href="#" class="comment-like active"><i class="ti-thumb-up"></i> 12</a>
-														<a href="#" class="comment-dislike active"><i class="ti-thumb-down"></i> 1</a>
-														<a href="#" class="comment-love active"><i class="ti-heart"></i> 07</a>
-													</div>
-												</div>
-											</div>
-											<!--reviews-comments-item end-->
-											
+											{% endfor %}
 										</div>
 									</div>
 									
@@ -285,12 +247,12 @@
 							<div class="slide_items">
 							
 								<!-- Single Item -->
-								
+								{% for recommand in rec %}
 								<div class="lios_item">	
 									<div class="crs_grid shadow_none brd">
 										<div class="crs_grid_thumb">
-											<a href="course-detail.html" class="crs_detail_link">
-												<img src="assets/img/cr-2.jpg" class="img-fluid rounded" alt="" />
+											<a href="{% url 'product:detail' recommand.slug %}" class="crs_detail_link">
+												<img src="{{recommand.image}}" class="img-fluid rounded" alt="" />
 											</a>
 											<div class="crs_video_ico">
 												<i class="fa fa-play"></i>
@@ -302,17 +264,19 @@
 										<div class="crs_grid_caption">
 											<div class="crs_flex">
 												<div class="crs_fl_first">
-													<div class="crs_cates cl_6"><span>حسابداری</span></div>
+													{% for list in recommand.language.all %}
+													<div class="crs_cates cl_{{forloop.counter}}"><span>{{list}}</span></div>
+													{% endfor %}
 												</div>
 												<div class="crs_fl_last">
-													<div class="crs_price"><h2><span class="theme-cl">149</span><span class="currency">تومان</span></h2></div>
+													<div class="crs_price"><h2><span class="theme-cl">{{recommand.price}}</span><span class="currency">تومان</span></h2></div>
 												</div>
 											</div>
-											<div class="crs_title"><h4><a href="course-detail.html" class="crs_title_link">دوره حضوری عالی پرورش مدیر مالی</a></h4></div>
+											<div class="crs_title"><h4><a href="{% url 'product:detail' recommand.slug %}" class="crs_title_link">{{recommand.small_description}}</a></h4></div>
 											<div class="crs_info_detail">
 												<ul>
-													<li><i class="fa fa-clock text-danger"></i><span>8ساعت 1دقیقه</span></li>
-													<li><i class="fa fa-video text-success"></i><span>17 دوره</span></li>
+													{% comment %} <li><i class="fa fa-clock text-danger"></i><span>{{}}</span></li> {% endcomment %}
+													<li><i class="fa fa-video text-success"></i><span>{{recommand.tutorial_count}} ویدیو</span></li>
 												</ul>
 											</div>
 											<div class="preview_crs_info">
@@ -323,17 +287,17 @@
 										</div>
 										<div class="crs_grid_foot">
 											<div class="crs_flex">
-												<div class="crs_fl_first">
+												{% comment %} <div class="crs_fl_first">
 													<div class="crs_tutor">
-														<div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="assets/img/user-6.jpg" class="img-fluid circle" alt="" /></a></div>
+														<div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="{% static "assets/img/user-6.jpg" %}" class="img-fluid circle" alt="" /></a></div>
 													</div>
-												</div>
+												</div> {% endcomment %}
 												<div class="crs_fl_last">
 													<div class="foot_list_info">
 														<ul>
-															<li><div class="elsio_ic"><i class="fa fa-user text-danger"></i></div><div class="elsio_tx">4.7k</div></li>
-															<li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">42.4k</div></li>
-															<li><div class="elsio_ic"><i class="fa fa-star text-warning"></i></div><div class="elsio_tx">4.7</div></li>
+															<li><div class="elsio_ic"><i class="fa fa-user text-danger"></i></div><div class="elsio_tx">{{recommand.student_count}}</div></li>
+															<li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">{{recommand.view}}</div></li>
+															<li><div class="elsio_ic"><i class="fa fa-star text-warning"></i></div><div class="elsio_tx">4.9</div></li>
 														</ul>
 													</div>
 												</div>
@@ -341,7 +305,7 @@
 										</div>
 									</div>
 								</div>
-						
+								{% endfor %}
 							</div>
 						</div>
 					</div>
