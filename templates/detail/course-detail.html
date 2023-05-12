@@ -131,8 +131,10 @@
 													<div class="clearfix"></div>
 													<p>" {{comment.text}}. "</p>
 													<div class="pull-left reviews-reaction">
-														<a href="#" class="comment-like active"><i class="ti-thumb-up"></i> {{comment.like}}</a>
-														<a href="#" class="comment-dislike active"><i class="ti-thumb-down"></i> {{comment.dislike}}</a>
+														{% if request.user.is_authenticated %}
+														<a href="{% url 'product:like' string.id %}" class="comment-like active"><i class="ti-thumb-up"></i> {{comment.like.count}}</a>
+														<a href="{% url 'product:dislike' string.id %}" class="comment-dislike active"><i class="ti-thumb-down"></i> {{comment.dislike.count}}</a>
+														{% endif %}
 													</div>
 												</div>
 											</div>

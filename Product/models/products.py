@@ -16,8 +16,9 @@ class Comment(models.Model):
     text = models.TextField()
     date = models.DateTimeField(auto_now=False, auto_now_add=False)
     response = models.TextField()
-    dislike = models.IntegerField()
-    like = models.IntegerField()
+    like = models.ManyToManyField(User,verbose_name="likes",blank=True,related_name="+")
+    dislike = models.ManyToManyField(User,verbose_name="dislikes",blank=True,related_name="+")
+    
     def __str__(self):
         return self.user.username
     
@@ -55,8 +56,7 @@ class Product(models.Model):
     student_count = models.IntegerField(default=0,verbose_name="تعداد دانشجو")
     published = models.BooleanField(default=True,verbose_name="وضعیت")
     resualt = models.TextField("به چه سطحی میرسه بعد دیدن؟",null=True,blank=True)
-    
-    
+
 
     def __str__(self):
         return self.name

@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from Product.models import Product,Comment
 from category.models import Category,Languages
 from home.models import informationSite
@@ -41,3 +41,11 @@ def allhot(request):
     return HttpResponse("hot tutorials")
 def packages(request):
     return HttpResponse("packages")
+
+def like(request,id):
+    pr = Product.objects.get(id=id)
+    lm = Comment.objects.get_or_create(like==request.user,product=pr)
+    
+    return redirect('/yacn')
+def dislike(request,id):
+    pass
