@@ -1,4 +1,5 @@
 from django.shortcuts import render,get_object_or_404,redirect
+from Product.forms import CommentForms
 from Product.models import Product,Comment
 from category.models import Category,Languages
 from home.models import informationSite
@@ -9,9 +10,18 @@ def detail(request,string):
     languagess = Languages.objects.all()
     category = Category.objects.all()
     siteData = informationSite.objects.first()
-    comment = Comment.objects.filter(user=request.user)
+    comment = Comment.objects.filter(product__slug=string)
+    
+    if request.method == "POST":
+        form = CommentForms(request.POST)
+        if form.is_valid():
+            return HttpResponse("okb sik to next step!")
+    else:
+        form = CommentForms()
+
     context ={
         "string":Prod,
+        "form":form,
         "category":category,
         "siteData":siteData,
         "lang":languagess,
@@ -25,7 +35,7 @@ def detail2(request,id):
 
     languagess = Languages.objects.all()
     category = Category.objects.all()
-    comment = Comment.objects.filter(user=request.user)
+    comment = Comment.objects.filter(product__id=id)
     siteData = informationSite.objects.first()
     context ={
         "string":Prod,
@@ -43,9 +53,15 @@ def packages(request):
     return HttpResponse("packages")
 
 def like(request,id):
-    pr = Product.objects.get(id=id)
-    lm = Comment.objects.get_or_create(like==request.user,product=pr)
+    comid = Comment.objects.get(id=id)
+    comid.like.add(request.user)
+    
     
     return redirect('/yacn')
 def dislike(request,id):
-    pass
+    comid = Comment.objects.get(id=id)
+    comid.dislike.add(request.user)
+    
+    
+    
+    return redirect('/yacn')

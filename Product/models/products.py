@@ -14,8 +14,8 @@ class Comment(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     product = models.ForeignKey("Product",  on_delete=models.CASCADE)
     text = models.TextField()
-    date = models.DateTimeField(auto_now=False, auto_now_add=False)
-    response = models.TextField()
+    date = models.DateTimeField( auto_now_add=True)
+    response = models.TextField(blank=True,null=True)
     like = models.ManyToManyField(User,verbose_name="likes",blank=True,related_name="+")
     dislike = models.ManyToManyField(User,verbose_name="dislikes",blank=True,related_name="+")
     
