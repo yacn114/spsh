@@ -11,6 +11,8 @@ class User(AbstractUser):
     special_user = models.DateTimeField(default=timezone.now,verbose_name="زمان ویژه")
     name_level = models.CharField(max_length=12,choices=LEVEL_NAME,default='3',verbose_name="سطح کاربر")
     profile = models.ImageField(upload_to='profile/',default='profile/profile.png')
+    phone = models.IntegerField(blank=True,null=True)
+    githublink = models.CharField(max_length=70,blank=True,null=True)
     def is_special_user(self):
         if self.special_user > timezone.now():
             return True

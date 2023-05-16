@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 {% load price_management %}
 <!DOCTYPE html>
 <html lang="fa">
@@ -33,7 +34,7 @@
 			<!-- ============================================================== -->
 			
 			<!-- ============================ Page Title Start================================== -->
-			<div class="ed_detail_head bg-cover" style="background:#f4f4f4 url({{string.image}});" data-overlay="8">
+			<div class="ed_detail_head bg-cover" style="background:#f4f4f4 url(/{{string.image}});" data-overlay="8">
 				<div class="container">
 					<div class="row align-items-center">
 						
@@ -132,8 +133,8 @@
 													<p>" {{comment.text}}. "</p>
 													<div class="pull-left reviews-reaction">
 														{% if request.user.is_authenticated %}
-														<a href="{% url 'product:like' string.id %}" class="comment-like active"><i class="ti-thumb-up"></i> {{comment.like.count}}</a>
-														<a href="{% url 'product:dislike' string.id %}" class="comment-dislike active"><i class="ti-thumb-down"></i> {{comment.dislike.count}}</a>
+														<a href="{% url 'product:like' comment.id %}" class="comment-like active"><i class="ti-thumb-up"></i> {{comment.like.count}}</a>
+														<a href="{% url 'product:dislike' comment.id %}" class="comment-dislike active"><i class="ti-thumb-down"></i> {{comment.dislike.count}}</a>
 														{% endif %}
 													</div>
 												</div>
@@ -168,7 +169,7 @@
 													<div class="col-lg-12 col-md-12 col-sm-12">
 														<div class="form-group">
 															<label>متن نظر</label>
-															{{form.text}}
+															{{form.text|add_class:"form-control"}}
 															{% comment %} <textarea class="form-control ht-140" placeholder="نظر خود را بنویسید..."></textarea> {% endcomment %}
 														</div>
 													</div>
@@ -198,7 +199,7 @@
 							
 								<div class="property_video sm">
 									<div class="thumb">
-										<img class="pro_img img-fluid w100" src="{{string.image}}" alt="7.jpg">
+										<img class="pro_img img-fluid w100" src="/{{string.image}}" alt="7.jpg">
 										<div class="overlay_icon">
 							
 										</div>
@@ -224,8 +225,8 @@
 									</ul>
 								</div>
 								<div class="ed_view_link">
-									<a href="#" class="btn theme-light enroll-btn">عضویت<i class="ti-angle-left"></i></a>
-									<a href="#" class="btn theme-bg enroll-btn">ثبت نام<i class="ti-angle-left"></i></a>
+									{% comment %} <a href="#" class="btn theme-light enroll-btn">عضویت<i class="ti-angle-left"></i></a> {% endcomment %}
+									<a href="{% url 'sabad:cart_add' string.id %}" class="btn theme-bg enroll-btn">ثبت نام<i class="ti-angle-left"></i></a>
 								</div>
 								
 							</div>
@@ -256,7 +257,7 @@
 									<div class="crs_grid shadow_none brd">
 										<div class="crs_grid_thumb">
 											<a href="{% url 'product:detail' recommand.slug %}" class="crs_detail_link">
-												<img src="{{recommand.image}}" class="img-fluid rounded" alt="" />
+												<img src="/{{recommand.image}}" class="img-fluid rounded" alt="" />
 											</a>
 											<div class="crs_video_ico">
 												<i class="fa fa-play"></i>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from home.models import informationSite
+from category.models import Category,Languages
 
 def signup(request):
     pass
@@ -9,7 +10,16 @@ def signup(request):
 @login_required
 def dashboard(request):
     data = informationSite.objects.first()
-    return render(request,"account/home.html",{"siteData":data})
+    siteData = informationSite.objects.first()
+    languagess = Languages.objects.all()
+    category = Category.objects.all()
+    return render(request,"account/dash.html",
+                  {
+                        "siteData":data,
+                        "category":category,
+                        "siteData":siteData,
+                        "lang":languagess,
+                      })
     
 def login(request):
     siteinformation = informationSite.objects.first()

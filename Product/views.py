@@ -15,7 +15,12 @@ def detail(request,string):
     if request.method == "POST":
         form = CommentForms(request.POST)
         if form.is_valid():
-            return HttpResponse("okb sik to next step!")
+            ex = Comment()
+            ex.text = form.cleaned_data.get('text')
+            ex.user = request.user
+            ex.product = Product.objects.get(slug=string)
+            ex.save()
+            return redirect(f"/{string}")
     else:
         form = CommentForms()
 
@@ -32,6 +37,18 @@ def detail(request,string):
 def detail2(request,id):
     Prod = get_object_or_404(Product,id=id)
     rec = Product.objects.filter(language=Prod.language.first())
+  
+    if request.method == "POST":
+        form = CommentForms(request.POST)
+        if form.is_valid():
+            ex = Comment()
+            ex.text = form.cleaned_data.get('text')
+            ex.user = request.user
+            ex.product = Product.objects.get(id=id)
+            ex.save()
+            return redirect(f"/{id}")
+    else:
+        form = CommentForms()
 
     languagess = Languages.objects.all()
     category = Category.objects.all()
@@ -39,6 +56,7 @@ def detail2(request,id):
     siteData = informationSite.objects.first()
     context ={
         "string":Prod,
+        'form':form,
         "category":category,
         "siteData":siteData,
         "lang":languagess,
@@ -54,13 +72,24 @@ def packages(request):
 
 def like(request,id):
     comid = Comment.objects.get(id=id)
-    comid.like.add(request.user)
+    for a in comid.like.all():
+        if a == request.user:
+            comid.like.remove(request.user)
+            break
+    else:
+        comid.like.add(request.user)
+            
     
     
     return redirect('/yacn')
 def dislike(request,id):
     comid = Comment.objects.get(id=id)
-    comid.dislike.add(request.user)
+    for a in comid.dislike.all():
+        if a == request.user:
+            comid.dislike.remove(request.user)
+            break
+    else:
+        comid.dislike.add(request.user)
     
     
     
