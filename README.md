@@ -9,5 +9,5 @@
     <li> pardakht... </li>
     <li>4 home select menu</li>
     <li>6 help cources</li>
-    <li>8 more custom user(phone,)</li>...
+    <li>8 more custom user(phone,)</li>
 </ul>
