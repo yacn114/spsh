@@ -3,6 +3,7 @@
 <h2>my todo</h2>
 <ul>
     <li>dashboard ( django-userena / django-allauth / js problem )</li>
+    <li>ticket , cources , status</li>
     <li>login style</li>
     <li>7 signin with google</li>
     <li>PAGES  : about us,hot,</li>
