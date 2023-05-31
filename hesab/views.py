@@ -1,16 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from home.models import informationSite
 from category.models import Category,Languages
 from hesab.forms import UserForms
+from .models import User
 
 def signup(request):
     pass
 
 @login_required
 def dashboard(request):
-    data = informationSite.objects.first()
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
     category = Category.objects.all()
@@ -18,20 +18,14 @@ def dashboard(request):
     if request.method == "POST":
         form = UserForms(request.POST)
         if form.is_valid():
-            # ex = Comment()
-            # ex.text = form.cleaned_data.get('text')
-            # ex.user = request.user
-            # ex.product = Product.objects.get(slug=string)
-            # ex.save()
-            pass
-            # return redirect(f"/{string}")
+            user = User.objects.filter(username=request.user.username).update(last_name=form.cleaned_data['last_name'],email=form.cleaned_data['email'],phone=form.cleaned_data['phone'],githublink=form.cleaned_data['githublink'],first_name=form.cleaned_data['first_name'])
+
     else:
         form = UserForms()
 
     return render(request,"account/dash.html",
                   {
                         "form":form,
-                        "siteData":data,
                         "category":category,
                         "siteData":siteData,
                         "lang":languagess,
@@ -49,7 +43,7 @@ def Forget(request):
 
 @login_required
 def courses(request):
-    return HttpResponse("ok")
+    return render(request,'buy/manage.html')
 def contact(request):
     return HttpResponse('contact')
 
