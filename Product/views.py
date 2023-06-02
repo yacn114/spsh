@@ -81,7 +81,8 @@ def like(request,id):
             
     
     
-    return redirect('/yacn')
+    return redirect(f'/{comid.product.slug}')
+
 def dislike(request,id):
     comid = Comment.objects.get(id=id)
     for a in comid.dislike.all():
@@ -93,4 +94,4 @@ def dislike(request,id):
     
     
     
-    return redirect('/yacn')
+    return redirect(f'/{comid.product.slug}')

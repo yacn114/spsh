@@ -1,1 +1,2 @@
-from .products import Product, teachers,Comment
+from .products import Product, teachers
+from .commen import Comment

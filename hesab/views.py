@@ -43,7 +43,16 @@ def Forget(request):
 
 @login_required
 def courses(request):
-    return render(request,'buy/manage.html')
+    siteData = informationSite.objects.first()
+    languagess = Languages.objects.all()
+    category = Category.objects.all()
+        
+    context = {
+        "category":category,
+        "siteData":siteData,
+        "lang":languagess,
+        }
+    return render(request,'buy/manage.html',context)
 def contact(request):
     return HttpResponse('contact')
 

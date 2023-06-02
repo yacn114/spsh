@@ -1,6 +1,6 @@
 from django.db import models
 from category.models import Languages,Category
-from hesab.models import User
+
 
 class teachers(models.Model):
     name = models.CharField("اسم مدرس کلیپ",max_length=200)
@@ -10,18 +10,7 @@ class teachers(models.Model):
     class Meta:
         verbose_name = "مدرس"
         verbose_name_plural = "مدرس ها"
-class Comment(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    product = models.ForeignKey("Product",  on_delete=models.CASCADE)
-    text = models.TextField()
-    date = models.DateTimeField( auto_now_add=True)
-    response = models.TextField(blank=True,null=True)
-    like = models.ManyToManyField(User,verbose_name="likes",blank=True,related_name="+")
-    dislike = models.ManyToManyField(User,verbose_name="dislikes",blank=True,related_name="+")
-    
-    def __str__(self):
-        return self.user.username
-    
+
 class Product(models.Model):
     LANG= [
         ("Fa","فارسی"),
