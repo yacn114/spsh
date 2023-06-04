@@ -8,8 +8,8 @@
 		<meta charset="utf-8" />
 		<meta name="author" content="Themezhub" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>دوره هات</title>
-		 
+        <title>تیکت هات</title>
+		
         <!-- Custom CSS -->
         <link href="{% static 'assets/css/styles.css' %}" rel="stylesheet">
 		
@@ -63,8 +63,8 @@
 									<ul id="side-menu">
 										<li><a href="{% url 'home:dashboard' %}"><i class="fas fa-th"></i>داشبورد</a></li>
 						
-										<li><a href="{% url 'account:ticket' %}"><i class="fas fa-th"></i>تیکت</a></li>
-										<li class="active">
+										<li class="active"><a href="{% url 'account:ticket' %}"><i class="fas fa-th"></i>تیکت</a></li>
+										<li>
 											<a href="{% url 'account:courses' %}"><i class="fas fa-layer-group"></i>دوره های خریداری شده</a>
 										
 										</li>
@@ -137,7 +137,7 @@
 															<td><a href="#"><h6>{{value.subject}}</h6></a></td>
 																<td><span class="trip theme-bg-light" style="font-size:20px">{% if value.admin == None %}پاسخ داده نشده {% else %}پاسخ داده شد{% endif %}</span></td>
                                                                 
-                                                                {% if value.admin == None %} <td><a href="#"><button class="btn btn-success" disabled>مشاهده</button></a></td> {% else %}<td><button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">مشاهده</button></td>{% endif %}
+                                                                <td>{% if value.admin == None %} <button class="btn btn-success" disabled>مشاهده</button> {% else %}<a href="{% url 'account:ticker' value.id %}"><button class="btn btn-success" >مشاهده</button></a>{% endif %}</td>
 
 															</tr>
 															{% endfor %}
@@ -159,24 +159,7 @@
 				</div>
 			</section>
 			<!-- ============================ Dashboard: Dashboard End ================================== -->
-            <div class="modal" tabindex="-1">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title">Modal title</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <p>Modal body text goes here.</p>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    
+  
 		<!-- ============================ Call To Action ================================== -->
 		{% include 'main/footer.html' %}
 			<!-- ============================ Footer End ================================== -->

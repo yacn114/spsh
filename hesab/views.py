@@ -54,7 +54,7 @@ def courses(request):
 def contact(request):
 
     return HttpResponse('contact')
-
+@login_required
 def ticket(request):
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
@@ -78,8 +78,8 @@ def ticket(request):
         ContactForms()
 
     return render(request,'detail/contact.html',context)
-def status(request):
-    pass
+
+@login_required
 def response(request):
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
@@ -92,3 +92,21 @@ def response(request):
         "ti":ti,
         }
     return render(request,"detail/responses.html",context)
+@login_required
+def ticker(request,id):
+    siteData = informationSite.objects.first()
+    languagess = Languages.objects.all()
+    category = Category.objects.all()
+    value = Tickets.objects.get(id=id)
+    
+    context = {
+        "category":category,
+        "siteData":siteData,
+        "lang":languagess,
+        "value":value,
+        }
+    
+    return render(request,"detail/detail-ticket.html",context)
+@login_required
+def  statusUser(request):
+    return render(request,"buy/status-User.html")

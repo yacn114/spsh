@@ -1,6 +1,6 @@
 from django.contrib.auth import views
 from django.urls import path
-from hesab.views import signup,ticket,dashboard,courses,contact,status,response
+from hesab.views import signup,ticket,dashboard,courses,contact,statusUser,response,ticker
 app_name = "account"
 urlpatterns = [
     path("login/", views.LoginView.as_view(), name="login"),
@@ -9,8 +9,9 @@ urlpatterns = [
     path('contact/',contact,name='contact'),
     path('courses/',courses,name='courses'),
     path('ticket/',ticket,name='ticket'),
-    path('status/',status,name='status'),
+    path('status/',statusUser,name='status'),
     path('response',response,name='response'),
+    path('ticket-datail/<int:id>',ticker,name='ticker'),
     # path("logout/", views.LogoutView.as_view(), name="logout"),
     # path(
     #     "password_change/", views.PasswordChangeView.as_view(), name="password_change"

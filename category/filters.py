@@ -2,7 +2,7 @@ import django_filters
 from Product.models import Product
 
 A = [
-    (0.0,"رایگان"),
+    (0,"رایگان"),
     
     ("","همه"),
 ]
