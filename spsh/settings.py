@@ -16,7 +16,9 @@ SECRET_KEY = 'django-insecure-p3+5jjn^!3(kvpcvo%1hw718a5(td2)68kfuw=_z7m71)z23vk
 DEBUG = True
 
 ALLOWED_HOSTS = [
-
+    '8.8.8.8',
+    '127.0.0.1',
+    '4.2.2.4',
 ]
 AUTHENTICATION_BACKENDS = [
     

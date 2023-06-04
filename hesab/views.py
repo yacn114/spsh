@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from home.models import informationSite
 from category.models import Category,Languages
-from hesab.forms import UserForms
-from .models import User
+from hesab.forms import UserForms,ContactForms
+from .models import User,Tickets
 
 def signup(request):
     pass
@@ -37,9 +37,7 @@ def login(request):
     return render(request,'test.html',{"siteData":siteinformation})
 
 
-@login_required
-def Forget(request):
-    return None
+
 
 @login_required
 def courses(request):
@@ -54,9 +52,43 @@ def courses(request):
         }
     return render(request,'buy/manage.html',context)
 def contact(request):
+
     return HttpResponse('contact')
 
 def ticket(request):
-    pass
+    siteData = informationSite.objects.first()
+    languagess = Languages.objects.all()
+    category = Category.objects.all()
+    context = {
+        "category":category,
+        "siteData":siteData,
+        "lang":languagess,
+        "form":ContactForms(),
+        }
+    if request.POST:
+        ti = Tickets()
+        text = request.POST['text']
+        user = request.user
+        ti.message = text
+        ti.user = user
+        ti.subject = request.POST.get('subject')
+        ti.save()
+        return redirect('/response')
+    else:
+        ContactForms()
+
+    return render(request,'detail/contact.html',context)
 def status(request):
     pass
+def response(request):
+    siteData = informationSite.objects.first()
+    languagess = Languages.objects.all()
+    category = Category.objects.all()
+    ti = Tickets.objects.filter(user=request.user)
+    context = {
+        "category":category,
+        "siteData":siteData,
+        "lang":languagess,
+        "ti":ti,
+        }
+    return render(request,"detail/responses.html",context)
