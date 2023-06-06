@@ -9,13 +9,15 @@
 			<div class="col-lg-6 col-md-6 col-sm-12">
 				<div class="simple-search-wrap text-right">
 					<div class="hero_search-2">
+						<form method="post">
 						<h1 class="banner_title mb-4 font-2">این پروژه به شدت در دست توسعه میباشد ...</h1>
 						<p class="font-lg mb-4">تمام ویدیو ها و دوره های تاپ دوبله شده همراه  داکیومنت اصلی ترجمه شده
+							{% csrf_token %}
 						<div class="input-group simple_search">
 							<i class="fa fa-search ico"></i>
-							<input type="text" class="form-control" placeholder="جستجو دوره آموزش...">
+							<input type="text" name="search" class="form-control" placeholder="جستجو دوره آموزش...">
 							<div class="input-group-append">
-								<button class="btn theme-bg" type="button">جستجو</button>
+								<button class="btn theme-bg" type="submit">جستجو</button>
 							</div>
 						</div>
 						<div class="crs_trio_info">
@@ -29,6 +31,7 @@
 								<span class="pol_title">آموزش آنلاین</span>
 							</div>
 						</div>
+					</form>
 					</div>
 				</div>
 			</div>

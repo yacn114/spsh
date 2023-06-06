@@ -3,7 +3,7 @@
 
 <h2>my todo</h2>
 <ul>
-    <li>wallet section, status page ,</li>
+    <li>home = > search ,wallet section, status page ,</li>
     <li>login style</li>
     <li>7 signin with google</li>
     <li>PAGES  : about us,hot,</li>

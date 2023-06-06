@@ -1,4 +1,5 @@
 from hesab.models import User
+from django.http import HttpResponse
 from django.shortcuts import render
 from home.models import informationSite
 from Product.models import Product
@@ -12,6 +13,13 @@ def home(request):
     language = Languages.objects.filter(status=True)
     category = Category.objects.filter(status=True)
     userCount = User.objects.count()
+    if request.POST:
+        search_words = request.POST['search']
+        searchResualt = Product.objects.filter(name__contains=search_words)
+        context = {
+            "res":searchResualt,
+        }
+        return render(request,"main/searchHome.html",context)
     return render(request,"main/index.html",{
         "siteData":siteinformation,
         "product":product,
