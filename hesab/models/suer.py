@@ -6,3 +6,4 @@ class User(AbstractUser):
     profile = models.ImageField(upload_to='profile/',default='profile/profile.png')
     phone = models.IntegerField(blank=True,null=True)
     githublink = models.CharField(max_length=70,blank=True,null=True)
+    balance = models.IntegerField(default=0)

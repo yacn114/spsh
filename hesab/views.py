@@ -5,13 +5,11 @@ from home.models import informationSite
 from category.models import Category,Languages
 from hesab.forms import UserForms,ContactForms
 from .models import User,Tickets
-
 @login_required
 def dashboard(request):
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
     category = Category.objects.all()
-     
     if request.method == "POST":
         form = UserForms(request.POST)
         if form.is_valid():
@@ -22,10 +20,11 @@ def dashboard(request):
 
     return render(request,"account/dash.html",
                   {
-                        "form":form,
-                        "category":category,
-                        "siteData":siteData,
-                        "lang":languagess,
+                    "balance":request.user.balance,
+                    "form":form,
+                    "category":category,
+                    "siteData":siteData,
+                    "lang":languagess,
                       })
     
 def login(request):
