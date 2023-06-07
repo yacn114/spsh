@@ -9,4 +9,4 @@ class UserForms(forms.Form):
     githublink = forms.CharField()
 
 class ContactForms(forms.Form):
-    text = forms.CharField(widget=forms.Textarea(attrs={"rows":"6","cols":"90",'placeholder': 'خب بگو ببینم ...'}))
+    text = forms.CharField(widget=forms.Textarea(attrs={"rows":"6","cols":"60",'placeholder': 'خب بگو ببینم ...'}))

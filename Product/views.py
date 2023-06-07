@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from Product.forms import CommentForms
+from django.core.paginator import Paginator
 from Product.models import Product,Comment
 from category.models import Category,Languages
 from home.models import informationSite
@@ -46,7 +47,7 @@ def detail2(request,id):
             ex.user = request.user
             ex.product = Product.objects.get(id=id)
             ex.save()
-            return redirect(f"/{id}")
+            return redirect(f"/{id}/")
     else:
         form = CommentForms()
 
@@ -65,8 +66,7 @@ def detail2(request,id):
 
     }
     return render(request,"detail/course-detail.html",context)
-def allhot(request):
-    return HttpResponse("hot tutorials")
+
 def packages(request):
     return HttpResponse("packages")
 
@@ -95,3 +95,22 @@ def dislike(request,id):
     
     
     return redirect(f'/{comid.product.slug}')
+
+def all(request):
+    languagess = Languages.objects.all()
+    category = Category.objects.all()
+    siteData = informationSite.objects.first()
+    categoryname = Product.objects.all().filter(published=True)
+    paginator = Paginator(categoryname, 12)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context ={
+        "category":category,
+        "page":paginator,
+        "category":category,
+        "siteData":siteData,
+        "lang":languagess,
+        "categoryname":page_obj,
+
+    }
+    return render(request,"detail/all.html",context)

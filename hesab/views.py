@@ -6,9 +6,6 @@ from category.models import Category,Languages
 from hesab.forms import UserForms,ContactForms
 from .models import User,Tickets
 
-def signup(request):
-    pass
-
 @login_required
 def dashboard(request):
     siteData = informationSite.objects.first()

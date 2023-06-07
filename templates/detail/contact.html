@@ -20,7 +20,7 @@
         </style>
     </head>
 	
-    <body class="blog-page" dir="rtl">
+    <body class="blog-page" dir="rtl" style="background:#f7f8f9;">
 
         <!-- ============================================================== -->
         <!-- Main wrapper - style you can find in pages.scss -->
@@ -40,7 +40,7 @@
 			<!-- ============================================================== -->
 			
 			<!-- ============================ Page Title Start================================== -->
-			<section class="page-title gray">
+			<section class="page-title gray" style="background:white;">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12 col-md-12">
@@ -75,7 +75,7 @@
 									{% csrf_token %}
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
 								
-								<select class="form-select" name="subject" multiple aria-label="multiple select example">
+								<select class="form-select" name="subject" multiple aria-label="multiple select example" required>
 									<option value="license">درخواست لایسنس جدید</option>
 									<option value="course">درباره دوره ها</option>
 									<option value="bug">گزارش باگ</option>

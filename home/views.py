@@ -14,19 +14,26 @@ def home(request):
     category = Category.objects.filter(status=True)
     userCount = User.objects.count()
     if request.POST:
+        siteinformation = informationSite.objects.first()
+        language = Languages.objects.filter(status=True)
+        category = Category.objects.filter(status=True)
         search_words = request.POST['search']
         searchResualt = Product.objects.filter(name__contains=search_words)
         context = {
+            "text":search_words,
             "res":searchResualt,
+            "siteData":siteinformation,
+            "lang":language,
+            "category":category,
         }
         return render(request,"main/searchHome.html",context)
     return render(request,"main/index.html",{
-        "siteData":siteinformation,
         "product":product,
+        "siteData":siteinformation,
         "lang":language,
+        "category":category,
         "userc":userCount,
         "prodc":prodc,
-        "category":category,
         })
 def about(request):
     return ""

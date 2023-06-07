@@ -139,8 +139,8 @@
 															<td><a href="{% url 'product:detail2' value.id %}"><h6>{{value.name}}</h6></a></td>
 																<td><span class="trip theme-bg-light" style="font-size:20px">فعال</span></td>
 	
-																<td><a href="#"><button class="btn btn-success">تیکت بزن</button></a></td>
-																<td><a href="#"><button class="btn btn-warning">درخواست</button></a></td>
+																<td><a href="{% url 'account:ticket' %}"><button class="btn btn-success">تیکت بزن</button></a></td>
+																<td><a href="{% url 'account:ticket' %}"><button class="btn btn-warning">درخواست</button></a></td>
 															</tr>
 															{% endfor %}
 														</tbody>
