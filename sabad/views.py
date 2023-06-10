@@ -49,8 +49,9 @@ def cart_detail(request):
     language = Languages.objects.all()
     category = Category.objects.all()
 
-    return render(request,"buy/manage-course.html",{
+    return render(request,"buy/sabad.html",{
     "category":category,
+    "balance":request.user.balance,
     "lang":language,
     "siteData":siteData,
 

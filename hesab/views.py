@@ -43,6 +43,7 @@ def courses(request):
         
     context = {
         "category":category,
+        "balance":request.user.balance,
         "siteData":siteData,
         "lang":languagess,
         }
@@ -86,6 +87,7 @@ def response(request):
         "siteData":siteData,
         "lang":languagess,
         "ti":ti,
+        "balance":request.user.balance,
         }
     return render(request,"detail/responses.html",context)
 @login_required
