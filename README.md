@@ -8,4 +8,5 @@
     <li>PAGES  : about us , blog</li>
     <li> pardakht... </li> 
     <li> help cources</li>
+    <li>https://stackoverflow.com/questions/39009638/how-to-edit-django-allauth-default-templates</li>
 </ul>
