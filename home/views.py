@@ -13,6 +13,7 @@ def home(request):
     language = Languages.objects.filter(status=True)
     category = Category.objects.filter(status=True)
     userCount = User.objects.count()
+    products = Product.objects.all()[:6]
     if request.POST:
         siteinformation = informationSite.objects.first()
         language = Languages.objects.filter(status=True)
@@ -34,6 +35,7 @@ def home(request):
         "category":category,
         "userc":userCount,
         "prodc":prodc,
+        "products":products,
         })
 def about(request):
     return ""
