@@ -18,3 +18,13 @@ def walletCenter(request):
         "form":WalletMoves,
     }
     return render(request,"buy/Wallet.html",context)
+def afzayesh(request):
+    siteData = informationSite.objects.first()
+    languagess = Languages.objects.all()
+    category = Category.objects.all()
+    context = {
+        "category":category,
+        "siteData":siteData,
+        "lang":languagess,
+    }
+    return render(request,"buy/pay.html",context)
