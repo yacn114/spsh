@@ -1,5 +1,5 @@
 # spsh
-<h1>my target is: 10jun Saturday</h1>
+<h1>Hi manjaro :D</h1>
 <h4>This project is under development !</h4>
 <h2>my todo</h2>
 <ul>
