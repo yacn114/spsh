@@ -56,7 +56,6 @@
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Username is required">
-						{% comment %} <input class="input100 myfont" type="text" name="username" required> {% endcomment %}
 						{{form.username|add_class:"input100"}}
 						<span class="focus-input100"></span>
 					</div>
@@ -71,7 +70,6 @@
 						</a>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						{% comment %} <input class="input100 myfont" type="password" name="pass" required> {% endcomment %}
 						{{form.password|add_class:"input100"}}
 						<span class="focus-input100"></span>
 					</div>
@@ -94,7 +92,7 @@
 						</span>
 
 						<a href="{% url 'account_signup' %}" class="txt2 bo1 myfont">
-							بکیرم
+							sign-up
 						</a>
 					</div>
 				</form>
