@@ -69,7 +69,9 @@
 										
 										</li>
 										<li>
-											<a href="{% url 'account_email' %}"><i class="fas fa-envelope"></i>تغییر ایمیل</a>
+											<!-- <a href="{% url 'account_email' %}"> -->
+												<a href="#">
+												<i class="fas fa-envelope"></i>تغییر ایمیل</a>
 											
 										</li>
 										<li>
@@ -80,7 +82,10 @@
 											<a href="{% url 'sabad:cart_detail' %}"><i class="fas fa-shopping-basket "></i>سبد خرید</span></a>
 											
 										</li>
-						
+										<li>
+											<a href="{% url 'account:logout' %}" style="color:red"><i class="fas fa-sign-out-alt ml-1 rotate-img"></i>خروج</span></a>
+											
+										</li>
 									</ul>
 								</div>
 								

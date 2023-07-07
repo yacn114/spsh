@@ -4,6 +4,7 @@
 <h2>my todo</h2>
 <ul>
     <li>logout</li>
+    <i>email & login style</i>
     <li>wallet section( page form manage balance ), status page , comment Response</li>
     <li>login style , signin with google , ( django-userena / django-allauth )</li>
     <li>PAGES  : about us , blog</li>
