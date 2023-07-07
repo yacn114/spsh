@@ -5,7 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 LOGIN_REDIRECT_URL = "account:home"
 LOGIN_URL = "account:login"
-
+LOGOUT_REDIRECT_URL = "home:home"
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -15,11 +15,9 @@ SECRET_KEY = 'django-insecure-p3+5jjn^!3(kvpcvo%1hw718a5(td2)68kfuw=_z7m71)z23vk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '8.8.8.8',
-    '127.0.0.1',
-    '4.2.2.4',
-]
+
+
+ALLOWED_HOSTS = []
 AUTHENTICATION_BACKENDS = [
     
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -62,6 +60,7 @@ INSTALLED_APPS = [
     'django_filters',
     'cart',
     'wallet',
+    "debug_toolbar",
 ]
 
 SITE_ID = 1
@@ -88,6 +87,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'spsh.urls'
@@ -162,7 +162,11 @@ STATIC_ROOT = 'assets/'
 STATICFILES_DIRS = [
     BASE_DIR / "static/",
 ]
-
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

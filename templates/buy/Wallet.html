@@ -115,10 +115,8 @@
 							
 													<div class="form-group smalls">
 														<a href="{% url 'Wallet:pay' %}"><button class="btn theme-bg text-white">افزایش موجودی</button></a>
-                                                       <button class="btn btn-danger text-white">برداشت موجودی</button>
-                                                        <br>
-                                                        <br>
-                                                        <button class="btn btn-info text-white">تاریخچه موجودی</button>
+                                                      <a href="{% url 'account:status' %}"> <button class="btn btn-info text-white">تاریخچه موجودی</button></a>
+                                                        
 													</div>
 							
 											</div>
@@ -161,7 +159,20 @@
 									</div>
 								</div>
 								
-							
+								<div class="col-xl-12 col-lg-6 col-md-12">
+									<div class="dashboard_wrap">
+										<div class="alert alert-danger" role="alert">
+											<b>نکته !</b>
+											<p>
+												<ul>
+													<li>حداقل پرداخت 100 هزار تومان میباشد</li>
+													<li>برداشت موجود امکان پذیر نمیباشد پس در هنگام واریز دقت فرمایید</li>
+													<li>شما از طریق انتقال موجود میتوانید به دوستان خود موجودی انتقال دهید</li>
+												</ul>
+											</p>
+										  </div>
+									</div>
+								</div>
 								
 							</div>
 							
