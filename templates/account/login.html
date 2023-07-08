@@ -1,9 +1,40 @@
-{% extends "account/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load price_management %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ثبت نام</title>
+  <link href="{% static 'assets/css/styles.css' %}" rel="stylesheet">
+
+</head>
+
+<body dir="rtl">
+
+  <!-- ============================================================== -->
+  <!-- Main wrapper - style you can find in pages.scss -->
+  <!-- ============================================================== -->
+  <div id="main-wrapper">
+
+      <!-- ============================================================== -->
+      <!-- Top header  -->
+      <!-- ============================================================== -->
+      <!-- Start Navigation -->
+{% include 'main/navigation.html' %}
+<!-- End Navigation -->
+<div class="clearfix"></div>
+  
+<center>
 
 {% load i18n %}
 {% load account socialaccount %}
 
-{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% comment %} {% block head_title %}{% trans "Sign In" %}{% endblock %} {% endcomment %}
+<br>
+<br>
+<br>
 
 {% block content %}
 
@@ -44,3 +75,35 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 </form>
 
 {% endblock %}
+{% include "main/footer.html" %}
+
+			<!-- End Modal -->
+			
+			<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
+			
+
+		</div>
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== -->
+		<script src="{% static "assets/js/jquery.min.js" %}"></script>
+		<script src="{% static "assets/js/popper.min.js" %}"></script>
+		<script src="{% static "assets/js/bootstrap.min.js" %}"></script>
+		<script src="{% static "assets/js/select2.min.js" %}"></script>
+		<script src="{% static "assets/js/slick.js" %}"></script>
+		<script src="{% static "assets/js/moment.min.js" %}"></script>
+		<script src="{% static "assets/js/daterangepicker.js" %}"></script> 
+		<script src="{% static "assets/js/summernote.min.js" %}"></script>
+		<script src="{% static "assets/js/metisMenu.min.js" %}"></script>	
+		<script src="{% static "assets/js/custom.js" %}"></script>
+		<!-- ============================================================== -->
+		<!-- This page plugins -->
+		<!-- ============================================================== -->		
+
+	</body>
+
+</html>
