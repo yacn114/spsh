@@ -1,4 +1,6 @@
-# spsh
+[![spsh banner](./.github/images/logo/opozex-logo1.png)](https://opozex.com)
+# 👋 Welcome to spsh
+
 <h4>This project is under development !</h4>
 <h1>Hi ubuntu 18.04 :D</h1>
 <h2>my todo</h2>
