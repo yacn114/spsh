@@ -1,4 +1,4 @@
-[![spsh banner](./images/logo/opozex-logo1.png)](https://opozex.com)
+[![spsh banner](./images/logo/logo-no-background.png)](https://opozex.com)
 # 👋 Welcome to spsh
 
 <h4>This project is under development !</h4>
