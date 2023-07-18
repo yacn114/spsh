@@ -27,11 +27,6 @@ def dashboard(request):
                     "lang":languagess,
                       })
     
-def login(request):
-    siteinformation = informationSite.objects.first()
-
-    return render(request,'test.html',{"siteData":siteinformation})
-
 
 
 
