@@ -15,21 +15,24 @@
 		
     </head>
     
-    <body dir="rtl">
+    <body dir="rtl" style="background-color: rgba(3, 178, 123,0.1)">
 
         <!-- ============================================================== -->
         <!-- Main wrapper - style you can find in pages.scss -->
         <!-- ============================================================== -->
-        <div id="main-wrapper">
+        <div id="main-wrapper" style="background-color: rgba(3, 178, 123,0.1)">
 		
             <!-- ============================================================== -->
             <!-- Top header  -->
             <!-- ============================================================== -->
             <!-- Start Navigation -->
 		{% include "main/navigation.html" %}
-<div class="col-lg-12 col-md-12 col-sm-12">
-    <div class="card">
-        <div class="card-header"  style="margin: auto;">
+<div class="col-lg-12 col-md-12 col-sm-12" >
+    <br>
+    <br>
+    <br>
+    <div class="card" style="background-color: rgba(3, 178, 123,0.1)">
+        <div class="card-header"  style="margin: auto; border-radius: 10px;">
             <h6>تیکت شماره {{value.id}}</h6>
         </div>
         <div class="ground-list ground-hover-list"  style="margin: auto;">
@@ -37,7 +40,7 @@
                 <div class="rounded-circle p-3 p-sm-4 d-flex align-items-center justify-content-center bg-light-success">
                     <div class="position-absolute text-success h5 mb-0"><i class="fas fa-user"></i></div>
                 </div>
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 18rem;  border-radius: 22px">
                     <div class="card-body">
                       <h5 class="card-title">شما </h5>
                       <h6 class="card-subtitle mb-2 text-muted">{{value.subject}}</h6>
@@ -53,7 +56,7 @@
                 <div class="rounded-circle p-3 p-sm-4 d-flex align-items-center justify-content-center bg-light-info">
                     <div class="position-absolute text-info h2 mb-0"><i class="fas fa-user"></i></div>
                 </div>
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 18rem;border-radius: 22px">
                     <div class="card-body">
                       <h5 class="card-title">{{value.admin.first_name}} (ادمین) </h5>
                       <h6 class="card-subtitle mb-2 text-muted">پاسخ</h6>

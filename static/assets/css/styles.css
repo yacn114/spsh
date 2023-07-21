@@ -139,7 +139,7 @@ p {
 }	
 
 .gray {
-  background: #03b97c ;
+  background-color: rgba(3, 178, 123,0.1) ;
 }
 
 .tbl {

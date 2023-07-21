@@ -34,7 +34,7 @@
 			<!-- ============================================================== -->
 			
 			<!-- ============================ Page Title Start================================== -->
-			<div class="ed_detail_head bg-cover" style="background:#f4f4f4 url(/{{string.image}});" data-overlay="8">
+			<div class="ed_detail_head bg-cover" style="background:#f4f4f4 url(/{{string.image}}); " data-overlay="8">
 				<div class="container">
 					<div class="row align-items-center">
 						
@@ -76,7 +76,7 @@
 			<!-- ============================ Page Title End ================================== -->
 			
 			<!-- ============================ Course Detail ================================== -->
-			<section class="gray pt-3">
+			<section class="gray pt-3" style="background-color: rgba(3, 178, 123,0.1)">
 				<div class="container">
 					<div class="row justify-content-between">
 					
@@ -224,7 +224,8 @@
 			<!-- ============================ Course Detail ================================== -->
 			
 			<!-- ============================ Related Cources ================================== -->
-			<section>
+			<hr>
+			<section style="background-color: rgba(3, 178, 123,0.1)">
 				<div class="container">
 					
 					<div class="row">
@@ -239,11 +240,11 @@
 							
 								<!-- Single Item -->
 								{% for recommand in rec %}
-								<div class="lios_item">	
+								<div class="lios_item col-lg-10">	
 									<div class="crs_grid shadow_none brd">
 										<div class="crs_grid_thumb">
 											<a href="{% url 'product:detail' recommand.slug %}" class="crs_detail_link">
-												<img src="/{{recommand.image}}" class="img-fluid rounded" alt="" />
+												<img style="height: 250px;" src="/{{recommand.image}}" class="img-fluid rounded" alt="" />
 											</a>
 											<div class="crs_video_ico">
 												<i class="fa fa-play"></i>
@@ -263,10 +264,10 @@
 													<div class="crs_price"><h2><span class="theme-cl">{{recommand.price}}</span><span class="currency">تومان</span></h2></div>
 												</div>
 											</div>
-											<div class="crs_title"><h4><a href="{% url 'product:detail' recommand.slug %}" class="crs_title_link">{{recommand.small_description}}</a></h4></div>
+											<div class="crs_title"><h4><a href="{% url 'product:detail' recommand.slug %}" class="crs_title_link">{{recommand.small_description|truncatechars:150}}</a></h4></div>
 											<div class="crs_info_detail">
 												<ul>
-													{% comment %} <li><i class="fa fa-clock text-danger"></i><span>{{}}</span></li> {% endcomment %}
+													
 													<li><i class="fa fa-video text-success"></i><span>{{recommand.tutorial_count}} ویدیو</span></li>
 												</ul>
 											</div>
@@ -278,11 +279,7 @@
 										</div>
 										<div class="crs_grid_foot">
 											<div class="crs_flex">
-												{% comment %} <div class="crs_fl_first">
-													<div class="crs_tutor">
-														<div class="crs_tutor_thumb"><a href="instructor-detail.html"><img src="{% static "assets/img/user-6.jpg" %}" class="img-fluid circle" alt="" /></a></div>
-													</div>
-												</div> {% endcomment %}
+											
 												<div class="crs_fl_last">
 													<div class="foot_list_info">
 														<ul>
