@@ -40,7 +40,7 @@
 					<div class="row">
 
 						<div class="col-lg-3 col-md-3">
-							<div class="dashboard-navbar">
+							<div class="dashboard-navbar" style="border-radius: 20px;">
 								
 								<div class="d-user-avater">
 									<img src="/{{request.user.profile}}" class="img-fluid avater" alt="">
@@ -81,6 +81,11 @@
 											<a href="{% url 'sabad:cart_detail' %}"><i class="fas fa-shopping-basket "></i>سبد خرید</span></a>
 											
 										</li>
+										
+										<li>
+											<a href="{% url 'account_change_password' %}"><i class="fas fa-key ml-1 rotate-img"></i>تغییر رمز عبور</span></a>
+											
+										</li>
 										<li>
 											<a href="{% url 'account:logout' %}" style="color:red"><i class="fas fa-sign-out-alt ml-1 rotate-img"></i>خروج</span></a>
 											
@@ -113,68 +118,10 @@
 							
 							<div class="row">
 								<div class="col-xl-7 col-lg-6 col-md-12">
-									<div class="dashboard_wrap">
-										
-										<div class="row">
-											<div class="col-xl-12 col-lg-12 col-md-12 mb-4">
-												<h6 class="m-0">اطلاعات فردی</h6>
-											</div>
-										</div>
-										
-										<div class="row justify-content-center">
-											<div class="col-xl-12 col-lg-12 col-md-12">
-												<form method="post">
-													{% csrf_token %}
-													<div class="form-group smalls">
-														<label>نام*</label>
-														{% render_field form.first_name class="form-control" placeholder=request.user.first_name  %}
-
-													</div>
-													 
-														<div class="form-group smalls">
-														<label>نام خانوادگی*</label>
-														{% render_field form.last_name class="form-control" placeholder=request.user.last_name  %}
-														
-													</div>
-													<div class="form-group smalls">
-														<label>ایمیل*</label>
-														{% render_field form.email class="form-control" placeholder=request.user.email  %}
-													</div>
-													<div class="form-group smalls">
-														<label>شماره تماس*</label>
-														{% render_field form.phone class="form-control" placeholder=request.user.phone  %}
-													</div>
-
-										
-													<div class="form-group smalls">
-														<label>لینک Github</label>
-														{% render_field form.githublink class="form-control" placeholder=request.user.githublink  %}
-													</div>
-
-													<div class="form-group smalls">
-														<button class="btn theme-bg text-white" type="submit">ذخیره</button>
-													</div>
-												</form>
-											</div>
-										</div>
-										
-									</div>
+									
 								</div>
 								
-								<div class="col-xl-5 col-lg-6 col-md-12">
-									<div class="dashboard_wrap">
-										
-										<div class="row justify-content-center">
-											<div class="col-xl-12 col-lg-12 col-md-12">
-					
-												
-													<div class="form-group smalls">
-														<a href="{% url 'account_change_password' %}"><button class="btn theme-bg text-white">تغییر رمز عبور</button></a>
-													</div>
-											</div>
-										</div>
-									</div>
-								</div>
+							
 							</div>
 							<div class="row justify-content-between">
 								<div class="col-lg-12 col-md-12 col-sm-12 pb-4">

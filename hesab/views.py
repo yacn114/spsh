@@ -3,33 +3,21 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from home.models import informationSite
 from category.models import Category,Languages
-from hesab.forms import UserForms,ContactForms
-from .models import User,Tickets
+from hesab.forms import ContactForms,completeForm
+from .models import Tickets
 @login_required
 def dashboard(request):
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
     category = Category.objects.all()
-    if request.method == "POST":
-        form = UserForms(request.POST)
-        if form.is_valid():
-            user = User.objects.filter(username=request.user.username).update(last_name=form.cleaned_data['last_name'],email=form.cleaned_data['email'],phone=form.cleaned_data['phone'],githublink=form.cleaned_data['githublink'],first_name=form.cleaned_data['first_name'])
-
-    else:
-        form = UserForms()
 
     return render(request,"account/dash.html",
                   {
                     "balance":request.user.balance,
-                    "form":form,
                     "category":category,
                     "siteData":siteData,
                     "lang":languagess,
                       })
-    
-
-
-
 @login_required
 def courses(request):
     siteData = informationSite.objects.first()
@@ -43,9 +31,6 @@ def courses(request):
         "lang":languagess,
         }
     return render(request,'buy/manage.html',context)
-def contact(request):
-
-    return HttpResponse('contact')
 @login_required
 def ticket(request):
     siteData = informationSite.objects.first()
@@ -70,7 +55,6 @@ def ticket(request):
         ContactForms()
 
     return render(request,'detail/contact.html',context)
-
 @login_required
 def response(request):
     siteData = informationSite.objects.first()
@@ -102,4 +86,11 @@ def ticker(request,id):
     return render(request,"detail/detail-ticket.html",context)
 @login_required
 def  statusUser(request):
+
     return render(request,"buy/status-User.html")
+@login_required
+def complete(request):
+    if request.POST:
+        return render(request,"complete.html",{"Form":completeForm()})
+    else:
+        return render(request, '404.html', status=404)
