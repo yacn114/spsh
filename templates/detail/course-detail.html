@@ -34,21 +34,21 @@
 			<!-- ============================================================== -->
 			
 			<!-- ============================ Page Title Start================================== -->
-			<div class="ed_detail_head bg-cover" style="background:#f4f4f4 url(/{{string.image}}); " data-overlay="8">
+			<div class="ed_detail_head bg-cover" style="background:#f4f4f4 url(/{{string.image}}); " data-overlay="9">
 				<div class="container">
 					<div class="row align-items-center">
 						
 						<div class="col-lg-7 col-md-7">
 							<div class="ed_detail_wrap light">
 								{% for list in string.language.all %}
-								<div class="crs_cates cl_{{forloop.counter}}"><span>{{list}}</span></div>
+								<div class="crs_cates cl_3"><span>{{list}}</span></div>
 								{% endfor %}
 								<div class="ed_header_caption">
 									<h2 class="ed_title">{{string.name}}</h2>
 									<ul>
 										<li><i class="ti-calendar"></i>{{string.tutorial_level}}</li>
 										<li><i class="ti-control-forward"></i>{{string.tutorial_count}} ویدیو</li>
-										<li><i class="ti-user"></i>{{string.student_count}} شرکت کننده</li>
+										<li><i class="ti-user"></i>{{string.view}} بازدید</li>
 									</ul>
 								</div>
 								<div class="ed_header_short">
@@ -204,7 +204,7 @@
 								<div class="ed_view_features half_list pl-4 pr-3">
 									<span>ویژگی دوره</span>
 									<ul>
-										<li><i class="ti-user"></i>{{string.student_count}} شرکت کننده</li>
+										<li><i class="ti-user"></i>{{string.view}} بازدید</li>
 										<li><i class="ti-time"></i>{{string.tutorial_count}} ویدیو</li>
 										<li><i class="ti-bar-chart-alt"></i>سطح {{string.tutorial_level}}</li>
 										<li><i class="ti-cup"></i>{{string.tpye_lang}}</li>
@@ -225,7 +225,7 @@
 			
 			<!-- ============================ Related Cources ================================== -->
 			<hr>
-			<section style="background-color: rgba(3, 178, 123,0.1)">
+			<!-- <section style="background-color: rgba(3, 178, 123,0.1)">
 				<div class="container">
 					
 					<div class="row">
@@ -295,7 +295,7 @@
 					</div>
 					
 				</div>
-			</section>
+			</section> -->
 			<!-- ============================ Course Detail ================================== -->
 			
 			<!-- ============================ Call To Action ================================== -->

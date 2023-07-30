@@ -82,6 +82,10 @@
 											
 										</li>
 										<li>
+											<a href="{% url 'account_change_password' %}"><i class="fas fa-key ml-1 rotate-img"></i>تغییر رمز عبور</span></a>
+											
+										</li>
+										<li>
 											<a href="{% url 'account:logout' %}" style="color:red"><i class="fas fa-sign-out-alt ml-1 rotate-img"></i>خروج</span></a>
 											
 										</li>
@@ -127,6 +131,7 @@
 														<thead>
 															<tr>
 																<th scope="col">#</th>
+																<th scope="col">...</th>
 																<th scope="col">عنوان</th>
 
 																<th scope="col">قیمت</th>
@@ -140,14 +145,17 @@
 
 
 															<th scope="row">{{forloop.counter}}</th>
-															<td><a href="{% url 'product:detail2' value.product_id %}"><h6>{{value.name}}</h6></a></td>
+															<td>
+																<img src="{{value.image}}" style="width: 80px;" alt="{{value.name}}" srcset="">
+															</td>
+															<td><a href="{% url 'product:detail2' value.product_id %}">{{value.name}}</a></td>
 																
 																
 																	
 																	
 																<td><span class="trip theme-bg-light" style="font-size:20px">{% if value.price == "0" %} رایگان{% else %}{% takhfi value.price value.product_id %}  هزارتومن{% endif %}</span></td>
 	
-																<td><a href="{% url 'sabad:item_decrement' value.product_id %}">delete</a></td>
+																<td><a href="{% url 'sabad:item_decrement' value.product_id %}"><i class="fas fa-trash"></i></a></td>
 															</tr>
 															{% endfor %}
 														</tbody>

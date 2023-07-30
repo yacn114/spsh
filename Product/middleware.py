@@ -1,0 +1,24 @@
+from Product.models import IpAddress
+class saveIpAddressMiddleware:
+    def __init__(self,get_response):
+        self.get_response = get_response
+    
+    def __call__(self,request):
+        
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+
+        try:
+            ip_address = IpAddress.objects.get(ips=ip)
+        except IpAddress.DoesNotExist:
+            ip_address = IpAddress(ips=ip)
+            ip_address.save()
+        request.user.ip_address = ip_address
+
+        response = self.get_response(request)
+
+
+        return response

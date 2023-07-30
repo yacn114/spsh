@@ -7,7 +7,11 @@ from home.models import informationSite
 from django.http import HttpResponse
 def detail(request,string):
     Prod = get_object_or_404(Product,slug=string)
-    rec = Product.objects.filter(language=Prod.language.first())
+    ip_address = request.user.ip_address
+    if ip_address not in Prod.viewc.all():
+        Prod.viewc.add(ip_address)
+    # rec = Product.objects.filter()
+    rec = None
     languagess = Languages.objects.all()
     category = Category.objects.all()
     siteData = informationSite.objects.first()
