@@ -20,11 +20,13 @@ def detail(request,string):
     if request.method == "POST":
         form = CommentForms(request.POST)
         if form.is_valid():
-            ex = Comment()
-            ex.text = form.cleaned_data.get('text')
-            ex.user = request.user
-            ex.product = Product.objects.get(slug=string)
-            ex.save()
+            if Comment.objects.filter(user=request.user).count() < 2:
+                ex = Comment()
+                ex.text = form.cleaned_data.get('text')
+                ex.user = request.user
+                ex.product = Product.objects.get(slug=string)
+                ex.save()
+            
             return redirect(f"/{string}")
     else:
         form = CommentForms()
@@ -46,11 +48,12 @@ def detail2(request,id):
     if request.method == "POST":
         form = CommentForms(request.POST)
         if form.is_valid():
-            ex = Comment()
-            ex.text = form.cleaned_data.get('text')
-            ex.user = request.user
-            ex.product = Product.objects.get(id=id)
-            ex.save()
+            if Comment.objects.filter(user=request.user).count() < 2:
+                ex = Comment()
+                ex.text = form.cleaned_data.get('text')
+                ex.user = request.user
+                ex.product = Product.objects.get(id=id)
+                ex.save()
             return redirect(f"/{id}/")
     else:
         form = CommentForms()
