@@ -1,8 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Confirm</title>
+</head>
+<body style="background: rgba(3, 178, 123,0.1);direction: rtl;">
 {% extends "account/base.html" %}
 
 {% load i18n %}
-
-{% block head_title %}{% trans "E-mail Addresses" %}{% endblock %}
 
 {% block content %}
     <h1>{% trans "E-mail Addresses" %}</h1>
@@ -72,3 +78,6 @@
 })();
 </script>
 {% endblock %}
+
+</body>
+</html>

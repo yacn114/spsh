@@ -13,7 +13,7 @@
 
     {% if messages %}
     <div>
-      <strong>{% trans "Messages:" %}</strong>
+      <strong>{% trans "پیغام ها:" %}</strong>
       <ul>
         {% for message in messages %}
         <li>{{message}}</li>
@@ -22,7 +22,7 @@
     </div>
     {% endif %}
 
-    <div>
+    {% comment %} <div>
       <strong>{% trans "Menu:" %}</strong>
       <ul>
         {% if user.is_authenticated %}
@@ -33,7 +33,8 @@
         <li><a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a></li>
         {% endif %}
       </ul>
-    </div>
+    </div> {% endcomment %}
+    <a href="{% url 'account:home' %}">داشبورد</a>
     {% block content %}
     {% endblock %}
     {% endblock %}

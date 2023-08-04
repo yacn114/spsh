@@ -64,18 +64,14 @@
 						<div class="crs_title"><h4><a href="{% url "product:detail" pe.slug %}" class="crs_title_link">{{pe.name}}</a></h4></div>
 						<div class="crs_info_detail">
 							<ul>
-								<li><i class="fa fa-clock text-danger"></i><span>{{pe.tutorial_level}}</span></li>
-								<li><i class="fa fa-video text-success"></i><span>{{pe.tutorial_count}} دوره</span></li>
+								<li><i class="fa fa-level-up-alt"></i><span>{{pe.tutorial_level}}</span></li>
+								
 							</ul>
 						</div>
 					</div>
 					<div class="crs_grid_foot">
 						<div class="crs_flex">
-							<div class="crs_fl_first">
-								<div class="crs_tutor">
-									<div class="crs_tutor_thumb"><a href="{% url "product:detail" pe.slug %}"><img src="{{request.user.profile}}" class="img-fluid circle" alt="" /></a></div>
-								</div>
-							</div>
+						
 							<div class="crs_fl_last">
 								<div class="foot_list_info">
 									<ul class="light">

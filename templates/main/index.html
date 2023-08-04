@@ -5,7 +5,7 @@
 
 <!-- ============================ Hero Banner  Start================================== -->
 
-<div class="hero_banner image-cover" style="background: url({% static 'assets/img/3.png' %}) no-repeat;" data-overlay="5">
+<div class="hero_banner image-cover" style="background:rgba(3, 178, 123,0.05);height:600px" data-overlay="1">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-9 col-md-10 col-sm-12">
@@ -33,7 +33,88 @@
 <!-- ================================ Tag Award ================================ -->
 
 <!-- ============================ Featured Categories Start ================================== -->
-<section class="min">
+
+<div class="clearfix"></div>
+<!-- ============================ Featured Categories End ================================== -->
+
+<!-- ============================ Latest Cources Start ================================== -->
+<hr>
+<section class="gray" style="background-color:rgba(3, 178, 123,0.05);">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-7 col-md-8">
+				<div class="sec-heading center">
+					<h3 class="font-2">دوره های آموزشی <span style="color:rgb(193, 0, 0)"><i class="fas fa-fire"></i> HOT </span></h3>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="row justify-content-center">
+		
+			<!-- Single Grid -->
+			{% for peo in products %}
+			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+				<div class="crs_grid">
+					<div class="crs_grid_thumb">
+						<a href="{% url "product:detail" peo.slug %}" class="crs_detail_link">
+							<img style="height:250px;" src="{{peo.image}}" class="img-fluid rounded" alt="{{peo.name}}" />
+						</a>
+						<div class="crs_video_ico">
+							<i class="fa fa-arrows-alt"></i>
+						</div>
+
+					</div>
+					<div class="crs_grid_caption">
+						<div class="crs_flex">
+							<div class="crs_fl_first">
+								{% for ca in peo.language.all %}
+
+								<div class="crs_cates"><span>{{ca}}</span></div>
+
+								{% endfor %}
+							</div>
+							<div class="crs_fl_last">
+								<div class="crs_price"><h2><span class="theme-cl">{% takhfif peo.price peo.pricepercent peo.id %}</span><span class="currency">تومان</span></h2></div>
+							</div>
+						</div>
+						<div class="crs_title"><h4><a href="{% url "product:detail" peo.slug %}" class="crs_title_link">{{peo.name}}</a></h4></div>
+						<div class="crs_info_detail">
+							<ul>
+								<li><i class="fas fa-level-up-alt"></i><span>{{peo.tutorial_level}}</span></li>
+								
+							</ul>
+						</div>
+					</div>
+					<div class="crs_grid_foot">
+						<div class="crs_flex">
+							<div class="crs_fl_last">
+								<div class="foot_list_info">
+									<ul class="light">
+										<li><div class="elsio_ic"><i class="fa fa-user text-danger"></i></div><div class="elsio_tx">{{peo.student_count}}</div></li>
+										<li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">{{peo.view}}</div></li>
+										<li><div class="elsio_ic"><i class="fa fa-star text-warning"></i></div><div class="elsio_tx">4.7</div></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>			
+			{% endfor %}
+			
+		</div>
+		
+		<div class="row justify-content-center">
+			<div class="col-lg-7 col-md-8 mt-2">
+				<div class="text-center"><a href="{% url "product:all" %}" class="btn btn-md theme-bg-light theme-cl">همه آموزش ها</a></div>
+			</div>
+		</div>
+		
+	</div>
+</section>
+<hr>
+<section class="min"  style="background-color:rgba(3, 178, 123,0.05);">
 	<div class="container">
 	
 		<div class="row justify-content-center">
@@ -65,94 +146,9 @@
 		
 	</div>
 </section>
-<div class="clearfix"></div>
-<!-- ============================ Featured Categories End ================================== -->
-
-<!-- ============================ Latest Cources Start ================================== -->
-<section class="gray" style="background-color:rgba(3, 178, 123,0.05);">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-7 col-md-8">
-				<div class="sec-heading center">
-					<h3 class="font-2">دوره های آموزشی <span style="color:rgb(193, 0, 0)"><i class="fas fa-fire"></i> HOT </span></h3>
-					
-				</div>
-			</div>
-		</div>
-		
-		<div class="row justify-content-center">
-		
-			<!-- Single Grid -->
-			{% for peo in products %}
-			<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-				<div class="crs_grid">
-					<div class="crs_grid_thumb">
-						<a href="{% url "product:detail" peo.slug %}" class="crs_detail_link">
-							<img style="height:250px;" src="{{peo.image}}" class="img-fluid rounded" alt="{{peo.name}}" />
-						</a>
-						<div class="crs_video_ico">
-							<i class="fa fa-play"></i>
-						</div>
-						<div class="crs_locked_ico">
-							<i class="fa fa-lock"></i>
-						</div>
-					</div>
-					<div class="crs_grid_caption">
-						<div class="crs_flex">
-							<div class="crs_fl_first">
-								{% for ca in peo.language.all %}
-
-								<div class="crs_cates"><span>{{ca}}</span></div>
-
-								{% endfor %}
-							</div>
-							<div class="crs_fl_last">
-								<div class="crs_price"><h2><span class="theme-cl">{% takhfif peo.price peo.pricepercent peo.id %}</span><span class="currency">تومان</span></h2></div>
-							</div>
-						</div>
-						<div class="crs_title"><h4><a href="{% url "product:detail" peo.slug %}" class="crs_title_link">{{peo.name}}</a></h4></div>
-						<div class="crs_info_detail">
-							<ul>
-								<li><i class="fa fa-clock text-danger"></i><span>{{peo.tutorial_level}}</span></li>
-								<li><i class="fa fa-video text-success"></i><span>{{peo.tutorial_count}} دوره</span></li>
-							</ul>
-						</div>
-					</div>
-					<div class="crs_grid_foot">
-						<div class="crs_flex">
-							<div class="crs_fl_first">
-								<div class="crs_tutor">
-									<div class="crs_tutor_thumb"><a href="{% url "product:detail" peo.slug %}"><img src="{{request.user.profile}}" class="img-fluid circle" alt="" /></a></div>
-								</div>
-							</div>
-							<div class="crs_fl_last">
-								<div class="foot_list_info">
-									<ul class="light">
-										<li><div class="elsio_ic"><i class="fa fa-user text-danger"></i></div><div class="elsio_tx">{{peo.student_count}}</div></li>
-										<li><div class="elsio_ic"><i class="fa fa-eye text-success"></i></div><div class="elsio_tx">{{peo.view}}</div></li>
-										<li><div class="elsio_ic"><i class="fa fa-star text-warning"></i></div><div class="elsio_tx">4.7</div></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>			
-			{% endfor %}
-			
-		</div>
-		
-		<div class="row justify-content-center">
-			<div class="col-lg-7 col-md-8 mt-2">
-				<div class="text-center"><a href="{% url "product:all" %}" class="btn btn-md theme-bg-light theme-cl">همه آموزش ها</a></div>
-			</div>
-		</div>
-		
-	</div>
-</section>
-
 <!-- ============================ articles ================================== -->
-<section>
+<hr>
+<section  style="background-color:rgba(3, 178, 123,0.05);">
 	<div class="container">
 	
 		<div class="row justify-content-center">
@@ -202,6 +198,7 @@
 		
 	</div>
 </section>
+<hr>
 <!-- ============================ end articles ================================== -->
 
 
