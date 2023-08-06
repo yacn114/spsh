@@ -7465,7 +7465,7 @@ img.img-footer.small {
     top: 2px;
 }
 .light-footer {
-    background:rgba(3, 178, 123,0.1);
+    background:whitesmoke;
 }
 .ft-copyright {
     border-top: 1px solid #eaeef3;
@@ -7497,8 +7497,8 @@ h4.widget_title {
 	color:#626a70;
 }
 .light-footer .footer-bottom {
-    background:rgba(3, 178, 123,0.05);
-    border:1px solid rgba(3, 178, 123,0.05);
+    background:whitesmoke;
+    border:1px solid whitesmoke;
 }
 footer.skin-dark-footer .extream, footer.skin-light-footer .extream {
   /*  letter-spacing: 1px;*/

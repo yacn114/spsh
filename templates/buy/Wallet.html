@@ -29,7 +29,7 @@
 			{% include "main/navigation.html" %}
 			<!-- End Navigation -->
 			<div class="clearfix"></div>
-			<section class="gray pt-4" style="background-color: rgba(3, 178, 123,0.1)">
+			<section class="gray pt-4" style="background-color: whitesmoke">
 				<div class="container-fluid">
 										
 					<div class="row">
@@ -41,6 +41,7 @@
 									<img src="/{{request.user.profile}}" class="img-fluid avater" alt="">
 									<h4>{{request.user.get_full_name}}</h4>
 									{% comment %} <span>برنامه نویس ارشد</span> {% endcomment %}
+									{{request.user.username}}
 									<div class="elso_syu89">
 										<ul>
 											<li><a href="https://www.twitter.com/opozex"><i class="ti-twitter"></i></a></li>
@@ -57,7 +58,7 @@
 								<div class="d-navigation">
 									<ul id="side-menu">
 										<li><a href="{% url 'home:dashboard' %}"><i class="fas fa-th"></i>داشبورد</a></li>
-										<li class="active"><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>کیف پول ({% if bal == 0 %}0 {% else %}{% format balance %}{% endif %})</a></li>
+										<li class="active"><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>کیف پول ({% if bal == 0 %}0 {% else %}{% format balancee %}{% endif %})</a></li>
 						
 										<li><a href="{% url 'account:ticket' %}"><i class="fas fa-comment"></i>تیکت</a></li>
 										<li>
@@ -135,7 +136,16 @@
 												<h6 class="m-0">انتقال موجودی</h6>
 											</div>
 										</div>
-										
+
+{% if messages %}
+  {% for message in messages %}
+  
+  <div class="alert alert-{% if message.tags == "error" %}danger{% else %}success{% endif %}" role="alert">
+  {{ message }}
+	</div>
+  {% endfor %}
+</ul>
+{% endif %}
 										<div class="row justify-content-center">
 											<div class="col-xl-12 col-lg-12 col-md-12">
 												<form method="post">
@@ -143,7 +153,7 @@
 													<div class="form-group smalls">
 														<label>مبلغ*</label>
 														{% render_field form.balance class="form-control" %}
-                                                        <h6 style="font-family: sans-serif;"> <span style="font-family: IRANSans;">قابل انتقال</span> : {% format request.user.balance %} </h6>
+                                                        <h6 style="font-family: sans-serif;"> <span style="font-family: IRANSans;">قابل انتقال</span> : {% format balancee %} </h6>
 													</div>
                                                     <div class="form-group smalls">
 														<label>نام کاربری*</label>
@@ -162,10 +172,8 @@
 										
 									</div>
 								</div>
-								
-								<div class="col-xl-12 col-lg-6 col-md-12">
-									<div class="dashboard_wrap">
-										<div class="alert alert-danger" role="alert">
+
+										<div class="alert alert-info" role="alert">
 											<b>نکته !</b>
 											<p>
 												<ul>
@@ -175,8 +183,7 @@
 												</ul>
 											</p>
 										  </div>
-									</div>
-								</div>
+
 								
 							</div>
 							
