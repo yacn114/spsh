@@ -34,7 +34,7 @@ INSTALLED_APPS = [
       # The following apps are required:
 
     'django.contrib.sites',
-
+    'rest_framework',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -64,7 +64,13 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
-
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
