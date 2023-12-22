@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
 
 # Create your views here.
-def pay(viewsets.ModelViewSet):
+def pay(ModelViewSet):
     
-    serializer_class = UserSerializer
-    queryset = User.objects.all()
+    pass
+    # serializer_class = UserSerializer
+    # queryset = User.objects.all()
