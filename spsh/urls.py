@@ -15,7 +15,7 @@ urlpatterns = [
     path('',include("wallet.urls")),
     path('api-auth/', include('rest_framework.urls')),
     path("__debug__/", include("debug_toolbar.urls")),
-        path('api-auth/', include('rest_framework.urls'))
+    
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # handler404 = "home.views.error404"

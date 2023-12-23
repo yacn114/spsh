@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from hesab.models import suer
+from buy.models import txtmodel
 class buySerializers(serializers.Serializer):
     class Meta:
-        model = None
+        model = txtmodel
+        fields = '__all__'
