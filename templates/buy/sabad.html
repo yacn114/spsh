@@ -163,7 +163,11 @@
 												</div>
 											</div>
 										</div>
-										<a href="{% url 'buy:pay' %}"><button style="float: left; color: #000;" type="button" class="btn btn-warning">تکمیل خرید</button></a>
+										<form action="{% url 'buy:product_bought' %}" method="post">
+										{% csrf_token %}
+											<input type="hidden" name="total" value="{% total request.session.cart.items %}">
+										<button style="float: left; color: #000;" type="submit" class="btn btn-warning">تکمیل خرید</button>
+										</form>
 										<div class="row">
 											<div style="margin: auto;"> <h3>قیمت کل  : {% total request.session.cart.items %}</h3></div>
 										</div>
