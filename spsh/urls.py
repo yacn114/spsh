@@ -11,7 +11,7 @@ urlpatterns = [
     path('',include("category.urls")),
     path('',include("buy.urls")),
     path('',include("Product.urls")),
-    path('',include("sabad.urls")),
+    
     path('',include("wallet.urls")),
     path('api-auth/', include('rest_framework.urls')),
     path("__debug__/", include("debug_toolbar.urls")),

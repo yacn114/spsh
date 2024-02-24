@@ -55,10 +55,8 @@ INSTALLED_APPS = [
     'category.apps.CategoryConfig',
     'buy.apps.BuyConfig',
     'home.apps.HomeConfig',
-    'sabad.apps.SabadConfig',
     'widget_tweaks',
     'django_filters',
-    'cart',
     'wallet',
     'debug_toolbar',
 ]

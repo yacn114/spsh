@@ -30,15 +30,18 @@ def pay(request):
     balance = User.objects.get(id=request.user.id)
     if balance.balance >= fullbal:
         balance.balance = balance.balance - fullbal
-        
-        status_pay = balance.save()
+        balance.save()
     else:
-        return redirect('Wallet:pay')
+        return redirect('Wallet:pay_afzayesh')
     
     return render(request,'buy/pay.html',{"a":fullbal})
-def show(request):
-    BASE_DIR = Path(__file__).resolve().parent.parent
-    a = txtmodel.objects.first()
-    aa = a.filetxt
-    f = open(str(BASE_DIR) +"/"+ str(aa), "r")
-    return Response(str(f.read()))
+@api_view(['GET'])
+def pay_route(request,id):
+    pass
+
+# def show(request):
+#     BASE_DIR = Path(__file__).resolve().parent.parent
+#     a = txtmodel.objects.first()
+#     aa = a.filetxt
+#     f = open(str(BASE_DIR) +"/"+ str(aa), "r")
+#     return Response(str(f.read()))

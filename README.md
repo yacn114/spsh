@@ -2,7 +2,7 @@
 
 <h2>me new todo:</h2>
 <ul>
-<li>sabad error <b>(delete sabad)</b></li>
+<li>sabad error <b>(delete sabad) very big bug : pay</b></li>
 <li>name panel dash</li>
 <li>db or text ? both ?????</li>
 <li>url product hashing</li>
