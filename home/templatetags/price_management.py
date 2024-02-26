@@ -4,7 +4,7 @@ register = template.Library()
 
 
 @register.simple_tag
-def takhfif(price, price_offer,id, *args, **kwargs):
+def takhfif(price, price_offer,id,call="", *args, **kwargs):
     if price_offer == "0":
         resualt = int(price)
     else:
@@ -14,6 +14,10 @@ def takhfif(price, price_offer,id, *args, **kwargs):
         resualt = product.hot_price
     else:
         # resualt = int(price)
+        pass
+    if call == "in":
+        return int(resualt)
+    else:
         pass
 
     return f"{resualt:,}"

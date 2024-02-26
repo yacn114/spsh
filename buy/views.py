@@ -1,8 +1,7 @@
 # from buy.serializers import buySerializers
 from buy.models import txtmodel
-# from rest_framework.generics import ListAPIView
-# from rest_framework.permissions import AllowAny
-from pathlib import Path
+from Product.models import Product
+from home.templatetags.price_management import takhfif
 from hesab.models import User
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
@@ -23,18 +22,19 @@ from rest_framework.response import Response
         
 #     serializer_class = buySerializers
 #     permission_classes = [AllowAny]
-@api_view(['POST'])
+@api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
-def pay(request):
-    fullbal = int(request.POST['total'].replace(',',''))
+def pay(request,id):
     balance = User.objects.get(id=request.user.id)
-    if balance.balance >= fullbal:
-        balance.balance = balance.balance - fullbal
+    prod = Product.objects.get(id=id)
+    if balance.balance >= takhfif(prod.price,prod.pricepercent,prod.id ,"in"):
+        balance.balance = balance.balance - takhfif(prod.price,prod.pricepercent,prod.id ,"in")
+        balance.prod.set({prod})
         balance.save()
     else:
         return redirect('Wallet:pay_afzayesh')
     
-    return render(request,'buy/pay.html',{"a":fullbal})
+    return render(request,'buy/pay.html',{"a":balance.balance})
 @api_view(['GET'])
 def pay_route(request,id):
     pass
