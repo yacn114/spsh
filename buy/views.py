@@ -1,13 +1,15 @@
 # from buy.serializers import buySerializers
-from buy.models import txtmodel
+# from buy.models import txtmodel
+# from django.http import HttpResponse
+# from rest_framework import permissionse
+from django.contrib.auth.decorators import login_required
+# from rest_framework.response import Response
 from Product.models import Product
+from wallet.models import Purchase
 from home.templatetags.price_management import takhfif
 from hesab.models import User
-from django.http import HttpResponse
 from django.shortcuts import render,redirect
-from rest_framework import permissions
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 # class txtmodelListAPIView(ListAPIView):
  
@@ -23,21 +25,25 @@ from rest_framework.response import Response
 #     serializer_class = buySerializers
 #     permission_classes = [AllowAny]
 @api_view(['GET'])
-@permission_classes((permissions.AllowAny,))
+@login_required
 def pay(request,id):
     balance = User.objects.get(id=request.user.id)
     prod = Product.objects.get(id=id)
-    if balance.balance >= takhfif(prod.price,prod.pricepercent,prod.id ,"in"):
-        balance.balance = balance.balance - takhfif(prod.price,prod.pricepercent,prod.id ,"in")
-        balance.prod.set({prod})
+    prcie_pr = takhfif(prod.price,prod.pricepercent,prod.id ,"in")
+    for a in balance.prod.all():
+        if a.id == prod.id:
+            return redirect('product:detail2', id=prod.id)
+    if balance.balance >= prcie_pr:
+        balance.balance = balance.balance - prcie_pr
+        balance.prod.add(prod)
         balance.save()
+        Purchase.objects.create(user=balance,product=prod,price=prcie_pr)
+        
     else:
         return redirect('Wallet:pay_afzayesh')
     
-    return render(request,'buy/pay.html',{"a":balance.balance})
-@api_view(['GET'])
-def pay_route(request,id):
-    pass
+    return redirect("account:status")
+
 
 # def show(request):
 #     BASE_DIR = Path(__file__).resolve().parent.parent

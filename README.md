@@ -2,7 +2,8 @@
 
 <h2>me new todo:</h2>
 <ul>
-<li><b> chand bar kharid and history bought</b></li>
+<li><b> history bought</b></li>
+<li>permissions</li>
 <li>name panel dash</li>
 <li>db or text ? both ?????</li>
 <li>url product hashing</li>

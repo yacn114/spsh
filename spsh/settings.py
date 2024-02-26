@@ -1,5 +1,7 @@
 from pathlib import Path
+import pymysql
 
+pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -118,13 +120,22 @@ WSGI_APPLICATION = 'spsh.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'data/db.sqlite3',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'data/db.sqlite3',
-    }
+'default': {
+'ENGINE': 'django.db.backends.mysql',
+'NAME': 'opozex',
+'USER': 'django',
+'PASSWORD': '741852963',
+'HOST': 'localhost',
+'PORT': '3306',
 }
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

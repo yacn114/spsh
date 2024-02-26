@@ -1,2 +1,2 @@
-from .products import Product, teachers,IpAddress
+from .products import Product,IpAddress
 from .commen import Comment

@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from home.models import informationSite
 from category.models import Category,Languages
 from hesab.forms import ContactForms,completeForm
 from .models import Tickets
+from wallet.models import Purchase,Transfer
 @login_required
 def dashboard(request):
     siteData = informationSite.objects.first()
@@ -84,10 +84,23 @@ def ticker(request,id):
         }
     
     return render(request,"detail/detail-ticket.html",context)
+
 @login_required
 def  statusUser(request):
+    data_purchase = Purchase.objects.filter(user=request.user).order_by('date')
+    data_transfer = Transfer.objects.filter(senderـuser=request.user).order_by('date')
+    data_combined = data_purchase.union(data_transfer).order_by('date')
+    siteData = informationSite.objects.first()
+    languagess = Languages.objects.all()
+    category = Category.objects.all()
 
-    return render(request,"buy/status-User.html")
+    return render(request,"buy/status-User.html",{
+        "category":category,
+        "siteData":siteData,
+        "lang":languagess,
+        'data':data_combined,
+        })
+
 @login_required
 def complete(request):
     if request.POST:

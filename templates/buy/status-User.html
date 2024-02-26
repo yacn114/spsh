@@ -1,7 +1,31 @@
-<center>
-<h1>
-status
+{% extends 'main/base.html' %}
+{% block body %}
 <br>
-منتظر ولتم...
-</h1>
-</center>
+<br>
+<center><h2>تاریخچه ی خرید و انتقالات</h2></center>
+<br>
+<br>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for data_loop in data %}
+              
+            <tr>
+                <th scope="row">{{foorloop}}</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      <br>
+<br>
+{% endblock %}

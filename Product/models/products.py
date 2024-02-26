@@ -1,15 +1,7 @@
 from django.db import models
-from category.models import Languages,Category
+from category.models import Languages
 
 
-class teachers(models.Model):
-    name = models.CharField("اسم مدرس کلیپ",max_length=200)
-    
-    def __str__(self):
-        return self.name
-    class Meta:
-        verbose_name = "مدرس"
-        verbose_name_plural = "مدرس ها"
 
 class IpAddress(models.Model):
     ips = models.GenericIPAddressField(protocol="both", unpack_ipv4=False)
@@ -30,7 +22,6 @@ class Product(models.Model):
     ]
     name = models.CharField(max_length=100, verbose_name="عنوان")
     slug = models.SlugField(max_length=100, verbose_name="سلاگ")
-    teacher_name = models.ForeignKey(teachers,on_delete=models.SET_NULL,blank=True,null=True)
     image = models.ImageField(upload_to="images/products", verbose_name="تصویر پیشنمایش")
     tutorial = models.CharField(max_length=100, verbose_name="نوع دوره",default="pdf")
     tutorial_level = models.CharField(max_length=100, verbose_name="سطح دوره",choices=LEVEL_TUTORIAL,default="junior")
