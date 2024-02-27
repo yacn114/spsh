@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from category.models import Category,Languages
 from hesab.forms import ContactForms,completeForm
 from .models import Tickets
-from wallet.models import Purchase,Transfer
+from wallet.models import Transfer_Purchase_history
 @login_required
 def dashboard(request):
     siteData = informationSite.objects.first()
@@ -88,9 +88,7 @@ def ticker(request,id):
 import json
 @login_required
 def  statusUser(request):
-    data_purchase = Purchase.objects.filter(user=request.user)
-    data_transfer = Transfer.objects.filter(senderـuser=request.user)
-    data_combined = data_purchase.union(data_transfer).order_by('date')
+    all_history = Transfer_Purchase_history.objects.filter(user_Pur=request.user)
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
     category = Category.objects.all()
@@ -98,7 +96,7 @@ def  statusUser(request):
         "category":category,
         "siteData":siteData,
         "lang":languagess,
-        'data':data_combined,
+        'data':all_history,
         })
     
 

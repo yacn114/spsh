@@ -4,31 +4,25 @@ from django.db import models
 from simple_history.models import HistoricalRecords
 # Create your models here.
 
-class Transfer(models.Model):
+class Transfer_Purchase_history(models.Model):
+    CHOICE_TYPE = (
+        ('send',"s"),
+        ('purchase','p'),
+    )
     senderـuser = models.ForeignKey(User, on_delete=models.CASCADE,related_name="+",blank=True,null=True)
     receivingـuser = models.ForeignKey(User, on_delete=models.CASCADE,related_name="+",blank=True,null=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount_send = models.DecimalField(max_digits=10, decimal_places=2,blank=True,null=True)
+    user_Pur = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
+    product_Pur = models.ForeignKey(Product, on_delete=models.CASCADE,blank=True,null=True)
+    price_Pur = models.DecimalField(max_digits=10, decimal_places=2,blank=True,null=True)
     date = models.DateTimeField(auto_now_add=True)
     history = HistoricalRecords()
-    type = models.CharField(max_length=6,default="انتقال")
+    type = models.CharField(max_length=8,choices=CHOICE_TYPE)
     
     class Meta:
-        verbose_name = "انتقال"
-        verbose_name_plural = "انتقال ها"
+        verbose_name = "انتقال و خرید "
+        verbose_name_plural = "انتقال و خرید ها"
 
     def __str__(self):
         return self.senderـuser.username
 
-class Purchase(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    date = models.DateTimeField(auto_now_add=True)
-    history = HistoricalRecords()
-    type = models.CharField(max_length=4,default="خرید")
-    class Meta:
-        verbose_name = "خرید"
-        verbose_name_plural = "خرید ها"
-
-    def __str__(self):
-        return self.user.username

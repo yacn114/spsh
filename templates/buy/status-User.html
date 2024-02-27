@@ -40,8 +40,8 @@
             </div>   
             <tr>
               <th scope="row">{{forloop.counter}}</th>
-              <td><a href={% if data_loop.type == "خرید" %}{% url "product:detail2" data_loop.product.id %}{% else %}"#" onclick="document.getElementById('id01').style.display='block'" {% endif %}>{{data_loop.type}}</a></td>
-              <td>{{data_loop.price}}</td>
+              <td><a href={% if data_loop.type == "خرید" %}{% url "product:detail2" data_loop.product_Pur.id %}{% else %}"#" onclick="document.getElementById('id01').style.display='block'" {% endif %}>{{data_loop.type}}</a></td>
+              <td>{{data_loop.price_Pur}}</td>
               <td>{{data_loop.date}}</td>
             </tr>
 

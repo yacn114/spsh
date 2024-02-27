@@ -5,7 +5,7 @@
 from django.contrib.auth.decorators import login_required
 # from rest_framework.response import Response
 from Product.models import Product
-from wallet.models import Purchase
+from wallet.models import Transfer_Purchase_history
 from home.templatetags.price_management import takhfif
 from hesab.models import User
 from django.shortcuts import render,redirect
@@ -24,7 +24,7 @@ from rest_framework.decorators import api_view
         
 #     serializer_class = buySerializers
 #     permission_classes = [AllowAny]
-@api_view(['GET'])
+# @api_view(['GET'])
 @login_required
 def pay(request,id):
     balance = User.objects.get(id=request.user.id)
@@ -37,7 +37,7 @@ def pay(request,id):
         balance.balance = balance.balance - prcie_pr
         balance.prod.add(prod)
         balance.save()
-        Purchase.objects.create(user=balance,product=prod,price=prcie_pr)
+        Transfer_Purchase_history.objects.create(user_Pur=balance,product_Pur=prod,price_Pur=prcie_pr,type="خرید")
         
     else:
         return redirect('Wallet:pay_afzayesh')
