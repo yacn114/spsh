@@ -194,7 +194,8 @@
 								
 								<div class="ed_view_price pl-4">
 									<span>قیمت ویژه</span>
-									<h2 class="theme-cl font-2">{{string.price}} تومان</h2>
+
+									<h2 class="theme-cl font-2">{% if string.pricepercent > 0 %}<h4 style="color:red">{{string.pricepercent}}٪  تخفیف</h4><h3 class="theme-cl">{% takhfif string.price string.pricepercent string.id %} {% else %} {{string.price}}{% endif %} هزار تومان</h3></h2>
 								</div>
 								
 								<div class="ed_view_short pl-4 pr-4 pb-2">
@@ -238,7 +239,7 @@
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							<div class="slide_items">
 							
-								<!-- Single Item -->
+						
 								{% for recommand in rec %}
 								<div class="lios_item col-lg-10">	
 									<div class="crs_grid shadow_none brd">

@@ -15,7 +15,7 @@ class Transfer(models.Model):
         verbose_name_plural = "انتقال ها"
 
     def __str__(self):
-        return self.user.username
+        return self.senderـuser.username
 
 class Purchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

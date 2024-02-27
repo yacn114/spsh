@@ -4,6 +4,7 @@
 <ul>
 <li><b> history bought</b></li>
 <li>permissions</li>
+<li>recommended post detail</li>
 <li>name panel dash</li>
 <li>db or text ? both ?????</li>
 <li>url product hashing</li>

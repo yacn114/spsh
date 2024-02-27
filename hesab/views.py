@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from home.models import informationSite
+from django.http import HttpResponse
 from category.models import Category,Languages
 from hesab.forms import ContactForms,completeForm
 from .models import Tickets
@@ -84,7 +85,7 @@ def ticker(request,id):
         }
     
     return render(request,"detail/detail-ticket.html",context)
-
+import json
 @login_required
 def  statusUser(request):
     data_purchase = Purchase.objects.filter(user=request.user).order_by('date')
@@ -93,13 +94,15 @@ def  statusUser(request):
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
     category = Category.objects.all()
-
+    for i in data_combined:
+        print(i.price)
     return render(request,"buy/status-User.html",{
         "category":category,
         "siteData":siteData,
         "lang":languagess,
         'data':data_combined,
         })
+    
 
 @login_required
 def complete(request):

@@ -18,10 +18,10 @@
             {% for data_loop in data %}
               
             <tr>
-                <th scope="row">{{foorloop}}</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{data_loop.user}}</td>
+                <td>{{data_loop.price}}</td>
+                <td></td>
             </tr>
             {% endfor %}
         </tbody>
