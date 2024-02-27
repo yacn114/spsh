@@ -10,6 +10,8 @@ class Transfer(models.Model):
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)
     history = HistoricalRecords()
+    type = models.CharField(max_length=6,default="انتقال")
+    
     class Meta:
         verbose_name = "انتقال"
         verbose_name_plural = "انتقال ها"
@@ -23,7 +25,7 @@ class Purchase(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)
     history = HistoricalRecords()
-
+    type = models.CharField(max_length=4,default="خرید")
     class Meta:
         verbose_name = "خرید"
         verbose_name_plural = "خرید ها"

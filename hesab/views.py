@@ -88,14 +88,12 @@ def ticker(request,id):
 import json
 @login_required
 def  statusUser(request):
-    data_purchase = Purchase.objects.filter(user=request.user).order_by('date')
-    data_transfer = Transfer.objects.filter(senderـuser=request.user).order_by('date')
+    data_purchase = Purchase.objects.filter(user=request.user)
+    data_transfer = Transfer.objects.filter(senderـuser=request.user)
     data_combined = data_purchase.union(data_transfer).order_by('date')
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
     category = Category.objects.all()
-    for i in data_combined:
-        print(i.price)
     return render(request,"buy/status-User.html",{
         "category":category,
         "siteData":siteData,
