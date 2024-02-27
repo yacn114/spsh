@@ -1,58 +1,9 @@
 {% extends 'main/base.html' %}
 {% block body %}
 {% block style %}
-<style>
-  body {font-family: Arial, Helvetica, sans-serif;}
-  
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  </style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 {% endblock style %}
-<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>انتقال </p>
-  </div>
-
-</div>
 <br>
 <br>
 <center><h2>تاریخچه ی خرید و انتقالات</h2></center>
@@ -69,13 +20,31 @@
         </thead>
         <tbody>
             {% for data_loop in data %}
-            <!-- Button trigger modal -->
+   
+                     
+            <div id="id01" class="w3-modal">
+              <div class="w3-modal-content w3-animate-top w3-card-4">
+                <header class="w3-container w3-teal"> 
+                  <span onclick="document.getElementById('id01').style.display='none'" 
+                  class="w3-button w3-display-topright">&times;</span>
+                  <h2>Modal Header</h2>
+                </header>
+                <div class="w3-container">
+                  <p>ایدی : {{data_loop.id}}</p>
+                  <p>Some text..</p>
+                </div>
+                <footer class="w3-container w3-teal">
+                  <p>Modal Footer</p>
+                </footer>
+              </div>
+            </div>   
             <tr>
-                <th scope="row">{{forloop.counter}}</th>
-                <td><a href="{% if data_loop.type == "خرید" %}{% url "product:detail2" data_loop.product.id %}{% else %}{% endif %}">{{data_loop.type}}</a></td>
-                <td>{{data_loop.price}}</td>
-                <td>{{data_loop.date}}</td>
+              <th scope="row">{{forloop.counter}}</th>
+              <td><a href={% if data_loop.type == "خرید" %}{% url "product:detail2" data_loop.product.id %}{% else %}"#" onclick="document.getElementById('id01').style.display='block'" {% endif %}>{{data_loop.type}}</a></td>
+              <td>{{data_loop.price}}</td>
+              <td>{{data_loop.date}}</td>
             </tr>
+
             {% endfor %}
         </tbody>
       </table>
@@ -83,32 +52,5 @@
 <br>
 {% block js %}
 
-<script>
-  // Get the modal
-  var modal = document.getElementById("myModal");
-  
-  // Get the button that opens the modal
-  var btn = document.getElementById("myBtn");
-  
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
-  
-  // When the user clicks the button, open the modal 
-  btn.onclick = function() {
-    modal.style.display = "block";
-  }
-  
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-  </script>
 {% endblock js %}
 {% endblock %}
