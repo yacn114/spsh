@@ -37,7 +37,7 @@ def pay(request,id):
         balance.balance = balance.balance - prcie_pr
         balance.prod.add(prod)
         balance.save()
-        Transfer_Purchase_history.objects.create(user_Pur=balance,product_Pur=prod,price_Pur=prcie_pr,type="خرید")
+        Transfer_Purchase_history.objects.create(user_Pur=balance,product_Pur=prod,price_Pur=prcie_pr,type="خرید",user_main=request.user)
         
     else:
         return redirect('Wallet:pay_afzayesh')

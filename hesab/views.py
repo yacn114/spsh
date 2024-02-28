@@ -88,7 +88,7 @@ def ticker(request,id):
 import json
 @login_required
 def  statusUser(request):
-    all_history = Transfer_Purchase_history.objects.filter(user_Pur=request.user)
+    all_history = Transfer_Purchase_history.objects.filter(user_main=request.user)
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
     category = Category.objects.all()

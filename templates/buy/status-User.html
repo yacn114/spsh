@@ -20,35 +20,41 @@
         </thead>
         <tbody>
             {% for data_loop in data %}
-   
-                     
-            <div id="id01" class="w3-modal">
-              <div class="w3-modal-content w3-animate-top w3-card-4">
-                <header class="w3-container w3-teal"> 
-                  <span onclick="document.getElementById('id01').style.display='none'" 
-                  class="w3-button w3-display-topright">&times;</span>
-                  <h2>Modal Header</h2>
-                </header>
-                <div class="w3-container">
-                  <p>ایدی : {{data_loop.id}}</p>
-                  <p>Some text..</p>
-                </div>
-                <footer class="w3-container w3-teal">
-                  <p>Modal Footer</p>
-                </footer>
+          {% if data_loop.type == "انتقال" %}
+            
+          <div id="id0{{data_loop.id}}" class="w3-modal">
+            <div class="w3-modal-content w3-animate-top w3-card-4">
+              <header class="w3-container w3-teal"> 
+                <span onclick="document.getElementById('id0{{data_loop.id}}').style.display='none'" 
+                class="w3-button w3-display-topright">&times;</span>
+               <center> <h2>جزئیات انتقالی</h2></center>
+              </header>
+              <div class="w3-container">
+                <p>ایدی : {{data_loop.id}}</p>
+                <p>شما ({{data_loop.senderـuser}}) مقدار {{data_loop.amount_send}} را به حساب {{data_loop.receivingـuser}} انتقال دادید.</p>
               </div>
-            </div>   
-            <tr>
+              <footer class="w3-container w3-teal">
+                <p>سایت اوپوزکس</p>
+              </footer>
+            </div>
+          </div>   
+          {% endif %}
+          <tr>
+              
               <th scope="row">{{forloop.counter}}</th>
-              <td><a href={% if data_loop.type == "خرید" %}{% url "product:detail2" data_loop.product_Pur.id %}{% else %}"#" onclick="document.getElementById('id01').style.display='block'" {% endif %}>{{data_loop.type}}</a></td>
-              <td>{{data_loop.price_Pur}}</td>
+              <td><a href={% if data_loop.type == "خرید" %}{% url "product:detail2" data_loop.product_Pur.id %}{% else %}"#" onclick="document.getElementById('id0{{data_loop.id}}').style.display='block'" {% endif %}>{{data_loop.type}}</a></td>
+              <td>{% if data_loop.price_Pur %}
+              {{data_loop.price_Pur}}
+              {% else %}
+              {{data_loop.amount_send}}
+              {% endif %}</td>
               <td>{{data_loop.date}}</td>
             </tr>
 
             {% endfor %}
         </tbody>
       </table>
-      <br>
+<br>
 <br>
 {% block js %}
 
