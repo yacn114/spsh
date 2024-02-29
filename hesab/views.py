@@ -70,12 +70,13 @@ def response(request):
         "balance":request.user.balance,
         }
     return render(request,"detail/responses.html",context)
+from django.shortcuts import get_object_or_404
 @login_required
 def ticker(request,id):
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
     category = Category.objects.all()
-    value = Tickets.objects.get(id=id)
+    value = get_object_or_404(Tickets,id=id)
     
     context = {
         "category":category,

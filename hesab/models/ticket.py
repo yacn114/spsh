@@ -14,6 +14,6 @@ class Tickets(models.Model):
         verbose_name_plural = "تیکت ها"
 
     def __str__(self):
-        return self.user.first_name
+        return self.user.username
 
     
