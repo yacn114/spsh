@@ -92,7 +92,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    'Product.middleware.saveIpAddressMiddleware'
+    'Product.middleware.saveIpAddressMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'spsh.urls'
@@ -129,8 +130,8 @@ WSGI_APPLICATION = 'spsh.wsgi.application'
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.mysql',
-'NAME': 'opozex',
-'USER': 'django',
+'NAME': 'django',
+'USER': 'yacn',
 'PASSWORD': '741852963',
 'HOST': 'localhost',
 'PORT': '3306',
