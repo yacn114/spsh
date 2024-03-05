@@ -31,7 +31,7 @@
               </header>
               <div class="w3-container">
                 <p>ایدی : {{data_loop.id}}</p>
-                <p>شما ({{data_loop.senderـuser}}) مقدار {{data_loop.amount_send}} را به حساب {{data_loop.receivingـuser}} انتقال دادید.</p>
+                <p>{% if request.user == data_loop.senderـuser %}شما {% else %}{% endif %} ({{data_loop.senderـuser}}) مقدار {{data_loop.amount_send}} را به حساب {{data_loop.receivingـuser}} انتقال {% if request.user == data_loop.senderـuser %}دادید {% else %}داد{% endif %}.</p>
               </div>
               <footer class="w3-container w3-teal">
                 <p>سایت اوپوزکس</p>

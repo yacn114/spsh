@@ -87,9 +87,11 @@ def ticker(request,id):
     
     return render(request,"detail/detail-ticket.html",context)
 import json
+from django.db.models import Q
 @login_required
 def  statusUser(request):
-    all_history = Transfer_Purchase_history.objects.filter(user_main=request.user)
+    query = Q(user_main=request.user) | Q(receivingـuser=request.user)
+    all_history = Transfer_Purchase_history.objects.filter(query)
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
     category = Category.objects.all()

@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'sabad.apps.SabadConfig',
     'widget_tweaks',
     'django_filters',
-    'cart',
+    
     'wallet',
     "debug_toolbar",
 ]

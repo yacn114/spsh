@@ -3,13 +3,12 @@
 <h2>my new todo:</h2>
 <h3>django</h3>
 <ul>
-<li>signup process...</li>
+<li>recommended post detail</li>
 <li>use to (get_object_or_404) function</li>
 <li>permissions</li>
-<li>recommended post detail</li>
 <li>url product hashing</li>
-<li>دریافتی ها تاریخچه</li>
 <li>update ticket(full dick)</li>
+<li>signup process...</li>
 
 </ul>
 <hr>
