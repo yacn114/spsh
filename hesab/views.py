@@ -101,7 +101,6 @@ def  statusUser(request):
         "lang":languagess,
         'data':all_history,
         })
-    
 
 @login_required
 def complete(request):

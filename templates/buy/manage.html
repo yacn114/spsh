@@ -60,7 +60,7 @@
 								
 								<div class="d-navigation">
 									<ul id="side-menu">
-										<li><a href="{% url 'home:dashboard' %}"><i class="fas fa-th"></i>داشبورد</a></li>
+										<li><a href="{% url 'account:home' %}"><i class="fas fa-th"></i>داشبورد</a></li>
 										<li><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>کیف پول ({% if bal == 0 %}0 {% else %}{% format balance %}{% endif %})</a></li>
 						
 										<li><a href="{% url 'account:ticket' %}"><i class="fas fa-comment"></i>تیکت</a></li>

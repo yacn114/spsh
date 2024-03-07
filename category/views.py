@@ -7,13 +7,11 @@ from Product.models import Product
 from category.filters import ProductFilter
 
 def categoryList(request,inp):
-    
     languagess = Languages.objects.all()
     category = Category.objects.all()
     cat = get_object_or_404(Languages, hashtag=inp)
     pr = Product.objects.filter(published=True)
     categoryname = Product.objects.filter(published=True).filter(language__hashtag=inp)
-
     siteData = informationSite.objects.first()
     paginator = Paginator(categoryname, 6)
     page_number = request.GET.get('page')
@@ -28,7 +26,6 @@ def categoryList(request,inp):
     "categoryname":page_obj,
     })
 
-
 def filterCat(request,inp):
     languagess = Languages.objects.all()
     category = Category.objects.all()
@@ -41,14 +38,11 @@ def filterCat(request,inp):
     page_obj = paginator.get_page(page_number)
     if request.POST:
         categoryname = ProductFilter(request.POST,queryset=Product.objects.all())
- 
         return render(request,'category/filter-category.html',{
             "inp":cat,
             "category":category,
             "siteData":siteData,
             "lang":languagess,
- 
-  
             "product":pr,
             'form':ProductFilter,
             # "page":paginator,
@@ -59,8 +53,6 @@ def filterCat(request,inp):
     "category":category,
     "siteData":siteData,
     "lang":languagess,
-
-
     "product":pr,
     'form':ProductFilter,
     "page":paginator,

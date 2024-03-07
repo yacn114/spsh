@@ -1,4 +1,5 @@
 from django.shortcuts import render,get_object_or_404,redirect
+from django.contrib.auth.decorators import login_required
 from Product.forms import CommentForms
 from django.core.paginator import Paginator
 from Product.models import Product,Comment
@@ -27,7 +28,7 @@ def detail(request,string):
                 ex.product = Product.objects.get(slug=string)
                 ex.save()
             
-            return redirect(f"/{string}")
+            return redirect("product:detail",Prod.slug)
     else:
         form = CommentForms()
 
@@ -44,7 +45,6 @@ def detail(request,string):
 def detail2(request,id):
     Prod = get_object_or_404(Product,id=id)
     rec = Product.objects.filter(language=Prod.language.first())
-  
     if request.method == "POST":
         form = CommentForms(request.POST)
         if form.is_valid():
@@ -54,7 +54,7 @@ def detail2(request,id):
                 ex.user = request.user
                 ex.product = Product.objects.get(id=id)
                 ex.save()
-            return redirect(f"/{id}/")
+            return redirect('product:detail2',Prod.id)
     else:
         form = CommentForms()
 
@@ -70,38 +70,8 @@ def detail2(request,id):
         "lang":languagess,
         "co":comment,
         "rec":rec,
-
     }
     return render(request,"detail/course-detail.html",context)
-
-def packages(request):
-    return HttpResponse("packages")
-
-def like(request,id):
-    comid = Comment.objects.get(id=id)
-    for a in comid.like.all():
-        if a == request.user:
-            comid.like.remove(request.user)
-            break
-    else:
-        comid.like.add(request.user)
-            
-    
-    
-    return redirect(f'/{comid.product.slug}')
-
-def dislike(request,id):
-    comid = Comment.objects.get(id=id)
-    for a in comid.dislike.all():
-        if a == request.user:
-            comid.dislike.remove(request.user)
-            break
-    else:
-        comid.dislike.add(request.user)
-    
-    
-    
-    return redirect(f'/{comid.product.slug}')
 
 def all(request):
     languagess = Languages.objects.all()
@@ -121,3 +91,23 @@ def all(request):
 
     }
     return render(request,"detail/all.html",context)
+@login_required
+def like(request,id):
+    comid = Comment.objects.get(id=id)
+    for a in comid.like.all():
+        if a == request.user:
+            comid.like.remove(request.user)
+            break
+    else:
+        comid.like.add(request.user)
+    return redirect('product:detail2',comid.product.id)
+@login_required
+def dislike(request,id):
+    comid = Comment.objects.get(id=id)
+    for a in comid.dislike.all():
+        if a == request.user:
+            comid.dislike.remove(request.user)
+            break
+    else:
+        comid.dislike.add(request.user)
+    return redirect('product:detail2',comid.product.id)

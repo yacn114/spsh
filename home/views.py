@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from home.models import informationSite
 from Product.models import Product
-from blog.models import Blog
+# from blog.models import Blog
 from category.models import Languages,Category
 # Create your views here.
 def home(request):
@@ -14,7 +14,7 @@ def home(request):
     category = Category.objects.filter(status=True)
     userCount = User.objects.count()
     products = Product.objects.all()[:6]
-    blog = Blog.objects.all()[:3]
+    # blog = Blog.objects.all()[:3]
     if request.POST:
         siteinformation = informationSite.objects.first()
         language = Languages.objects.filter(status=True)
@@ -37,7 +37,7 @@ def home(request):
         "userc":userCount,
         "prodc":prodc,
         "products":products,
-        "blog":blog,
+        # "blog":blog,
         })
 def about(request):
     return ""

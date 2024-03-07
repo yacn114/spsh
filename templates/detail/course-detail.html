@@ -149,10 +149,10 @@
 										<h4 class="edu_title">ثبت دیدگاه</h4>
 										<div class="review-form-box form-submit">
 											<form method="post">
-												{% csrf_token %}
 												<div class="row">
 													
-												
+													
+													{% if request.user.is_authenticated %} 
 													<div class="col-lg-12 col-md-12 col-sm-12">
 														<div class="form-group">
 															<label>متن نظر</label>
@@ -161,10 +161,16 @@
 													</div>
 													
 													<div class="col-lg-12 col-md-12 col-sm-12">
+														{% csrf_token %}
 														<div class="form-group">
 															<button type="submit" class="btn theme-bg btn-md">ثبت دیدگاه</button>
 														</div>
 													</div>
+													{% else %}
+													<div class="alert alert-primary" role="alert">
+														برای ثبت دیدگاه باید ثبت نام کرده باشی...
+													  </div>
+													{% endif %}
 													
 												</div>
 											</form>
@@ -245,11 +251,9 @@
 									<div class="crs_grid shadow_none brd">
 										<div class="crs_grid_thumb">
 											<a href="{% url 'product:detail' recommand.slug %}" class="crs_detail_link">
-												<img style="height: 250px;" src="/{{recommand.image}}" class="img-fluid rounded" alt="" />
+												<img style="height: auto;" src="/{{recommand.image}}" class="img-fluid rounded" alt="" />
 											</a>
-											<div class="crs_video_ico">
-												<i class="fa fa-play"></i>
-											</div>
+										
 											<div class="crs_locked_ico">
 												<i class="fa fa-lock"></i>
 											</div>

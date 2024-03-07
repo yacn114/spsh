@@ -55,6 +55,7 @@ def walletCenter(request):
                 messages.error(request, "موجودی نداری!")
                 return HttpResponseRedirect(reverse('Wallet:wallet'))
     return render(request,"buy/Wallet.html",context)
+@login_required
 def afzayesh(request):
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()

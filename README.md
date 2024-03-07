@@ -3,6 +3,7 @@
 <h2>my new todo:</h2>
 <h3>django</h3>
 <ul>
+<li>complete form</li>
 <li>recommended post detail</li>
 <li>use to (get_object_or_404) function</li>
 <li>permissions</li>
