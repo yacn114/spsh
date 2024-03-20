@@ -18,7 +18,7 @@
                         {% if request.user.is_authenticated %}
                         <li>
                             <a href="{% url 'account:home' %}">
-                                <span class="embos_45"><i class="fas fa-sign-in-alt ml-1 rotate-img"></i>داشبورد</span>
+                                <span class="embos_45"><i class="fas fa-sign-in-alt ml-1 rotate-img"></i>داشبورد ({{request.user}})</span>
                             </a>
                         </li>									
                 

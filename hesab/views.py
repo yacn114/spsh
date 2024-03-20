@@ -101,11 +101,23 @@ def  statusUser(request):
         "lang":languagess,
         'data':all_history,
         })
-
+from django.contrib import messages
+from hesab.models import User
 @login_required
 def complete(request):
-    if request.POST:
-        return render(request,"complete.html",{"Form":completeForm()})
+    if request.method == "POST":
+        form = completeForm(request.POST)
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            name = form.cleaned_data['first_name']
+            family = form.cleaned_data['last_name']
+            phone = form.cleaned_data['phone']
+            githublink = form.cleaned_data['githublink']
+            # form.save(update_fields='__all__')
+            User.objects.filter(id=request.user.id).update(first_name=name,last_name=family,phone=phone,githublink=githublink)
+            messages.success(request, "Done!")
+            return redirect("account:home")
     else:
-        return render(request, '404.html', status=404)
-
+        form = completeForm()
+    return render(request,"complete.html",{"Form":completeForm()})
+    

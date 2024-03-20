@@ -125,7 +125,7 @@
 									
 										<ul style="list-style: disc;">
 											<h5>اطلاعیه :</h5>
-											<li><h6>سلام خوبی؟</h6></li>
+											<li><h6>خوش اومدی رفیق :)</h6></li>
 											<li><h6>{{siteData.message}}</h6></li>
 											
 										</ul>	
@@ -133,7 +133,26 @@
 								</div>
 								</div>
 							</div>
-							
+							<div class="row justify-content-between">
+								<div class="col-lg-12 col-md-12 col-sm-12 pb-4">
+									<div class="alert alert-light col-12" style="border-radius:10px;" role="alert">
+									
+										<ul style="list-style: disc;">
+											{% comment %} <h5>تکمیل کردن پروفایل :</h5> {% endcomment %}
+											<a href="{% url 'account:complete' %}">تکمیل پروفایل:</a>
+											{% if form.non_field_errors %}
+
+											{% for errors in form.non_field_errors %}
+										<div class="alert alert-warning" role="alert">
+												{{errors}}
+										</div>
+											{% endfor %}
+										{% endif %}
+										</ul>	
+									
+								</div>
+								</div>
+							</div>
 							
 						</div>
 					

@@ -28,21 +28,24 @@ from rest_framework.decorators import api_view
 @login_required
 def pay(request,id):
     balance = User.objects.get(id=request.user.id)
-    prod = Product.objects.get(id=id)
-    prcie_pr = takhfif(prod.price,prod.pricepercent,prod.id ,"in")
-    for a in balance.prod.all():
-        if a.id == prod.id:
-            return redirect('product:detail2', id=prod.id)
-    if balance.balance >= prcie_pr:
-        balance.balance = balance.balance - prcie_pr
-        balance.prod.add(prod)
-        balance.save()
-        Transfer_Purchase_history.objects.create(user_Pur=balance,product_Pur=prod,price_Pur=prcie_pr,type="خرید",user_main=request.user)
+    if balance.first_name == None:
+        prod = Product.objects.get(id=id)
+        prcie_pr = takhfif(prod.price,prod.pricepercent,prod.id ,"in")
+        for a in balance.prod.all():
+            if a.id == prod.id:
+                return redirect('product:detail2', id=prod.id)
+        if balance.balance >= prcie_pr:
+            balance.balance = balance.balance - prcie_pr
+            balance.prod.add(prod)
+            balance.save()
+            Transfer_Purchase_history.objects.create(user_Pur=balance,product_Pur=prod,price_Pur=prcie_pr,type="خرید",user_main=request.user)
+            
+        else:
+            return redirect('Wallet:pay_afzayesh')
         
+        return redirect("account:status")
     else:
-        return redirect('Wallet:pay_afzayesh')
-    
-    return redirect("account:status")
+        return redirect('account:complete')
 
 
 # def show(request):

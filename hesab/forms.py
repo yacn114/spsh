@@ -1,11 +1,11 @@
+from django.forms import ModelForm
 from django import forms
-
+from hesab.models import User
 class ContactForms(forms.Form):
     text = forms.CharField(widget=forms.Textarea(attrs={"rows":"6","cols":"60",'placeholder': 'خب بگو ببینم ...'}))
 
 
-class completeForm(forms.Form):
-    name = forms.CharField(max_length=50)
-    family = forms.CharField(max_length=50)
-    email = forms.EmailField()
-    phone = forms.IntegerField()
+class completeForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name' ,'last_name' ,'phone' ,'githublink']
