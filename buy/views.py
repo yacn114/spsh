@@ -28,7 +28,9 @@ from rest_framework.decorators import api_view
 @login_required
 def pay(request,id):
     balance = User.objects.get(id=request.user.id)
-    if balance.first_name == None:
+    if not balance.first_name:
+        return redirect('account:complete')
+    else:
         prod = Product.objects.get(id=id)
         prcie_pr = takhfif(prod.price,prod.pricepercent,prod.id ,"in")
         for a in balance.prod.all():
@@ -44,8 +46,6 @@ def pay(request,id):
             return redirect('Wallet:pay_afzayesh')
         
         return redirect("account:status")
-    else:
-        return redirect('account:complete')
 
 
 # def show(request):
