@@ -3,7 +3,7 @@
 <h2>my new todo:</h2>
 <h3>django</h3>
 <ul>
-<li>complete form | signup process...</li>
+<li>complete form | signup process... </li>
 <li>if user dont buy : cant send comment</li>
 <li>if do'not include react delete drf</li>
 <li>recommended post detail</li>

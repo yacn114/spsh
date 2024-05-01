@@ -112,7 +112,10 @@ def complete(request):
                 name = form.cleaned_data['first_name']
                 family = form.cleaned_data['last_name']
                 phone = form.cleaned_data['phone']
-                githublink = form.cleaned_data['githublink']
+                if form.cleaned_data['githublink']:
+                    githublink = form.cleaned_data['githublink']
+                else:
+                    githublink = ""
                 User.objects.filter(id=request.user.id).update(first_name=name,last_name=family,phone=phone,githublink=githublink)
                 messages.success(request, "Done!")
                 return redirect("account:home")

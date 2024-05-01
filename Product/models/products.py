@@ -21,7 +21,7 @@ class Product(models.Model):
     ('حرفه ای','حرفه ای'),
     ]
     name = models.CharField(max_length=100, verbose_name="عنوان")
-    slug = models.SlugField(max_length=100, verbose_name="سلاگ")
+    slug = models.SlugField(max_length=100, verbose_name="اسلاگ")
     image = models.ImageField(upload_to="images/products", verbose_name="تصویر پیشنمایش")
     tutorial = models.CharField(max_length=100, verbose_name="نوع دوره",default="pdf")
     tutorial_level = models.CharField(max_length=100, verbose_name="سطح دوره",choices=LEVEL_TUTORIAL,default="junior")

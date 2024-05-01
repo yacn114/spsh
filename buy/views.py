@@ -39,6 +39,8 @@ def pay(request,id):
         if balance.balance >= prcie_pr:
             balance.balance = balance.balance - prcie_pr
             balance.prod.add(prod)
+            prod.student_count = prod.student_count + 1
+            prod.save()
             balance.save()
             Transfer_Purchase_history.objects.create(user_Pur=balance,product_Pur=prod,price_Pur=prcie_pr,type="خرید",user_main=request.user)
             
