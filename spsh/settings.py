@@ -5,7 +5,7 @@ pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-LOGIN_REDIRECT_URL = "account:complete"
+LOGIN_REDIRECT_URL = "account:home"
 LOGIN_URL = "account_login"
 LOGOUT_REDIRECT_URL = "home:home"
 # Quick-start development settings - unsuitable for production

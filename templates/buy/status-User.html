@@ -3,7 +3,7 @@
 {% block style %}
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 {% endblock style %}
-
+{% load price_management %}
 <br>
 <br>
 <center><h2>تاریخچه ی خرید و انتقالات</h2></center>
@@ -13,9 +13,9 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">نوع تراکنش</th>
+            <th scope="col">مبلغ تراکنش</th>
+            <th scope="col">زمان تراکنش</th>
           </tr>
         </thead>
         <tbody>
@@ -43,11 +43,13 @@
               
               <th scope="row">{{forloop.counter}}</th>
               <td><a href={% if data_loop.type == "خرید" %}{% url "product:detail2" data_loop.product_Pur.id %}{% else %}"#" onclick="document.getElementById('id0{{data_loop.id}}').style.display='block'" {% endif %}>{{data_loop.type}}</a></td>
-              <td>{% if data_loop.price_Pur %}
-              {{data_loop.price_Pur}}
+              <td>
+                {% if data_loop.price_Pur %}
+              {% format data_loop.price_Pur %} تومان
               {% else %}
-              {{data_loop.amount_send}}
-              {% endif %}</td>
+              {% format data_loop.amount_send %} تومان
+              {% endif %}
+            </td>
               <td>{{data_loop.date}}</td>
             </tr>
 

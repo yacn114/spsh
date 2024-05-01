@@ -9,11 +9,24 @@
         <div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
             <form method='post' id="signup_form" action="" class="login100-form validate-form flex-sb flex-w">
               {% csrf_token %}
-              {{ Form.non_field_errors | safe }}
+              {% comment %} {{ Form.non_field_errors | safe }} {% endcomment %}
                 <span class="login100-form-title myfont">
                     تکمیل اطلاعات
                 </span>
-      
+                {% if Form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in Form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
                 
                 
                 <div class="p-t-31 p-b-9">
