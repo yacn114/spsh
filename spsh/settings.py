@@ -36,7 +36,6 @@ INSTALLED_APPS = [
       # The following apps are required:
 
     'django.contrib.sites',
-    'rest_framework',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

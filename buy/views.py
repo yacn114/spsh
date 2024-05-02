@@ -9,7 +9,7 @@ from wallet.models import Transfer_Purchase_history
 from home.templatetags.price_management import takhfif
 from hesab.models import User
 from django.shortcuts import render,redirect
-from rest_framework.decorators import api_view
+
 
 # class txtmodelListAPIView(ListAPIView):
  
