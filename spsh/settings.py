@@ -126,18 +126,18 @@ WSGI_APPLICATION = 'spsh.wsgi.application'
 #         'NAME': BASE_DIR / 'data/db.sqlite3',
 #     }
 # }
-DATABASES = {  
-'default': {  
-'ENGINE': 'django.db.backends.mysql',  
-'NAME': 'django',   
-'USER': 'yacn',
-'PASSWORD': '',  
-'HOST': 'localhost',  
-'PORT': '3306',  
+DATABASES = {
+'default': {
+'ENGINE': 'django.db.backends.mysql',
+'NAME': 'django',
+'USER': 'root',
+'PASSWORD': '',
+'HOST': 'localhost',
+'PORT': '3306',
 'OPTIONS': {
-'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
-}  
-}  
+'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+}
+}
 }
 
 # Password validation
