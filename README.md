@@ -3,6 +3,7 @@
 <h2>my new todo:</h2>
 <h3>django</h3>
 <ul>
+<li>delete pyc files and add gitignore</li>
 <li>regex forms | errors<li>
 <li>(تغییر ایمیل) و (تیکت) منو</li>
 <li>not responsive status User </li>
