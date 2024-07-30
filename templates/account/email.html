@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Confirm</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>تغییر ایمیل</title>
+    <style>
+      a{
+        text-decoration: none;
+      }
+      body{
+        background: whitesmoke;direction: rtl;
+      }
+      *{
+        margin: 20px;
+      }
+      </style>
 </head>
-<body style="background: whitesmoke;direction: rtl;">
-{% extends "account/base.html" %}
+<body style="text-align: center;">
+  {% extends "account/base.html" %}
+  {% load i18n %}
 
-{% load i18n %}
 
 {% block content %}
-    <h1>{% trans "E-mail Addresses" %}</h1>
+<br>
+    <h1>آدرس های ایمیل</h1>
 {% if user.emailaddress_set.all %}
-<p>{% trans 'The following e-mail addresses are associated with your account:' %}</p>
+<p>آدرس های ایمیل زیر با حساب شما مرتبط است:</p>
 
 <form action="{% url 'account_email' %}" class="email_list" method="post">
 {% csrf_token %}
@@ -46,17 +59,17 @@
 </form>
 
 {% else %}
-<p><strong>{% trans 'Warning:'%}</strong> {% trans "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc." %}</p>
+<p><strong>هشدار:</strong> شما در حال حاضر هیچ آدرس ایمیلی را تنظیم نکرده اید. شما واقعا باید یک آدرس ایمیل اضافه کنید تا بتوانید اعلان ها را دریافت کنید، رمز عبور خود را بازنشانی کنید و غیره.</p>
 
 {% endif %}
 
   {% if can_add_email %}
-    <h2>{% trans "Add E-mail Address" %}</h2>
+    <h2>اضافه کردن ایمیل:</h2>
 
     <form method="post" action="{% url 'account_email' %}" class="add_email">
         {% csrf_token %}
         {{ form.as_p }}
-        <button name="action_add" type="submit">{% trans "Add E-mail" %}</button>
+        <button name="action_add" type="submit">اضافه کردن ایمیل</button>
     </form>
   {% endif %}
 
@@ -66,7 +79,7 @@
 {% block extra_body %}
 <script type="text/javascript">
 (function() {
-  var message = "{% trans 'Do you really want to remove the selected e-mail address?' %}";
+  var message = "مطمعنی که میخوای ایمیل انتخاب شده رو حذف کنی؟";
   var actions = document.getElementsByName('action_remove');
   if (actions.length) {
     actions[0].addEventListener("click", function(e) {

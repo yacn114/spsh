@@ -2,14 +2,38 @@
 {% block body %}
 {% block style %}
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+  .table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  white-space: nowrap; /* جلوگیری از شکست خط در داخل سلول‌ها */
+}
+
+</style>
 {% endblock style %}
+{% block title %}
+تاریخچه ی خرید و انتقالات
+{% endblock %}
 {% load price_management %}
 <br>
 <br>
 <center><h2>تاریخچه ی خرید و انتقالات</h2></center>
 <br>
 <br>
-    <table class="table table-striped">
+    <table class="table table-striped table-responsive">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -44,11 +68,11 @@
               <th scope="row">{{forloop.counter}}</th>
               <td><a href={% if data_loop.type == "خرید" %}{% url "product:detail2" data_loop.product_Pur.id %}{% else %}"#" onclick="document.getElementById('id0{{data_loop.id}}').style.display='block'" {% endif %}>{{data_loop.type}}</a></td>
               <td>
-                {% if data_loop.price_Pur %}
+                |{% if data_loop.price_Pur %}
               {% format data_loop.price_Pur %} تومان
               {% else %}
               {% format data_loop.amount_send %} تومان
-              {% endif %}
+              {% endif %}|
             </td>
               <td>{{data_loop.date}}</td>
             </tr>

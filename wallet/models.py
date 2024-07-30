@@ -25,5 +25,5 @@ class Transfer_Purchase_history(models.Model):
         verbose_name_plural = "انتقال و خرید ها"
 
     def __str__(self):
-        return 'object'
+        return self.type
 
