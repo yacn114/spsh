@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.telegram',
     'allauth.socialaccount.providers.google',
-    # 'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -60,7 +59,7 @@ INSTALLED_APPS = [
     'django_filters',
     'wallet',
     'debug_toolbar',
-    'django_extensions',
+    'ticket',
 ]
 
 SITE_ID = 1

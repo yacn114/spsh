@@ -63,7 +63,7 @@
 										<li><a href="{% url 'account:home' %}"><i class="fas fa-th"></i>داشبورد</a></li>
 										<li><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>کیف پول ({% if bal == 0 %}0 {% else %}{% format balance %}{% endif %})</a></li>
 						
-										<li><a href="{% url 'account:ticket' %}"><i class="fas fa-comment"></i>تیکت</a></li>
+										<li><a href="{% url "ticket:ticket" %}"><i class="fas fa-comment"></i>تیکت</a></li>
 										<li class="active">
 											<a href="{% url 'account:courses' %}"><i class="fas fa-shopping-cart"></i>دوره های خریداری شده</a>
 										
@@ -147,8 +147,8 @@
 															<td><a href="{% url 'product:detail2' value.id %}"><h6>{{value.name}}</h6></a></td>
 																<td><span class="trip theme-bg-light" style="font-size:20px">فعال</span></td>
 	
-																<td><a href="{% url 'account:ticket' %}"><button class="btn btn-success">تیکت بزن</button></a></td>
-																<td><a href="{% url 'account:ticket' %}"><button class="btn btn-warning">درخواست</button></a></td>
+																<td><a href="{% url "ticket:ticket" %}"><button class="btn btn-success">تیکت بزن</button></a></td>
+																<td><a href="{% url "ticket:ticket" %}"><button class="btn btn-warning">درخواست</button></a></td>
 															</tr>
 															{% endfor %}
 														</tbody>

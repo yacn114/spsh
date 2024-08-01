@@ -65,7 +65,7 @@
 										<li><a href="{% url 'account:home' %}"><i class="fas fa-th"></i>داشبورد</a></li>
 										<li><a href="{% url 'Wallet:wallet' %}" style="font-family: sans-serif;"><i class="fas fa-credit-card"></i>کیف پول ({% if bal == 0 %}0 {% else %}{% format balance %}{% endif %})</a></li>
 						
-										<li class="active"><a href="{% url 'account:ticket' %}"><i class="fas fa-comment"></i>تیکت</a></li>
+										<li class="active"><a href="{% url "ticket:ticket" %}"><i class="fas fa-comment"></i>تیکت</a></li>
 										<li>
 											<a href="{% url 'account:courses' %}"><i class="fas fa-shopping-cart"></i>دوره های خریداری شده</a>
 										
@@ -145,7 +145,7 @@
 															<td><a href="#"><h6>{{value.subject}}</h6></a></td>
 																<td><span class="trip theme-bg-light" style="font-size:15px">{% if value.admin == None %}پاسخ داده نشده {% else %}پاسخ داده شد{% endif %}</span></td>
                                                                 
-                                                                <td>{% if value.admin == None %} <button class="btn btn-success" disabled>مشاهده</button> {% else %}<a href="{% url 'account:ticker' value.id %}"><button class="btn btn-success" >مشاهده</button></a>{% endif %}</td>
+                                                                <td>{% if value.admin == None %} <button class="btn btn-success" disabled>مشاهده</button> {% else %}<a href="{% url 'ticket:ticker' value.id %}"><button class="btn btn-success" >مشاهده</button></a>{% endif %}</td>
 
 															</tr>
 															{% endfor %}
