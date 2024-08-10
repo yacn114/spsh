@@ -11,13 +11,11 @@ def detail(request,string):
     ip_address = request.user.ip_address
     if ip_address not in Prod.viewc.all():
         Prod.viewc.add(ip_address)
-    # rec = Product.objects.filter()
-    rec = None
     languagess = Languages.objects.all()
     category = Category.objects.all()
     siteData = informationSite.objects.first()
     comment = Comment.objects.filter(product__slug=string)
-    
+    rec = Product.objects.filter(language__category__in=Prod.language.values('category')).exclude(id=Prod.id)
     if request.method == "POST":
         form = CommentForms(request.POST)
         if form.is_valid():
