@@ -6,8 +6,7 @@
 <ul>
 <li>add chatgpt new</li>
 <hr>
-<li><a href="https://github.com/muhammadaamir123/-Recommendation-System-Engine-using-Django">recommended post detail</a></li>
 <li>update ticket(full dick)</li>
     <li> signin with google , ( django-userena / django-allauth )</li>
-
+    <li>response ticket ui</li>
 </ul>

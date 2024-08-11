@@ -11,10 +11,12 @@ def ticket(request):
     siteData = informationSite.objects.first()
     languagess = Languages.objects.all()
     category = Category.objects.all()
+
     context = {
         "category":category,
         "siteData":siteData,
         "lang":languagess,
+        "balance":request.user.balance,
         "form":ContactForms(),
         }
     if request.POST:
