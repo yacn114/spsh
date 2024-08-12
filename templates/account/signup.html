@@ -92,6 +92,9 @@
                     <img src="{% static 'login/images/icons/icon-google.png' %}" alt="GOOGLE">
                     Google
                 </a>
+                {% if SOCIALACCOUNT_ENABLED %}
+                {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+            {% endif %}
                 <div class="w-full text-center p-t-55 ">
                     <span class="txt2 myfont">
                         عضو نیستی؟
@@ -105,4 +108,5 @@
         </div>
     </div>
 </div>
+
 {% endblock body %}

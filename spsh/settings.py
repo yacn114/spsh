@@ -81,6 +81,7 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -202,3 +203,5 @@ AUTH_USER_MODEL = 'hesab.User'
 #         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
 #     ]
 # }
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
