@@ -128,8 +128,9 @@
 									
 										<ul style="list-style: disc;">
 											<h5>اطلاعیه :</h5>
-											<li><h6>خوش اومدی رفیق :)</h6></li>
-											<li><h6>{{siteData.message}}</h6></li>
+											<li><h6>کاربر ({{request.user.username}}) به سایت اوپوزکس خوش آمدید.</h6></li>
+											
+											{% if siteData.message %}<li><h6>{{siteData.message}}</h6></li>{% endif %}
 											
 										</ul>	
 									
