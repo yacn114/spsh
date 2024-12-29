@@ -5,7 +5,7 @@
 <ul>
 
 <hr>
-<li>update ticket(full dick)</li>
+<li>update ticket(full ....)</li>
     <li>dashboard color theme</li>
     <li>response ticket ui</li>
     <li> signin with google</li>
