@@ -69,3 +69,4 @@ def complete(request):
             form = completeForm()
         return render(request,"complete.html",{"Form":completeForm()})
         
+    return redirect('account:home')
